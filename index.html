@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Colombe Lankar | BTS SIO</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">CL.</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#profil">Mon Profil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Mes Réalisations (TP)</a></li>
+                <li><a href="#veille">Veille Techno</a></li>
+            </ul>
+            <a href="CV_Colombe_Lankar.pdf" target="_blank" class="btn-cv">Mon CV</a>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <p class="greeting">Bonjour, je suis</p>
+            <h1>Colombe Lankar</h1>
+            <h2>Étudiante en BTS SIO <span class="highlight">Option SISR</span></h2>
+            <p class="description">
+                Passionnée par l'informatique et les réseaux, je me forme à l'administration des systèmes et à la cybersécurité.
+            </p>
+            <div class="buttons">
+                <a href="#projets" class="btn primary">Voir mes projets</a>
+                <a href="#contact" class="btn secondary">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="profil" class="container">
+        <h2 class="section-title">À propos de moi</h2>
+        <div class="profil-content">
+            <div class="profil-text">
+                <p>
+                    Actuellement en première année de <strong>BTS Services Informatiques aux Organisations</strong> (option Solutions d'Infrastructure, Systèmes et Réseaux), je développe mes compétences techniques à travers des projets scolaires et des missions en entreprise.
+                </p>
+                <p>
+                    Mon objectif est de devenir administratrice réseaux ou analyste en cybersécurité. Curieuse et organisée, j'accorde une grande importance à la veille technologique pour rester à jour dans un domaine en constante évolution.
+                </p>
+            </div>
+            <div class="profil-stats">
+                <div class="stat-item">
+                    <i class="fas fa-school"></i>
+                    <span>1ère Année</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>SISR</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Lycée Saint Hilaire Etampes 91580</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-windows icon"></i>
+                    <h3>Administration Système</h3>
+                    <ul>
+                        <li>Installation Windows Server 2019/2022</li>
+                        <li>Gestion des utilisateurs (Active Directory)</li>
+                        <li>Services de base (DHCP, DNS)</li>
+                        <li>Bases de Linux (Commandes, Droits)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-network-wired icon"></i>
+                    <h3>Infrastructure Réseau</h3>
+                    <ul>
+                        <li>Adressage IP & Masques</li>
+                        <li>Configuration Switch/Routeur (Cisco)</li>
+                        <li>Mise en place de VLANs</li>
+                        <li>Simulation sur Packet Tracer</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-tools icon"></i>
+                    <h3>Support & Outils</h3>
+                    <ul>
+                        <li>Gestion de parc (GLPI)</li>
+                        <li>Virtualisation (VirtualBox, VMware)</li>
+                        <li>Ticketing & Assistance utilisateur</li>
+                        <li>Travail en équipe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="container">
+        <h2 class="section-title">Projets & Travaux Pratiques</h2>
+        <p class="subtitle">Une sélection de mes réalisations académiques de première année.</p>
+        
+        <div class="projects-grid">
+            <article class="project-card">
+                <div class="project-header color-1">
+                    <span class="tag">Réseau</span>
+                </div>
+                <div class="project-body">
+                    <h3>Simulation d'un réseau d'entreprise</h3>
+                    <p><strong>Contexte :</strong> TP Scolaire</p>
+                    <p>Conception d'une architecture réseau segmentée avec VLANs pour séparer les services administratifs et techniques.</p>
+                    <p class="techs">Technologies : Cisco Packet Tracer, Switchs, Routeurs.</p>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-header color-2">
+                    <span class="tag">Système</span>
+                </div>
+                <div class="project-body">
+                    <h3>Déploiement Active Directory</h3>
+                    <p><strong>Contexte :</strong> Atelier Professionnel</p>
+                    <p>Installation d'un contrôleur de domaine Windows Server. Création des comptes utilisateurs et gestion des GPO (Stratégies de groupe).</p>
+                    <p class="techs">Technologies : Windows Server 2022, VirtualBox.</p>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-header color-3">
+                    <span class="tag">Gestion</span>
+                </div>
+                <div class="project-body">
+                    <h3>Mise en place de GLPI</h3>
+                    <p><strong>Contexte :</strong> TP de Gestion de Parc</p>
+                    <p>Installation d'une solution de gestion de parc informatique pour recenser le matériel et gérer les tickets incidents.</p>
+                    <p class="techs">Technologies : WAMP/XAMPP, GLPI, OCS Inventory.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="veille" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title text-white">Ma Veille Technologique</h2>
+            <div class="veille-layout">
+                <div class="veille-method">
+                    <h3><i class="fas fa-filter"></i> Ma Méthodologie</h3>
+                    <p>Pour rester informée, j'ai mis en place un processus de veille automatisé :</p>
+                    <ul>
+                        <li><strong>Outils :</strong> Agrégateur de flux RSS (Feedly) & Alertes Google.</li>
+                        <li><strong>Sources :</strong> ANSSI, Le Monde Informatique, ZDNet, Blogs Cyber.</li>
+                        <li><strong>Fréquence :</strong> Hebdomadaire.</li>
+                    </ul>
+                </div>
+                <div class="veille-topics">
+                    <h3><i class="fas fa-lightbulb"></i> Sujets Suivis</h3>
+                    <div class="topic-card">
+                        <h4>L'IA en Cybersécurité</h4>
+                        <p>L'impact de l'intelligence artificielle sur la détection des menaces.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h4>Le Zéro Trust</h4>
+                        <p>Les nouvelles architectures de sécurité sans périmètre de confiance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <h3>Colombe Lankar</h3>
+            <p>Étudiante BTS SIO SISR - À la recherche d'un stage de première année.</p>
+            <div class="social-links">
+                <a href="mailto:email@exemple.com"><i class="fas fa-envelope"></i> colombe.lankar.pro@gmail.com</a>
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <p class="copyright">&copy; 2024 - Réalisé en HTML/CSS</p>
+        </div>
+    </footer>
+
+</body>
+</html>
