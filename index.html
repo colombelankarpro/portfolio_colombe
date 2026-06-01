@@ -1,1024 +1,402 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portfolio — Colombe LANKAR · BTS SIO SISR</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombe Lankar | Portfolio SISR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* -------------------------------------------------------------
+           VARIABLES & DESIGN SYSTEM
+        ------------------------------------------------------------- */
+        :root {
+            --bg-main: #0a0b10;          /* Fond ultra sombre */
+            --bg-card: rgba(255, 255, 255, 0.03); /* Verre dépoli */
+            --border-color: rgba(255, 255, 255, 0.08); /* Bordure fine tech */
+            --text-main: #f3f4f6;        /* Blanc cassé pour les yeux */
+            --text-muted: #9ca3af;       /* Gris pour les descriptions */
+            --accent-purple: #9d4edf;    /* Violet électrique */
+            --accent-glow: rgba(157, 78, 223, 0.15);
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
 
-:root {
-  --plum:   #3d1f5c;
-  --violet: #6b3fa0;
-  --mauve:  #b594d4;
-  --blush:  #e8d5f5;
-  --cream:  #faf7f4;
-  --warm:   #f2ede8;
-  --ink:    #1e1228;
-  --muted:  #7a6887;
-  --card:   #ffffff;
-  --border: rgba(107,63,160,0.13);
-  --gold:   #c4956a;
-  --shadow: cubic-bezier(0.16, 1, 0.3, 1);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+        /* Effet de halo lumineux en arrière-plan */
+        .bg-glow {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(157, 78, 223, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--mauve); border-radius: 3px; }
+        /* -------------------------------------------------------------
+           NAVIGATION BAR
+        ------------------------------------------------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(12px);
+            background: rgba(10, 11, 16, 0.7);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 4rem;
-  background: rgba(250,247,244,0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600; font-size: 1.4rem;
-  letter-spacing: 0.01em;
-  color: var(--plum); text-decoration: none;
-}
-.nav-logo em { font-style: italic; color: var(--violet); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a {
-  font-size: 0.8rem; font-weight: 500;
-  color: var(--muted); text-decoration: none;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  transition: color 0.3s var(--shadow);
-}
-.nav-links a:hover { color: var(--violet); }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
 
-/* ── HERO ── */
-#hero {
-  min-height: 100vh;
-  display: grid; grid-template-columns: 1.2fr 0.8fr;
-  padding-top: 80px;
-}
-.hero-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 5rem 4rem 5rem 5rem;
-  position: relative;
-  background: var(--cream);
-}
-.hero-left::before {
-  content: '';
-  position: absolute;
-  top: 15%; left: 0;
-  width: 4px; height: 160px;
-  background: linear-gradient(to bottom, var(--violet), transparent);
-  border-radius: 0 4px 4px 0;
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-size: 0.75rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--violet);
-  font-weight: 600; margin-bottom: 1.5rem;
-}
-.eyebrow-line {
-  display: inline-block; width: 35px; height: 2px;
-  background: var(--mauve); border-radius: 1px;
-}
-.hero-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  line-height: 0.9; letter-spacing: -0.02em;
-  color: var(--plum); margin-bottom: 0.5rem;
-}
-.hero-name .italic { font-style: italic; color: var(--violet); display: block; }
-.hero-role {
-  font-size: 0.88rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--gold);
-  font-weight: 600; margin: 1.5rem 0;
-  display: flex; align-items: center; gap: 1rem;
-}
-.hero-role::after {
-  content: ''; flex: 1; max-width: 80px;
-  height: 1.5px; background: var(--gold); opacity: 0.5;
-}
-.hero-subtitle {
-  font-size: 1.05rem; color: var(--muted);
-  font-weight: 300; max-width: 460px;
-  line-height: 1.8; margin-bottom: 3rem;
-}
-.hero-ctas { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--plum); color: #fff;
-  padding: 0.9rem 2.2rem; border-radius: 0.6rem;
-  text-decoration: none; font-weight: 500;
-  font-size: 0.9rem; letter-spacing: 0.03em;
-  box-shadow: 0 4px 14px rgba(61, 31, 92, 0.15);
-  transition: background 0.3s, transform 0.3s var(--shadow), box-shadow 0.3s;
-}
-.btn-primary:hover { background: var(--violet); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(107, 63, 160, 0.25); }
-.btn-ghost {
-  background: transparent; color: var(--plum);
-  padding: 0.9rem 2.2rem; border-radius: 0.6rem;
-  border: 1.5px solid var(--mauve); text-decoration: none;
-  font-weight: 500; font-size: 0.9rem; letter-spacing: 0.03em;
-  transition: all 0.3s var(--shadow);
-}
-.btn-ghost:hover { border-color: var(--violet); color: var(--violet); background: rgba(107,63,160,0.03); transform: translateY(-3px); }
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
 
-.stats-row {
-  display: flex; gap: 3rem;
-  margin-top: 4rem; padding-top: 2.5rem;
-  border-top: 1px solid var(--border);
-}
-.stat-card-mini {
-  background: var(--card);
-  padding: 0.8rem 1.4rem;
-  border-radius: 0.6rem;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-}
-.stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600; font-size: 2.4rem;
-  color: var(--violet); line-height: 1;
-}
-.stat-label {
-  font-size: 0.7rem; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3rem;
-}
+        .logo span {
+            color: var(--accent-purple);
+        }
 
-.hero-right {
-  position: relative; background: var(--plum);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-}
-.hero-bg-pattern {
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(181,148,212,0.3) 0%, transparent 60%),
-    radial-gradient(circle at 80% 70%, rgba(107,63,160,0.4) 0%, transparent 50%);
-  filter: blur(40px);
-}
-.hero-bg-lines {
-  position: absolute; inset: 0; opacity: 0.03;
-  background-image: repeating-linear-gradient(45deg,
-    rgba(181,148,212,1) 0px, rgba(181,148,212,1) 1px,
-    transparent 1px, transparent 28px);
-}
-.avatar-container {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 2.5rem;
-}
-.avatar-frame {
-  width: 210px; height: 210px;
-  border-radius: 50%;
-  background: rgba(232, 213, 245, 0.08);
-  border: 2px solid rgba(181,148,212,0.3);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-}
-.avatar-frame::before {
-  content: '';
-  position: absolute;
-  width: 238px; height: 238px;
-  border-radius: 50%;
-  border: 1px dashed rgba(181,148,212,0.3);
-  animation: spin 30s linear infinite;
-}
-.avatar-initials {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600; font-size: 4.5rem;
-  color: var(--blush); letter-spacing: -0.03em; font-style: italic;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-.hero-chips { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
-.hero-chip {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(181,148,212,0.2);
-  color: var(--blush);
-  font-size: 0.78rem; letter-spacing: 0.05em;
-  padding: 0.45rem 1.4rem; border-radius: 2rem;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.hero-chip:hover {
-  transform: scale(1.03);
-  border-color: rgba(181,148,212,0.5);
-}
-.hero-chip-main {
-  background: rgba(181,148,212,0.2);
-  border-color: rgba(181,148,212,0.4);
-  font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; font-size: 0.75rem; color: #e4cbfc;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-/* ── SECTIONS GENERALS ── */
-section { padding: 8rem 5rem; }
-.section-eyebrow {
-  display: flex; align-items: center; gap: 0.7rem;
-  font-size: 0.72rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--violet);
-  font-weight: 600; margin-bottom: 1rem;
-}
-.section-eyebrow::before {
-  content: ''; width: 25px; height: 2px;
-  background: var(--mauve); border-radius: 1px; flex-shrink: 0;
-}
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 500; letter-spacing: -0.01em;
-  line-height: 1.1; color: var(--plum); margin-bottom: 1.2rem;
-}
-.section-title em { font-style: italic; color: var(--violet); }
-.section-intro {
-  color: var(--muted); max-width: 560px;
-  font-size: 1rem; font-weight: 300;
-  line-height: 1.8; margin-bottom: 4rem;
-}
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
 
-/* ── À PROPOS ── */
-#apropos {
-  background: var(--warm);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.apropos-grid {
-  display: grid; grid-template-columns: 1.1fr 0.9fr;
-  gap: 6rem; align-items: start;
-}
-.apropos-text p {
-  color: var(--muted); font-weight: 300;
-  margin-bottom: 1.2rem; font-size: 1.02rem; line-height: 1.8;
-}
-.info-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1.4rem; margin-top: 2rem;
-  padding-top: 2rem; border-top: 1px solid var(--border);
-}
-.info-card-box {
-  background: var(--card);
-  padding: 0.8rem 1.2rem;
-  border-radius: 0.6rem;
-  border: 1px solid var(--border);
-}
-.info-key {
-  font-size: 0.68rem; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--muted);
-  font-weight: 600; display: block; margin-bottom: 0.2rem;
-}
-.info-val { font-size: 0.92rem; font-weight: 500; color: var(--plum); }
+        nav a:hover {
+            color: var(--accent-purple);
+        }
 
-.atout-list { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
-.atout-item {
-  display: flex; align-items: center; gap: 0.9rem;
-  font-size: 0.95rem; color: var(--muted); font-weight: 400;
-  background: var(--card); padding: 0.7rem 1.2rem;
-  border-radius: 0.5rem; border: 1px solid var(--border);
-}
-.atout-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--violet); flex-shrink: 0;
-}
-.loisirs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-.loisir-tag {
-  background: var(--card); color: var(--plum);
-  padding: 0.4rem 1.1rem; border-radius: 2rem;
-  font-size: 0.82rem; font-weight: 500;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.01);
-  transition: all 0.3s var(--shadow);
-}
-.loisir-tag:hover {
-  border-color: var(--mauve);
-  transform: translateY(-2px);
-  background: var(--blush);
-  color: var(--violet);
-}
+        /* -------------------------------------------------------------
+           HERO SECTION (ACCUEIL)
+        ------------------------------------------------------------- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem 2rem;
+            gap: 4rem;
+        }
 
-/* ── COMPÉTENCES ── */
-#competences { background: var(--cream); }
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1.5rem;
-}
-.skill-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 0.85rem; padding: 2rem;
-  transition: transform 0.3s var(--shadow), box-shadow 0.3s var(--shadow);
-  position: relative; overflow: hidden;
-  box-shadow: 0 4px 20px rgba(61,31,92,0.02);
-}
-.skill-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--violet), var(--mauve));
-  border-radius: 0.85rem 0.85rem 0 0;
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.35s var(--shadow);
-}
-.skill-card:hover::before { transform: scaleX(1); }
-.skill-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(61,31,92,0.08); }
-.skill-icon { font-size: 1.6rem; margin-bottom: 1.1rem; display: block; }
-.skill-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600;
-  color: var(--plum); margin-bottom: 1.1rem;
-}
-.skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-.tag {
-  background: var(--warm); color: var(--muted);
-  padding: 0.3rem 0.8rem; border-radius: 2rem;
-  font-size: 0.76rem; font-weight: 500;
-  transition: all 0.25s ease;
-}
-.tag.key {
-  background: var(--blush); color: var(--violet);
-  border: 1px solid rgba(107,63,160,0.15);
-}
-.skill-card:hover .tag { background: rgba(107,63,160,0.04); color: var(--plum); }
-.skill-card:hover .tag.key { background: var(--blush); color: var(--violet); }
+        .hero-info {
+            flex: 1.2;
+        }
 
-/* ── PROJETS ── */
-#projets {
-  background: var(--plum);
-  position: relative; overflow: hidden;
-}
-#projets::before {
-  content: '';
-  position: absolute; width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(181,148,212,0.12) 0%, transparent 70%);
-  top: -250px; right: -150px; pointer-events: none;
-}
-#projets .section-eyebrow { color: var(--mauve); }
-#projets .section-eyebrow::before { background: rgba(181,148,212,0.5); }
-#projets .section-title { color: var(--blush); }
-#projets .section-title em { color: var(--mauve); }
-#projets .section-intro { color: rgba(232,213,245,0.6); }
-.projets-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem; position: relative; z-index: 1;
-}
-.projet-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(181,148,212,0.15);
-  border-radius: 0.85rem; padding: 2rem;
-  display: flex; flex-direction: column; gap: 1rem;
-  transition: all 0.3s var(--shadow);
-}
-.projet-card:hover {
-  background: rgba(181,148,212,0.06);
-  border-color: rgba(181,148,212,0.4);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-.projet-num {
-  font-size: 0.68rem; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--mauve); font-weight: 600;
-}
-.projet-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem; font-weight: 500;
-  color: var(--blush); line-height: 1.2;
-}
-.projet-card p {
-  font-size: 0.9rem; color: rgba(232,213,245,0.6);
-  font-weight: 300; flex: 1; line-height: 1.7;
-}
-.projet-footer { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-.tech-tag {
-  background: rgba(181,148,212,0.12); color: var(--blush);
-  padding: 0.25rem 0.75rem; border-radius: 2rem;
-  font-size: 0.75rem; font-weight: 500;
-  border: 1px solid rgba(181,148,212,0.2);
-}
+        .hero-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
 
-/* ── EXPÉRIENCES ── */
-#experiences { background: var(--warm); }
-.timeline { position: relative; max-width: 780px; margin-top: 2rem; }
-.timeline::before {
-  content: ''; position: absolute;
-  left: 0; top: 10px; bottom: 10px; width: 2px;
-  background: linear-gradient(to bottom, var(--violet), var(--mauve), transparent);
-  border-radius: 2px;
-}
-.timeline-item { padding: 0 0 3.5rem 3rem; position: relative; }
-.timeline-dot {
-  position: absolute; left: -6px; top: 8px;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--violet);
-  border: 3px solid var(--warm);
-  box-shadow: 0 0 0 4px rgba(107,63,160,0.15);
-}
-.timeline-dot.rose {
-  background: var(--mauve);
-  box-shadow: 0 0 0 4px rgba(181,148,212,0.2);
-}
-.timeline-period {
-  font-size: 0.72rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--violet);
-  font-weight: 600; margin-bottom: 0.4rem;
-}
-.timeline-period.rose { color: var(--mauve); }
-.timeline-item h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600;
-  color: var(--plum); margin-bottom: 0.3rem;
-}
-.timeline-org { font-size: 0.88rem; color: var(--muted); margin-bottom: 1rem; font-weight: 500; }
-.timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-.timeline-bullets li {
-  font-size: 0.92rem; color: var(--muted);
-  font-weight: 300; line-height: 1.6;
-  display: flex; align-items: flex-start; gap: 0.7rem;
-}
-.timeline-bullets li::before { content: '◦'; color: var(--violet); font-weight: bold; flex-shrink: 0; }
+        .hero-info h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
 
-/* ── LANGUES ── */
-#langues { background: var(--cream); border-top: 1px solid var(--border); }
-.langues-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem; max-width: 680px;
-}
-.langue-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 0.85rem; padding: 1.8rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.01);
-}
-.langue-header {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 1.2rem;
-}
-.langue-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600; font-size: 1.2rem; color: var(--plum);
-}
-.langue-level {
-  font-size: 0.72rem; background: var(--blush);
-  color: var(--violet); padding: 0.25rem 0.8rem;
-  border-radius: 2rem; font-weight: 600; letter-spacing: 0.04em;
-}
-.langue-details { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-.langue-details li {
-  font-size: 0.88rem; color: var(--muted); font-weight: 300;
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.langue-details li::before { content: '–'; color: var(--mauve); font-weight: 600; }
+        .hero-info p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
 
-/* ── CONTACT ── */
-#contact {
-  background: var(--warm); text-align: center;
-  border-top: 1px solid var(--border); padding: 8rem 5rem;
-}
-#contact .section-eyebrow { justify-content: center; }
-#contact .section-eyebrow::before { display: none; }
-#contact .section-eyebrow::after {
-  content: ''; width: 25px; height: 2px;
-  background: var(--mauve); border-radius: 1px;
-}
-#contact .section-title { text-align: center; }
-#contact .section-intro { margin: 0 auto 4rem; }
-.contact-grid {
-  display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
-}
-.contact-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 0.85rem; padding: 1.5rem 2rem;
-  display: flex; align-items: center; gap: 1.2rem;
-  text-decoration: none; color: var(--ink); min-width: 240px;
-  box-shadow: 0 4px 15px rgba(61,31,92,0.02);
-  transition: all 0.3s var(--shadow);
-}
-.contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(61,31,92,0.08);
-  border-color: rgba(107,63,160,0.3);
-}
-.contact-icon {
-  width: 44px; height: 44px; border-radius: 0.6rem;
-  background: var(--blush);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; flex-shrink: 0;
-}
-.contact-label {
-  font-size: 0.68rem; text-transform: uppercase;
-  letter-spacing: 0.08em; color: var(--muted);
-  display: block; margin-bottom: 0.1rem; text-align: left;
-}
-.contact-value { font-weight: 500; font-size: 0.92rem; color: var(--plum); text-align: left; }
+        /* Boutons Tech */
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
 
-footer {
-  text-align: center; padding: 2.2rem;
-  font-size: 0.8rem; color: var(--muted);
-  border-top: 1px solid var(--border); background: var(--cream);
-}
-footer span { color: var(--violet); font-weight: 500; }
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
 
-/* ── REVEAL ── */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8rem cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.visible { opacity: 1; transform: none; }
+        .btn-primary {
+            background-color: var(--accent-purple);
+            color: white;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
 
-/* ── DOCUMENTATION / PDF CARDS ── */
-.pdf-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 0.85rem; padding: 1.8rem;
-  display: flex; gap: 1.2rem; align-items: flex-start;
-  text-decoration: none; color: var(--ink);
-  box-shadow: 0 4px 15px rgba(61,31,92,0.02);
-  transition: all 0.3s var(--shadow);
-}
-.pdf-card:not(.pdf-soon):hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(61,31,92,0.08);
-  border-color: rgba(107,63,160,0.3);
-}
-.pdf-soon { cursor: default; opacity: 0.75; }
-.pdf-icon { font-size: 1.8rem; flex-shrink: 0; width: 44px; text-align: center; }
-.pdf-info { flex: 1; }
-.pdf-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600; font-size: 1.1rem;
-  color: var(--plum); margin-bottom: 0.3rem; line-height: 1.2;
-}
-.pdf-meta {
-  font-size: 0.7rem; text-transform: uppercase;
-  letter-spacing: 0.08em; color: var(--mauve);
-  font-weight: 600; margin-bottom: 0.6rem;
-}
-.pdf-desc { font-size: 0.88rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
-.pdf-arrow {
-  font-size: 1.1rem; color: var(--mauve); flex-shrink: 0;
-  opacity: 0; transform: translateX(-5px); transition: all 0.25s ease;
-}
-.pdf-card:hover .pdf-arrow { opacity: 1; transform: none; color: var(--violet); }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(157, 78, 223, 0.3);
+        }
 
-/* ── SOURCE FILTERS (VEILLE) ── */
-.source-tag {
-  background: var(--warm);
-  color: var(--muted);
-  padding: 0.35rem 0.9rem;
-  border-radius: 2rem;
-  font-size: 0.76rem;
-  font-weight: 500;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-.source-tag:hover {
-  background: var(--blush);
-  color: var(--violet);
-  border-color: rgba(107,63,160,0.15);
-  transform: scale(1.04);
-}
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 992px) {
-  nav { padding: 1.2rem 2rem; }
-  .nav-links { display: none; }
-  #hero { grid-template-columns: 1fr; }
-  .hero-right { padding: 4rem 2rem; min-height: 40vh; }
-  .hero-left { padding: 6rem 2rem 4rem 2.5rem; }
-  .apropos-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-  section { padding: 5rem 2rem; }
-  #contact { padding: 5rem 2rem; }
-}
-</style>
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-purple);
+        }
+
+        /* Stats Dashboard Row */
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Console/Dashboard Visuel Droite */
+        .hero-visual {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        /* Faux voyant de serveur (Live stat) */
+        .status-indicator {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #10b981;
+        }
+
+        .ping {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .avatar-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-purple), #4cc9f0);
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 0 30px rgba(157, 78, 223, 0.2);
+        }
+
+        .tech-card h2 {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card p {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .badge-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+        }
+
+        .badge-item span:last-child {
+            color: var(--accent-purple);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+            }
+            .hero-info h1 { font-size: 2.8rem; }
+            .hero-info p { margin: 0 auto 2rem auto; }
+            .btn-container { justify-content: center; }
+            .hero-stats { justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">Colombe <em>Lankar</em></a>
-  <ul class="nav-links">
-    <li><a href="#apropos">À propos</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#projets">Projets</a></li>
-    <li><a href="#experiences">Parcours</a></li>
-    <li><a href="#veille">Veille</a></li>
-    <li><a href="#comptes-rendus">Comptes rendus</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <div class="bg-glow"></div>
 
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-line"></span>
-      BTS SIO · Option SISR · 2025–2027
-    </div>
-    <h1 class="hero-name">
-      Colombe
-      <span class="italic">Lankar</span>
-    </h1>
-    <div class="hero-role">Systèmes · Réseaux · Infrastructure</div>
-    <p class="hero-subtitle">
-      Étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire. Passionnée par l'administration systèmes, la virtualisation et les réseaux.
-    </p>
-    <div class="hero-ctas">
-      <a href="#projets" class="btn-primary">Voir mes projets</a>
-      <a href="#contact" class="btn-ghost">Me contacter</a>
-    </div>
-    <div class="stats-row">
-      <div class="stat-card-mini">
-        <div class="stat-num">1ère</div>
-        <div class="stat-label">Année BTS</div>
-      </div>
-      <div class="stat-card-mini">
-        <div class="stat-num">SISR</div>
-        <div class="stat-label">Option choisie</div>
-      </div>
-      <div class="stat-card-mini">
-        <div class="stat-num">3+</div>
-        <div class="stat-label">Projets réalisés</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-bg-lines"></div>
-    <div class="avatar-container">
-      <div class="avatar-frame">
-        <div class="avatar-initials">CL</div>
-      </div>
-      <div class="hero-chips">
-        <div class="hero-chip">📍 Étréchy, Essonne</div>
-        <div class="hero-chip">🎓 Lycée Geoffroy-Saint-Hilaire</div>
-        <div class="hero-chip">🖥 Bac 2025 · Maths &amp; NSI</div>
-        <div class="hero-chip hero-chip-main">▸ SISR — Systèmes &amp; Réseaux</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="apropos">
-  <div class="apropos-grid">
-    <div class="reveal">
-      <div class="section-eyebrow">Qui suis-je ?</div>
-      <h2 class="section-title">À propos<br><em>de moi</em></h2>
-      <div class="apropos-text">
-        <p>Je suis Colombe Lankar, étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire à Étampes. J'ai obtenu mon baccalauréat général en 2025 avec les spécialités Mathématiques et NSI.</p>
-        <p>Je me forme aux métiers de l'administration systèmes et réseaux : configuration réseau, virtualisation, administration Windows et Linux, sécurité. Je recherche un stage pour mettre en pratique mes compétences et développer mon expérience professionnelle.</p>
-      </div>
-      <div class="info-grid">
-        <div class="info-card-box"><span class="info-key">Formation</span><span class="info-val">BTS SIO — SISR</span></div>
-        <div class="info-card-box"><span class="info-key">Établissement</span><span class="info-val">Lycée Geoffroy-St-Hilaire</span></div>
-        <div class="info-card-box"><span class="info-key">Localisation</span><span class="info-val">Étréchy, Essonne (91)</span></div>
-        <div class="info-card-box"><span class="info-key">Disponibilité</span><span class="info-val">Stage / Alternance</span></div>
-        <div class="info-card-box"><span class="info-key">Baccalauréat</span><span class="info-val">Général 2025</span></div>
-        <div class="info-card-box"><span class="info-key">Spécialités bac</span><span class="info-val">Maths + NSI</span></div>
-      </div>
-    </div>
-    <div class="reveal" style="transition-delay:0.12s">
-      <div class="section-eyebrow">Mes atouts</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;color:var(--plum);margin-bottom:1.5rem;">Ce qui me caractérise</h3>
-      <div class="atout-list">
-        <div class="atout-item"><span class="atout-dot"></span>Rigueur et sens du détail</div>
-        <div class="atout-item"><span class="atout-dot"></span>Esprit d'analyse et résolution de problèmes</div>
-        <div class="atout-item"><span class="atout-dot"></span>Travail en équipe</div>
-        <div class="atout-item"><span class="atout-dot"></span>Curiosité et envie d'apprendre</div>
-      </div>
-      <div style="margin-top:2.5rem;">
-        <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);font-weight:600;margin-bottom:1rem;">Centres d'intérêt</div>
-        <div class="loisirs">
-          <span class="loisir-tag">🎯 Tir sportif</span>
-          <span class="loisir-tag">📷 Photographie</span>
-          <span class="loisir-tag">💻 Nouvelles technologies</span>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">colombe<span>.lankar</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#propos">À propos</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section id="competences">
-  <div class="section-eyebrow reveal">Savoir-faire technique</div>
-  <h2 class="section-title reveal">Mes <em>compétences</em></h2>
-  <p class="section-intro reveal">Compétences acquises en cours, en TP et lors de projets personnels. Orientées SISR, avec une solide base en réseaux, systèmes et virtualisation.</p>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <span class="skill-icon">🌐</span>
-      <h3>Réseaux</h3>
-      <div class="skill-tags">
-        <span class="tag key">IPv4 / VLSM</span><span class="tag key">VLAN 802.1Q</span>
-        <span class="tag key">DHCP / DNS</span><span class="tag key">NAT / PAT</span>
-        <span class="tag">ping / tracert</span><span class="tag">Wireshark</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">🖥️</span>
-      <h3>Systèmes</h3>
-      <div class="skill-tags">
-        <span class="tag key">Windows Server</span><span class="tag key">Linux</span>
-        <span class="tag">Comptes &amp; groupes</span><span class="tag">Partages réseau</span>
-        <span class="tag">Pare-feu</span><span class="tag">Shell</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">⚙️</span>
-      <h3>Virtualisation</h3>
-      <div class="skill-tags">
-        <span class="tag key">VirtualBox</span><span class="tag">Machines virtuelles</span>
-        <span class="tag">Réseau NAT</span><span class="tag">Réseau Bridge</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">🗄️</span>
-      <h3>Bases de données &amp; scripts</h3>
-      <div class="skill-tags">
-        <span class="tag key">SQL (CRUD)</span><span class="tag">MySQL</span><span class="tag">Python</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">💻</span>
-      <h3>Développement web</h3>
-      <div class="skill-tags">
-        <span class="tag key">HTML5</span><span class="tag key">CSS3</span>
-        <span class="tag">JavaScript</span><span class="tag">PHP</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">🔒</span>
-      <h3>Sécurité &amp; infrastructure</h3>
-      <div class="skill-tags">
-        <span class="tag">Pare-feu</span><span class="tag">RGPD</span>
-        <span class="tag">Diagnostic réseau</span><span class="tag">Config. matériels</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <main>
+        <section class="hero">
+            
+            <div class="hero-info">
+                <span class="hero-tag">root@colombe:~# bts sisr</span>
+                <h1>Colombe Lankar</h1>
+                <p>Étudiante en première année de BTS SIO option SISR. Passionnée par l'administration systèmes, la virtualisation, le cloud et la sécurisation des infrastructures réseaux.</p>
+                
+                <div class="btn-container">
+                    <a href="#projets" class="btn btn-primary">Explorer mes projets</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
 
-<section id="projets">
-  <div class="section-eyebrow reveal">Ce que j'ai réalisé</div>
-  <h2 class="section-title reveal">Mes <em>projets</em></h2>
-  <p class="section-intro reveal">Projets menés en cours, en atelier ou en dehors de l'école, en lien avec le référentiel BTS SIO SISR.</p>
-  <div class="projets-grid">
-    <div class="projet-card reveal">
-      <div class="projet-num">Projet 01 · 2024</div>
-      <h3>Site web — Spécialité LLCER Anglais</h3>
-      <p>Conception et développement d'un site web présentant la spécialité LLCER pour le Lycée Geoffroy-Saint-Hilaire. Pages HTML/CSS, travail en équipe, rédaction de contenu. Site publié sur le site officiel du lycée.</p>
-      <div class="projet-footer">
-        <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">Travail en équipe</span>
-      </div>
-    </div>
-    <div class="projet-card reveal">
-      <div class="projet-num">Projet 02 · 2024–2025</div>
-      <h3>Maintenance informatique bénévole</h3>
-      <p>Maintenance de PC et smartphones : mises à jour systèmes, sauvegardes de données, configuration Wi-Fi, diagnostic et résolution de problèmes informatiques variés.</p>
-      <div class="projet-footer">
-        <span class="tech-tag">Windows</span><span class="tech-tag">Diagnostic</span><span class="tech-tag">Wi-Fi</span>
-      </div>
-    </div>
-    <div class="projet-card reveal">
-      <div class="projet-num">Projet 03 · 2024–2025</div>
-      <h3>Installation de postes informatiques</h3>
-      <p>Mise en service de postes : transfert de données, installation de périphériques, configuration des environnements utilisateurs.</p>
-      <div class="projet-footer">
-        <span class="tech-tag">Windows</span><span class="tech-tag">Config. poste</span><span class="tech-tag">Périphériques</span>
-      </div>
-    </div>
-    <div class="projet-card reveal">
-      <div class="projet-num">Projet 04 · En cours</div>
-      <h3>Infrastructure réseau simulée</h3>
-      <p>Mise en place d'une infrastructure réseau en TP : adressage IPv4/VLSM, VLAN, DHCP, DNS et NAT sur machines virtuelles VirtualBox sous Linux et Windows.</p>
-      <div class="projet-footer">
-        <span class="tech-tag">IPv4 / VLSM</span><span class="tech-tag">VLAN</span>
-        <span class="tech-tag">DHCP / DNS</span><span class="tech-tag">VirtualBox</span>
-      </div>
-    </div>
-  </div>
-</section>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1ère</span>
+                        <span class="stat-label">Année BTS SIO</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">SISR</span>
+                        <span class="stat-label">Spécialisation</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Projets Réseau</span>
+                    </div>
+                </div>
+            </div>
 
-<section id="experiences">
-  <div class="section-eyebrow reveal">Parcours</div>
-  <h2 class="section-title reveal">Formation &amp; <em>expériences</em></h2>
-  <p class="section-intro reveal">Mon parcours académique et mes premières expériences dans le domaine informatique.</p>
-  <div class="timeline">
-    <div class="timeline-item reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Sept. 2025 — Aujourd'hui</div>
-      <h3>BTS SIO — Option SISR</h3>
-      <div class="timeline-org">Lycée Geoffroy-Saint-Hilaire, Étampes (91)</div>
-      <ul class="timeline-bullets">
-        <li>Administration systèmes Windows et Linux</li>
-        <li>Configuration réseau : IPv4, VLAN, DHCP, DNS, NAT</li>
-        <li>Virtualisation avec VirtualBox</li>
-        <li>Bases de données SQL et développement web</li>
-        <li>Cybersécurité et gestion de pare-feu</li>
-      </ul>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot rose"></div>
-      <div class="timeline-period rose">2024–2025</div>
-      <h3>Maintenance informatique — Bénévolat</h3>
-      <div class="timeline-org">Activité personnelle</div>
-      <ul class="timeline-bullets">
-        <li>Maintenance de PC et smartphones</li>
-        <li>Mises à jour systèmes et sauvegardes</li>
-        <li>Configuration Wi-Fi et diagnostic réseau</li>
-        <li>Installation et configuration de postes informatiques</li>
-      </ul>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">2024</div>
-      <h3>Projet web — Site LLCER Anglais</h3>
-      <div class="timeline-org">Lycée Geoffroy-Saint-Hilaire, Étampes</div>
-      <ul class="timeline-bullets">
-        <li>Développement HTML/CSS en équipe</li>
-        <li>Publication sur le site officiel du lycée</li>
-      </ul>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot rose"></div>
-      <div class="timeline-period rose">Juin 2025</div>
-      <h3>Baccalauréat général</h3>
-      <div class="timeline-org">Lycée Geoffroy-Saint-Hilaire, Étampes</div>
-      <ul class="timeline-bullets">
-        <li>Spécialités : Mathématiques et NSI</li>
-      </ul>
-    </div>
-  </div>
-</section>
+            <div class="hero-visual">
+                <div class="tech-card">
+                    <div class="status-indicator">
+                        <div class="ping"></div> Active node
+                    </div>
+                    
+                    <div class="avatar-container">
+                        CL
+                    </div>
+                    
+                    <h2>Colombe L.</h2>
+                    <p>Futur(e) Administrateur Systèmes & Réseaux</p>
+                    
+                    <div class="badge-list">
+                        <div class="badge-item">
+                            <span>LOCATION</span>
+                            <span>Étréchy, Essonne</span>
+                        </div>
+                        <div class="badge-item">
+                            <span>CAMPUS</span>
+                            <span>Geoffroy-Saint-Hilaire</span>
+                        </div>
+                        <div class="badge-item">
+                            <span>BAC</span>
+                            <span>Général Maths & NSI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<section id="langues">
-  <div class="section-eyebrow reveal">Communication</div>
-  <h2 class="section-title reveal"><em>Langues</em></h2>
-  <div class="langues-grid">
-    <div class="langue-card reveal">
-      <div class="langue-header">
-        <span class="langue-name">🇫🇷 Français</span>
-        <span class="langue-level">Langue maternelle</span>
-      </div>
-      <ul class="langue-details">
-        <li>Communication professionnelle</li>
-        <li>Expression orale et écrite</li>
-      </ul>
-    </div>
-    <div class="langue-card reveal">
-      <div class="langue-header">
-        <span class="langue-name">🇬🇧 Anglais</span>
-        <span class="langue-level">Bon niveau</span>
-      </div>
-      <ul class="langue-details">
-        <li>Lecture de documentation technique</li>
-        <li>Compréhension écrite et orale</li>
-        <li>Spécialité LLCER Anglais au lycée</li>
-      </ul>
-    </div>
-  </div>
-</section>
+        </section>
+    </main>
 
-<section id="veille" style="background:var(--cream); border-top:1px solid var(--border);">
-  <div class="section-eyebrow reveal">Curiosité technologique</div>
-  <h2 class="section-title reveal">Veille <em>technologique</em></h2>
-
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:0.85rem;padding:2.5rem;max-width:780px;margin-bottom:3rem;position:relative;overflow:hidden;box-shadow: 0 4px 20px rgba(61,31,92,0.02);" class="reveal">
-    <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(to bottom,var(--violet),var(--mauve));"></div>
-    <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--mauve);font-weight:600;margin-bottom:0.6rem;">Sujet de veille</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--plum);line-height:1.3;margin-bottom:1.5rem;">
-      L'impact environnemental des datacenters<br><em style="color:var(--violet);">et les solutions pour le réduire</em>
-    </div>
-    <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--mauve);font-weight:600;margin-bottom:0.6rem;">Problématique</div>
-    <div style="font-size:1.02rem;color:var(--muted);font-weight:300;line-height:1.8;font-style:italic;">
-      « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment réduire la consommation énergétique des datacenters ? »
-    </div>
-  </div>
-
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <span class="skill-icon">⚡</span>
-      <h3>Consommation énergétique</h3>
-      <p style="font-size:0.88rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.2rem;">Les datacenters représentent environ 1 à 2 % de la consommation électrique mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE et des objectifs de neutralité carbone des grands acteurs.</p>
-      <div class="skill-tags">
-        <span class="tag key">PUE</span><span class="tag key">Consommation IA</span>
-        <span class="tag">Neutralité carbone</span><span class="tag">Électricité</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">🌿</span>
-      <h3>Solutions & innovations</h3>
-      <p style="font-size:0.88rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.2rem;">Refroidissement par immersion, free cooling, récupération de chaleur, énergie renouvelable, optimisation logicielle des charges de travail. Suivi des projets pilotes en Europe.</p>
-      <div class="skill-tags">
-        <span class="tag key">Refroidissement</span><span class="tag key">Free cooling</span>
-        <span class="tag">Énergies renouvelables</span><span class="tag">Immersion</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <span class="skill-icon">⚖️</span>
-      <h3>Réglementation française & UE</h3>
-      <p style="font-size:0.88rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.2rem;">La loi REEN (2021) impose aux datacenters de réduire leur empreinte environnementale. Directive européenne sur l'efficacité énergétique, labels Tier et EN 50600. Actualité réglementaire régulière jusqu'à la soutenance.</p>
-      <div class="skill-tags">
-        <span class="tag key">Loi REEN</span><span class="tag key">Directive UE</span>
-        <span class="tag">Label Tier</span><span class="tag">EN 50600</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:3rem;padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:0.85rem;max-width:780px;box-shadow: 0 4px 20px rgba(61,31,92,0.02);" class="reveal">
-    <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mauve);font-weight:600;margin-bottom:1rem;">Sources utilisées</div>
-    <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
-      <span class="source-tag">ADEME</span><span class="source-tag">Le Monde Informatique</span>
-      <span class="source-tag">Data Center Knowledge</span><span class="source-tag">ZDNet</span>
-      <span class="source-tag">Legifrance (loi REEN)</span><span class="source-tag">IEA.org</span><span class="source-tag">01net</span>
-    </div>
-  </div>
-</section>
-
-<section id="comptes-rendus" style="background:var(--warm); border-top:1px solid var(--border);">
-  <div class="section-eyebrow reveal">Documentation</div>
-  <h2 class="section-title reveal">Comptes <em>rendus</em></h2>
-  <p class="section-intro reveal">Comptes rendus rédigés tout au long de l'année : TP, projets et rapports de veille. Cliquez sur un document pour le consulter.</p>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem;" class="reveal">
-
-    <a href="TP7.pdf" target="_blank" class="pdf-card">
-      <div class="pdf-icon">📄</div>
-      <div class="pdf-info">
-        <div class="pdf-title">TP7 — DHCP, DNS &amp; serveur HTTP</div>
-        <div class="pdf-meta">Réseaux · SIO1 · 2025</div>
-        <div class="pdf-desc">Mise en place d'une infrastructure complète : attribution IP automatique via DHCP, résolution de noms par DNS et hébergement d'un site web accessible via <em>http://web.tp.local</em>.</div>
-      </div>
-      <div class="pdf-arrow">↗</div>
-    </a>
-
-    <a href="TP8.pdf" target="_blank" class="pdf-card">
-      <div class="pdf-icon">📄</div>
-      <div class="pdf-info">
-        <div class="pdf-title">TP8 — VLAN &amp; routage inter-VLAN avec DHCP</div>
-        <div class="pdf-meta">Réseaux · SIO1 · 2025</div>
-        <div class="pdf-desc">Segmentation du réseau en VLAN10 et VLAN20, configuration des switches et du routeur, mise en place d'un serveur DHCP avec agent relais (ip helper-address) pour la distribution d'adresses IP inter-VLAN.</div>
-      </div>
-      <div class="pdf-arrow">↗</div>
-    </a>
-
-    <div class="pdf-card pdf-soon">
-      <div class="pdf-icon" style="opacity:0.4;">🔒</div>
-      <div class="pdf-info">
-        <div class="pdf-title" style="opacity:0.5;">D'autres comptes rendus à venir</div>
-        <div class="pdf-meta">En cours · 2025–2026</div>
-        <div class="pdf-desc" style="opacity:0.5;">Les prochains comptes rendus de TP et le rapport de stage seront ajoutés au fil de l'année.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-eyebrow">Me rejoindre</div>
-  <h2 class="section-title reveal"><em>Contact</em></h2>
-  <p class="section-intro reveal">Disponible pour un stage en informatique — administration systèmes &amp; réseaux. N'hésitez pas à me contacter !</p>
-  <div class="contact-grid reveal">
-    <a href="mailto:colombe.lankar.pro@gmail.com" class="contact-card">
-      <div class="contact-icon">📧</div>
-      <div>
-        <span class="contact-label">Email</span>
-        <span class="contact-value">colombe.lankar.pro@gmail.com</span>
-      </div>
-    </a>
-    <a href="tel:0767477581" class="contact-card">
-      <div class="contact-icon">📞</div>
-      <div>
-        <span class="contact-label">Téléphone</span>
-        <span class="contact-value">07 67 47 75 81</span>
-      </div>
-    </a>
-    <a href="https://linkedin.com/in/colombe-lankar" target="_blank" class="contact-card">
-      <div class="contact-icon">💼</div>
-      <div>
-        <span class="contact-label">LinkedIn</span>
-        <span class="contact-value">colombe-lankar</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<footer>
-  Portfolio de <span>Colombe Lankar</span> — BTS SIO SISR · Lycée Geoffroy-Saint-Hilaire · 2025–2027
-</footer>
-
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.05 });
-  reveals.forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
