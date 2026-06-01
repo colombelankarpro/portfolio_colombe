@@ -4,219 +4,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colombe Lankar | SysAdmin & Réseaux</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-main: #08090c;
-            --bg-card: rgba(20, 24, 33, 0.6);
-            --border-tech: rgba(157, 78, 223, 0.2);
+            --bg-main: #06070a;
+            --bg-card: rgba(18, 22, 31, 0.6);
+            --border-tech: rgba(157, 78, 223, 0.25);
             --border-soft: rgba(255, 255, 255, 0.05);
             --text-main: #f3f4f6;
-            --text-muted: #8a93a6;
+            --text-muted: #8e99ae;
             --accent-purple: #a855f7;
+            --accent-purple-glow: rgba(168, 85, 247, 0.15);
             --accent-green: #10b981;
             --accent-orange: #f97316;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
-            padding-bottom: 5rem;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Effet de lumière de fond */
+        .glow-bg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
         /* -------------------------------------------------------------
-           HERO & TERMINAL INTERACTIF
+           HEADER / NAV
         ------------------------------------------------------------- */
-        .hero { padding: 6rem 0 4rem 0; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
-        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem auto; }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(12px);
+            background: rgba(6, 7, 10, 0.8);
+            border-bottom: 1px solid var(--border-soft);
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
+        .logo span { color: var(--accent-purple); }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--accent-purple); }
 
-        /* Style de la Console Linux */
+        /* -------------------------------------------------------------
+           HERO & TERMINAL
+        ------------------------------------------------------------- */
+        .hero { padding: 8rem 0 3rem 0; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto 2.5rem auto; }
+
         .terminal-container {
-            background: #0f111a;
+            background: #0b0d14;
             border: 1px solid var(--border-tech);
             border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             text-align: left;
             font-family: var(--font-mono);
             overflow: hidden;
-            margin-bottom: 6rem;
+            margin-bottom: 4rem;
         }
-
         .terminal-header {
-            background: #161925;
+            background: #121620;
             padding: 0.75rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--border-soft);
         }
-
         .terminal-buttons { display: flex; gap: 0.5rem; }
         .t-btn { width: 12px; height: 12px; border-radius: 50%; }
         .t-close { background: #ef4444; }
         .t-min { background: #eab308; }
         .t-max { background: #22c55e; }
         .terminal-title { color: var(--text-muted); font-size: 0.8rem; }
-
-        .terminal-body {
-            padding: 1.5rem;
-            height: 320px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-        }
-
+        .terminal-body { padding: 1.5rem; height: 280px; overflow-y: auto; font-size: 0.9rem; color: #e2e8f0; }
+        
         .t-purple { color: var(--accent-purple); font-weight: bold; }
         .t-green { color: var(--accent-green); }
         .t-orange { color: var(--accent-orange); }
         
         .terminal-input-line { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
         .terminal-input-line input {
-            background: transparent;
-            border: none;
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            outline: none;
-            flex: 1;
+            background: transparent; border: none; color: var(--text-main);
+            font-family: var(--font-mono); font-size: 0.9rem; outline: none; flex: 1;
         }
-
-        /* Raccourcis cliquables sous la console */
-        .terminal-shortcuts {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: -4.5rem;
-            margin-bottom: 6rem;
-        }
+        .terminal-shortcuts { display: flex; justify-content: center; gap: 1rem; margin-bottom: 6rem; flex-wrap: wrap; }
         .shortcut-btn {
-            background: rgba(168, 85, 247, 0.08);
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            color: var(--accent-purple);
-            font-family: var(--font-mono);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
+            background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple); font-family: var(--font-mono); padding: 0.4rem 1rem;
+            border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
         }
-        .shortcut-btn:hover {
-            background: var(--accent-purple);
-            color: white;
-            transform: translateY(-1px);
-        }
+        .shortcut-btn:hover { background: var(--accent-purple); color: white; transform: translateY(-1px); }
 
         /* -------------------------------------------------------------
-           SECTION PROJETS : COMPTES RENDUS D'INCIDENTS (TICKETS)
+           SECTIONS GENERAL STYLES
         ------------------------------------------------------------- */
-        .section-title {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        section { padding: 5rem 0 2rem 0; border-top: 1px solid var(--border-soft); }
+        .section-title { font-family: var(--font-mono); font-size: 1.6rem; margin-bottom: 3rem; display: flex; align-items: center; gap: 0.5rem; }
         .section-title::before { content: "//"; color: var(--accent-purple); }
 
-        .projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        /* -------------------------------------------------------------
+           BENTO GRID : A PROPOS
+        ------------------------------------------------------------- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 1.5rem;
         }
-
-        .ticket-card {
+        .bento-card {
             background: var(--bg-card);
             border: 1px solid var(--border-soft);
             border-radius: 12px;
             padding: 2rem;
-            transition: border-color 0.3s;
         }
-        .ticket-card:hover {
-            border-color: rgba(168, 85, 247, 0.4);
-        }
+        .bento-card h3 { font-size: 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); color: var(--text-main); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
+        
+        /* Liste d'atouts & intérêts stylisés */
+        .skills-list-text, .interests-tags { list-style: none; }
+        .skills-list-text li { margin-bottom: 0.75rem; position: relative; padding-left: 1.2rem; font-size: 0.95rem; color: var(--text-muted); }
+        .skills-list-text li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-purple); }
+        
+        .interests-tags { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .interest-tag { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; color: var(--text-main); }
+        
+        .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
+        .meta-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); display: block; }
+        .meta-val { font-size: 0.9rem; font-weight: 600; }
 
-        .ticket-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 1px dashed var(--border-soft);
-            padding-bottom: 1rem;
-            margin-bottom: 1.2rem;
+        /* -------------------------------------------------------------
+           COMPÉTENCES (GRID 6 BLOCS)
+        ------------------------------------------------------------- */
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
+        .comp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.2s;
+        }
+        .comp-card:hover { border-color: var(--border-tech); transform: translateY(-2px); }
+        .comp-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: 1.1rem; }
+        .comp-icon { color: var(--accent-purple); font-size: 1.3rem; }
+        .tech-badges-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-badge { font-family: var(--font-mono); font-size: 0.8rem; background: #131722; border: 1px solid var(--border-soft); padding: 0.3rem 0.6rem; border-radius: 6px; color: #cbd5e1; }
 
-        .ticket-id {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+        /* -------------------------------------------------------------
+           PROJETS (TICKETS INFRA)
+        ------------------------------------------------------------- */
+        .projects-grid { display: flex; flex-direction: column; gap: 2rem; }
+        .ticket-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; }
+        .ticket-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px dashed var(--border-soft); padding-bottom: 1rem; margin-bottom: 1.2rem; }
+        .ticket-id { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
         .ticket-id span { color: var(--accent-purple); }
-        
         .ticket-title { font-size: 1.3rem; font-weight: 600; margin-top: 0.2rem; }
-        
-        .status-badge {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-weight: bold;
-        }
+        .status-badge { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: bold; }
         .status-resolved { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
         .status-progress { background: rgba(249, 115, 22, 0.1); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.2); }
-
-        .ticket-body { font-size: 0.95rem; }
         .ticket-field { margin-bottom: 0.75rem; display: flex; align-items: flex-start; }
-        .field-label {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            min-width: 140px;
-            text-transform: uppercase;
-        }
-        .field-value { color: var(--text-main); flex: 1; }
-
-        /* Alerte Galère */
-        .field-panic {
-            background: rgba(239, 68, 68, 0.04);
-            border-left: 3px solid #ef4444;
-            padding: 0.5rem 1rem;
-            margin-top: 1rem;
-            border-radius: 0 4px 4px 0;
-        }
+        .field-label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); min-width: 150px; text-transform: uppercase; }
+        .field-value { color: var(--text-main); flex: 1; font-size: 0.95rem; }
+        .field-panic { background: rgba(239, 68, 68, 0.03); border-left: 3px solid #ef4444; padding: 0.6rem 1rem; margin-top: 1rem; border-radius: 0 4px 4px 0; }
         .field-panic .field-label { color: #f87171; }
 
-        .tech-tags { display: flex; gap: 0.5rem; margin-top: 1.2rem; flex-wrap: wrap; }
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            background: #181b26;
-            border: 1px solid var(--border-soft);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            color: var(--text-muted);
+        /* -------------------------------------------------------------
+           PARCOURS TIMELINE
+        ------------------------------------------------------------- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 2rem; border-left: 2px solid var(--border-soft); }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        .timeline-item::before { content: ""; position: absolute; left: calc(-2rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); box-shadow: 0 0 10px var(--accent-purple); }
+        .time-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-purple); font-weight: bold; }
+        .time-title { font-size: 1.15rem; font-weight: 600; margin: 0.25rem 0; }
+        .time-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .time-desc { font-size: 0.9rem; color: var(--text-muted); list-style: square; padding-left: 1.2rem; }
+
+        /* -------------------------------------------------------------
+           VEILLE TECHNOLOGIQUE
+        ------------------------------------------------------------- */
+        .veille-intro { background: rgba(168, 85, 247, 0.02); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.5rem; border-radius: 12px; }
+        .veille-card h4 { font-family: var(--font-mono); font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+        .veille-card p { font-size: 0.9rem; color: var(--text-muted); }
+        .sources-container { background: #0c0e15; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-soft); }
+        .sources-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; }
+        .sources-list { display: flex; gap: 1rem; flex-wrap: wrap; list-style: none; }
+        .sources-list li a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-purple); text-decoration: none; background: rgba(168, 85, 247, 0.05); padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid rgba(168, 85, 247, 0.1); }
+        .sources-list li a:hover { background: var(--accent-purple); color: white; }
+
+        /* -------------------------------------------------------------
+           COMPTES RENDUS (PDF LINKS)
+        ------------------------------------------------------------- */
+        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .doc-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s; }
+        .doc-card:hover { border-color: var(--border-tech); }
+        .doc-info h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .doc-info p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.85rem; text-decoration: none; color: var(--text-main); background: #171c28; border: 1px solid var(--border-soft); padding: 0.6rem; border-radius: 6px; transition: all 0.2s; }
+        .doc-btn:hover { background: var(--accent-purple); border-color: var(--accent-purple); color: white; }
+
+        /* -------------------------------------------------------------
+           CONTACT
+        ------------------------------------------------------------- */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .contact-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-main); transition: transform 0.2s; }
+        .contact-card:hover { transform: translateY(-2px); border-color: var(--border-tech); }
+        .contact-icon { font-size: 1.5rem; color: var(--accent-purple); font-family: var(--font-mono); }
+        .contact-details span { display: block; }
+        .contact-label { font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+        .contact-val { font-size: 0.95rem; font-weight: 600; }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Mobile simplification */
         }
     </style>
 </head>
 <body>
 
+    <div class="glow-bg"></div>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">colombe<span>.lankar</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#propos">À propos</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#parcours">Parcours</a></li>
+                    <li><a href="#veille">Veille</a></li>
+                    <li><a href="#documents">Comptes Rendus</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <div class="container">
-        
-        <!-- HEADER / INTRO -->
+
+        <!-- HERO SECTION -->
         <section class="hero">
             <h1>Colombe Lankar</h1>
-            <p>Étudiante en BTS SIO option SISR. J'administre, je virtualise et je sécurise des infrastructures réseaux.</p>
+            <p>Étudiante en BTS SIO (Option SISR). Spécialisée dans l'administration systèmes, l'ingénierie des réseaux locaux et la virtualisation des infrastructures.</p>
         </section>
 
-        <!-- 1. TERMINAL LINUX INTERACTIF -->
+        <!-- TERMINAL INTERACTIF -->
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-buttons">
@@ -228,175 +294,41 @@
                 <div></div>
             </div>
             <div class="terminal-body" id="terminalOutput">
-                <p>Bienvenue sur mon terminal. Tapez <span class="t-purple">help</span> pour voir les commandes disponibles.</p>
-                <p class="terminal-input-line"><span class="t-green">guest@portfolio:~$</span> <span class="t-purple">neofetch</span></p>
-                <p>----------------------------------</p>
-                <p><span class="t-purple">OS:</span> BTS SIO option SISR (2025-2027)</p>
-                <p><span class="t-purple">HOST:</span> Lycée Geoffroy-Saint-Hilaire (91)</p>
-                <p><span class="t-purple">CORE:</span> Linux, Windows Server, Cisco CLI, VirtualBox</p>
-                <p><span class="t-purple">STATUS:</span> À la recherche d'un stage / d'une alternance</p>
-                <p>----------------------------------</p>
+                <p>Initialisation de la session de supervision... <span class="t-green">[OK]</span></p>
+                <p>Tapez <span class="t-purple">help</span> pour lister les commandes système disponibles.</p>
+                <div class="terminal-input-line"><span class="t-green">guest@portfolio:~$</span> <span class="t-purple">neofetch</span></div>
+                <p>--------------------------------------------------</p>
+                <p><span class="t-purple">PROFIL:</span> Colombe Lankar</p>
+                <p><span class="t-purple">CURSUS:</span> BTS SIO option SISR (SDR - Systèmes & Réseaux)</p>
+                <p><span class="t-purple">PROD_ENV:</span> Linux Debian/Ubuntu, Windows Server, VirtualBox, Cisco</p>
+                <p><span class="t-purple">TARGET:</span> Recherche active de Stage & Alternance</p>
+                <p>--------------------------------------------------</p>
             </div>
             <div class="terminal-header" style="border-top: 1px solid var(--border-soft); border-bottom: none;">
                 <div class="terminal-input-line" style="width: 100%;">
                     <span class="t-green">guest@portfolio:~$</span>
-                    <input type="text" id="terminalInput" placeholder="..." autofocus autocomplete="off">
+                    <input type="text" id="terminalInput" placeholder="Saisissez une commande..." autofocus autocomplete="off">
                 </div>
             </div>
         </div>
 
-        <!-- Raccourcis cliquables (Pour aider le recruteur s'il ne veut pas taper) -->
+        <!-- RACCOURCIS SYSTEME -->
         <div class="terminal-shortcuts">
-            <button class="shortcut-btn" onclick="runCommand('cat competences.txt')">cat competences.txt</button>
-            <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
+            <button class="shortcut-btn" onclick="runCommand('cat atouts.txt')">cat atouts.txt</button>
+            <button class="shortcut-btn" onclick="runCommand('ping -c 3 infrastructure')">ping infrastructure</button>
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
-
-        <!-- 2. NOUVELLE SECTION PROJETS : MODE LOGS/TICKETS -->
-        <section id="projets">
-            <h2 class="section-title">Rapports d'Interventions & Incidents</h2>
-            
-            <div class="projects-grid">
-                
-                <!-- PROJET 1 -->
-                <div class="ticket-card">
-                    <div class="ticket-header">
-                        <div>
-                            <div class="ticket-id">TICKET <span>#01</span> • ANNEE-2024</div>
-                            <h3 class="ticket-title">Architecture Réseau Simulée & Services Critiques</h3>
-                        </div>
-                        <span class="status-badge status-resolved">RESOLVED</span>
-                    </div>
-                    <div class="ticket-body">
-                        <div class="ticket-field">
-                            <span class="field-label">Symptôme / Mission :</span>
-                            <span class="field-value">Déployer de zéro une infrastructure d'entreprise cloisonnée, assurant l'attribution dynamique d'IP et la résolution de noms locaux de manière sécurisée.</span>
-                        </div>
-                        <div class="ticket-field">
-                            <span class="field-label">Diagnostic Réseau :</span>
-                            <span class="field-value">Nécessité de segmenter via masques de sous-réseaux personnalisés (IPv4 / VLSM) et d'isoler les flux par VLANs sur commutateur.</span>
-                        </div>
-                        <div class="ticket-field">
-                            <span class="field-label">Résolution :</span>
-                            <span class="field-value">Mise en place de VMs Linux et Windows sous VirtualBox. Configuration des rôles DHCP et DNS. Routage Inter-VLAN et NAT configurés pour l'accès WAN contrôlé.</span>
-                        </div>
-                        <!-- Section Vérité / Galère (Ce qui te démarque !) -->
-                        <div class="ticket-field field-panic">
-                            <span class="field-label">La Panique de Prod :</span>
-                            <span class="field-value">Lors des tests, les clients du VLAN 20 ne recevaient aucune IP. <strong>Raison :</strong> J'avais oublié de configurer l'agent de relais DHCP (<em>DHCP Relay / IP Helper-Address</em>) sur le routeur. Résolu après analyse des trames sur Wireshark.</span>
-                        </div>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tag">IPv4/VLSM</span>
-                        <span class="tag">VLAN 802.1Q</span>
-                        <span class="tag">DHCP/DNS</span>
-                        <span class="tag">VirtualBox</span>
-                        <span class="tag">Wireshark</span>
-                    </div>
-                </div>
-
-                <!-- PROJET 2 -->
-                <div class="ticket-card">
-                    <div class="ticket-header">
-                        <div>
-                            <div class="ticket-id">TICKET <span>#02</span> • ANNEE-2025</div>
-                            <h3 class="ticket-title">Sécurisation Périmétrique & Filtrage</h3>
-                        </div>
-                        <span class="status-badge status-progress">IN_PRODUCTION</span>
-                    </div>
-                    <div class="ticket-body">
-                        <div class="ticket-field">
-                            <span class="field-label">Symptôme / Mission :</span>
-                            <span class="field-value">Protéger la passerelle de sortie du réseau pédagogique contre les accès non autorisés et journaliser les flux suspects.</span>
-                        </div>
-                        <div class="ticket-field">
-                            <span class="field-label">Résolution :</span>
-                            <span class="field-value">Déploiement d'un Pare-feu de commodité. Écriture de règles strictes (Drop par défaut), ouverture ciblée des ports HTTP/HTTPS et SSH pour l'administration.</span>
-                        </div>
-                    </div>
-                    <div class="tech-tags">
-                        <span class="tag">Firewall</span>
-                        <span class="tag">Netfilter / IPTables</span>
-                        <span class="tag">Sécurité</span>
-                        <span class="tag">Linux Shell</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </div>
-
-    <!-- 3. JAVASCRIPT POUR LE TERMINAL INTERACTIF -->
-    <script>
-        const terminalInput = document.getElementById('terminalInput');
-        const terminalOutput = document.getElementById('terminalOutput');
-
-        // Écouter la touche Entrée dans la console
-        terminalInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value.trim();
-                if (command !== '') {
-                    runCommand(command);
-                    terminalInput.value = '';
-                }
-            }
-        });
-
-        // Logique du traitement des commandes CLI
-        function runCommand(cmd) {
-            // Ajouter la commande tapée à l'écran
-            const line = document.createElement('p');
-            line.className = 'terminal-input-line';
-            line.innerHTML = `<span class="t-green">guest@portfolio:~$</span> <span class="t-purple">${cmd}</span>`;
-            terminalOutput.appendChild(line);
-
-            const response = document.createElement('p');
-            
-            // Switch de commandes
-            switch(cmd.toLowerCase()) {
-                case 'help':
-                    response.innerHTML = `Commandes disponibles :<br>
-                    - <span class="t-purple">cat competences.txt</span> : Affiche mes savoir-faire<br>
-                    - <span class="t-purple">ping -c 3 stage</span> : Teste la connectivité vers mon avenir<br>
-                    - <span class="t-purple">neofetch</span> : Réaffiche mon profil résumé<br>
-                    - <span class="t-purple">clear</span> : Nettoie l'écran`;
-                    break;
-                case 'cat competences.txt':
-                    response.innerHTML = `<span class="t-orange">[COMPÉTENCES ACQUISES]</span><br>
-                    - Réseaux : Routage, Commutation, Wireshark, Topologies LAN/WAN<br>
-                    - Systèmes : Administration Linux (Debian) & Active Directory Windows Server<br>
-                    - Infra : Gestion d'hyperviseurs (VirtualBox), Maquetting d'architectures.`;
-                    break;
-                case 'ping -c 3 stage':
-                    response.innerHTML = `PING stage.recruteur.fr (192.168.1.1) 56(84) bytes of data.<br>
-                    64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 <span class="t-green">time=0.42 ms (Motivation: 100%)</span><br>
-                    64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 <span class="t-green">time=0.38 ms (Curiosité: OK)</span><br>
-                    64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 <span class="t-green">time=0.45 ms (Rigueur: Opérationnelle)</span><br>
-                    --- stage.recruteur.fr ping statistics ---<br>
-                    3 packets transmitted, 3 received, <span class="t-green">0% packet loss</span>, time 2003ms`;
-                    break;
-                case 'neofetch':
-                    response.innerHTML = `----------------------------------<br>
-                    <span class="t-purple">OS:</span> BTS SIO option SISR (2025-2027)<br>
-                    <span class="t-purple">HOST:</span> Lycée Geoffroy-Saint-Hilaire (91)<br>
-                    <span class="t-purple">CORE:</span> Linux, Windows Server, Cisco CLI, VirtualBox<br>
-                    <span class="t-purple">STATUS:</span> À la recherche d'un stage / d'une alternance<br>
-                    ----------------------------------`;
-                    break;
-                case 'clear':
-                    terminalOutput.innerHTML = '';
-                    return; // On quitte pour ne pas afficher de ligne vide
-                default:
-                    response.innerHTML = `<span class="t-orange">bash: ${cmd}: commande introuvable.</span> Tapez <span class="t-purple">help</span> pour obtenir de l'aide.`;
-            }
-
-            terminalOutput.appendChild(response);
-            
-            // Auto-scroll vers le bas du terminal
-            terminalOutput.scrollTop = terminalOutput.scrollHeight;
-        }
-    </script>
-</body>
-</html>
+        <!-- SECTION 1 : A PROPOS (BENTO GRID) -->
+        <section id="propos">
+            <h2 class="section-title">Qui suis-je ?</h2>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <h3>Description Globale</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Je suis Colombe Lankar, étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire à Étampes. Passionnée par l'administration systèmes, la virtualisation et la gestion des infrastructures réseaux, je cherche à mettre mes compétences en pratique lors de stages et d'expériences professionnelles en production.
+                    </p>
+                    <div class="meta-info-grid">
+                        <div class="meta-item"><span class="meta-label">FORMATION</span><span class="meta-val">BTS SIO - SISR</span></div>
+                        <div class="meta-item"><span class="meta-label">ETABLISSEMENT</span><span class="meta-val">Lycée Geoffroy-Saint-Hilaire</span></div>
+                        <div class="meta-item"><span class="meta-label">LOCALISATION</span><span class="meta-
