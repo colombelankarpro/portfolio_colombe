@@ -3,400 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colombe Lankar | Portfolio SISR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Colombe Lankar | SysAdmin & Réseaux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* -------------------------------------------------------------
-           VARIABLES & DESIGN SYSTEM
-        ------------------------------------------------------------- */
         :root {
-            --bg-main: #0a0b10;          /* Fond ultra sombre */
-            --bg-card: rgba(255, 255, 255, 0.03); /* Verre dépoli */
-            --border-color: rgba(255, 255, 255, 0.08); /* Bordure fine tech */
-            --text-main: #f3f4f6;        /* Blanc cassé pour les yeux */
-            --text-muted: #9ca3af;       /* Gris pour les descriptions */
-            --accent-purple: #9d4edf;    /* Violet électrique */
-            --accent-glow: rgba(157, 78, 223, 0.15);
+            --bg-main: #08090c;
+            --bg-card: rgba(20, 24, 33, 0.6);
+            --border-tech: rgba(157, 78, 223, 0.2);
+            --border-soft: rgba(255, 255, 255, 0.05);
+            --text-main: #f3f4f6;
+            --text-muted: #8a93a6;
+            --accent-purple: #a855f7;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             font-family: var(--font-sans);
-            overflow-x: hidden;
             line-height: 1.6;
+            padding-bottom: 5rem;
         }
 
-        /* Effet de halo lumineux en arrière-plan */
-        .bg-glow {
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(157, 78, 223, 0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
         /* -------------------------------------------------------------
-           NAVIGATION BAR
+           HERO & TERMINAL INTERACTIF
         ------------------------------------------------------------- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            backdrop-filter: blur(12px);
-            background: rgba(10, 11, 16, 0.7);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 100;
+        .hero { padding: 6rem 0 4rem 0; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem auto; }
+
+        /* Style de la Console Linux */
+        .terminal-container {
+            background: #0f111a;
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.05);
+            text-align: left;
+            font-family: var(--font-mono);
+            overflow: hidden;
+            margin-bottom: 6rem;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .terminal-header {
+            background: #161925;
+            padding: 0.75rem 1rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2rem;
+            border-bottom: 1px solid var(--border-soft);
         }
 
-        .logo {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            text-decoration: none;
-        }
+        .terminal-buttons { display: flex; gap: 0.5rem; }
+        .t-btn { width: 12px; height: 12px; border-radius: 50%; }
+        .t-close { background: #ef4444; }
+        .t-min { background: #eab308; }
+        .t-max { background: #22c55e; }
+        .terminal-title { color: var(--text-muted); font-size: 0.8rem; }
 
-        .logo span {
-            color: var(--accent-purple);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent-purple);
-        }
-
-        /* -------------------------------------------------------------
-           HERO SECTION (ACCUEIL)
-        ------------------------------------------------------------- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem 2rem;
-            gap: 4rem;
-        }
-
-        .hero-info {
-            flex: 1.2;
-        }
-
-        .hero-tag {
-            font-family: var(--font-mono);
-            color: var(--accent-purple);
+        .terminal-body {
+            padding: 1.5rem;
+            height: 320px;
+            overflow-y: auto;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            display: inline-block;
+            color: #e2e8f0;
         }
 
-        .hero-info h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero-info p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            max-width: 540px;
-        }
-
-        /* Boutons Tech */
-        .btn-container {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-purple);
-            color: white;
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(157, 78, 223, 0.3);
-        }
-
-        .btn-secondary {
+        .t-purple { color: var(--accent-purple); font-weight: bold; }
+        .t-green { color: var(--accent-green); }
+        .t-orange { color: var(--accent-orange); }
+        
+        .terminal-input-line { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+        .terminal-input-line input {
             background: transparent;
+            border: none;
             color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card);
-            border-color: var(--accent-purple);
-        }
-
-        /* Stats Dashboard Row */
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
             font-family: var(--font-mono);
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+            flex: 1;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Console/Dashboard Visuel Droite */
-        .hero-visual {
-            flex: 0.8;
+        /* Raccourcis cliquables sous la console */
+        .terminal-shortcuts {
             display: flex;
             justify-content: center;
-            align-items: center;
+            gap: 1rem;
+            margin-top: -4.5rem;
+            margin-bottom: 6rem;
+        }
+        .shortcut-btn {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple);
+            font-family: var(--font-mono);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .shortcut-btn:hover {
+            background: var(--accent-purple);
+            color: white;
+            transform: translateY(-1px);
         }
 
-        .tech-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-            width: 100%;
-            max-width: 400px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        /* Faux voyant de serveur (Live stat) */
-        .status-indicator {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
+        /* -------------------------------------------------------------
+           SECTION PROJETS : COMPTES RENDUS D'INCIDENTS (TICKETS)
+        ------------------------------------------------------------- */
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #10b981;
         }
+        .section-title::before { content: "//"; color: var(--accent-purple); }
 
-        .ping {
-            width: 8px;
-            height: 8px;
-            background-color: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .avatar-container {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-purple), #4cc9f0);
-            margin: 0 auto 1.5rem auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            font-weight: 800;
-            color: white;
-            box-shadow: 0 0 30px rgba(157, 78, 223, 0.2);
-        }
-
-        .tech-card h2 {
-            text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-card p {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .badge-list {
+        .projects-grid {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 2rem;
         }
 
-        .badge-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
+        .ticket-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s;
+        }
+        .ticket-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .ticket-header {
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px dashed var(--border-soft);
+            padding-bottom: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .ticket-id {
             font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
-
-        .badge-item span:last-child {
-            color: var(--accent-purple);
+        .ticket-id span { color: var(--accent-purple); }
+        
+        .ticket-title { font-size: 1.3rem; font-weight: 600; margin-top: 0.2rem; }
+        
+        .status-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
         }
+        .status-resolved { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+        .status-progress { background: rgba(249, 115, 22, 0.1); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.2); }
 
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        .ticket-body { font-size: 0.95rem; }
+        .ticket-field { margin-bottom: 0.75rem; display: flex; align-items: flex-start; }
+        .field-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            min-width: 140px;
+            text-transform: uppercase;
         }
+        .field-value { color: var(--text-main); flex: 1; }
 
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 6rem;
-            }
-            .hero-info h1 { font-size: 2.8rem; }
-            .hero-info p { margin: 0 auto 2rem auto; }
-            .btn-container { justify-content: center; }
-            .hero-stats { justify-content: center; }
+        /* Alerte Galère */
+        .field-panic {
+            background: rgba(239, 68, 68, 0.04);
+            border-left: 3px solid #ef4444;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            border-radius: 0 4px 4px 0;
+        }
+        .field-panic .field-label { color: #f87171; }
+
+        .tech-tags { display: flex; gap: 0.5rem; margin-top: 1.2rem; flex-wrap: wrap; }
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: #181b26;
+            border: 1px solid var(--border-soft);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
-
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">colombe<span>.lankar</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#propos">À propos</a></li>
-                    <li><a href="#competences">Compétences</a></li>
-                    <li><a href="#projets">Projets</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
+    <div class="container">
+        
+        <!-- HEADER / INTRO -->
         <section class="hero">
-            
-            <div class="hero-info">
-                <span class="hero-tag">root@colombe:~# bts sisr</span>
-                <h1>Colombe Lankar</h1>
-                <p>Étudiante en première année de BTS SIO option SISR. Passionnée par l'administration systèmes, la virtualisation, le cloud et la sécurisation des infrastructures réseaux.</p>
-                
-                <div class="btn-container">
-                    <a href="#projets" class="btn btn-primary">Explorer mes projets</a>
-                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">1ère</span>
-                        <span class="stat-label">Année BTS SIO</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">SISR</span>
-                        <span class="stat-label">Spécialisation</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">4+</span>
-                        <span class="stat-label">Projets Réseau</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="tech-card">
-                    <div class="status-indicator">
-                        <div class="ping"></div> Active node
-                    </div>
-                    
-                    <div class="avatar-container">
-                        CL
-                    </div>
-                    
-                    <h2>Colombe L.</h2>
-                    <p>Futur(e) Administrateur Systèmes & Réseaux</p>
-                    
-                    <div class="badge-list">
-                        <div class="badge-item">
-                            <span>LOCATION</span>
-                            <span>Étréchy, Essonne</span>
-                        </div>
-                        <div class="badge-item">
-                            <span>CAMPUS</span>
-                            <span>Geoffroy-Saint-Hilaire</span>
-                        </div>
-                        <div class="badge-item">
-                            <span>BAC</span>
-                            <span>Général Maths & NSI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <h1>Colombe Lankar</h1>
+            <p>Étudiante en BTS SIO option SISR. J'administre, je virtualise et je sécurise des infrastructures réseaux.</p>
         </section>
-    </main>
 
+        <!-- 1. TERMINAL LINUX INTERACTIF -->
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="t-btn t-close"></div>
+                    <div class="t-btn t-min"></div>
+                    <div class="t-btn t-max"></div>
+                </div>
+                <div class="terminal-title">guest@colombe-lankar:~</div>
+                <div></div>
+            </div>
+            <div class="terminal-body" id="terminalOutput">
+                <p>Bienvenue sur mon terminal. Tapez <span class="t-purple">help</span> pour voir les commandes disponibles.</p>
+                <p class="terminal-input-line"><span class="t-green">guest@portfolio:~$</span> <span class="t-purple">neofetch</span></p>
+                <p>----------------------------------</p>
+                <p><span class="t-purple">OS:</span> BTS SIO option SISR (2025-2027)</p>
+                <p><span class="t-purple">HOST:</span> Lycée Geoffroy-Saint-Hilaire (91)</p>
+                <p><span class="t-purple">CORE:</span> Linux, Windows Server, Cisco CLI, VirtualBox</p>
+                <p><span class="t-purple">STATUS:</span> À la recherche d'un stage / d'une alternance</p>
+                <p>----------------------------------</p>
+            </div>
+            <div class="terminal-header" style="border-top: 1px solid var(--border-soft); border-bottom: none;">
+                <div class="terminal-input-line" style="width: 100%;">
+                    <span class="t-green">guest@portfolio:~$</span>
+                    <input type="text" id="terminalInput" placeholder="..." autofocus autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+        <!-- Raccourcis cliquables (Pour aider le recruteur s'il ne veut pas taper) -->
+        <div class="terminal-shortcuts">
+            <button class="shortcut-btn" onclick="runCommand('cat competences.txt')">cat competences.txt</button>
+            <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
+            <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
+        </div>
+
+
+        <!-- 2. NOUVELLE SECTION PROJETS : MODE LOGS/TICKETS -->
+        <section id="projets">
+            <h2 class="section-title">Rapports d'Interventions & Incidents</h2>
+            
+            <div class="projects-grid">
+                
+                <!-- PROJET 1 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-id">TICKET <span>#01</span> • ANNEE-2024</div>
+                            <h3 class="ticket-title">Architecture Réseau Simulée & Services Critiques</h3>
+                        </div>
+                        <span class="status-badge status-resolved">RESOLVED</span>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-field">
+                            <span class="field-label">Symptôme / Mission :</span>
+                            <span class="field-value">Déployer de zéro une infrastructure d'entreprise cloisonnée, assurant l'attribution dynamique d'IP et la résolution de noms locaux de manière sécurisée.</span>
+                        </div>
+                        <div class="ticket-field">
+                            <span class="field-label">Diagnostic Réseau :</span>
+                            <span class="field-value">Nécessité de segmenter via masques de sous-réseaux personnalisés (IPv4 / VLSM) et d'isoler les flux par VLANs sur commutateur.</span>
+                        </div>
+                        <div class="ticket-field">
+                            <span class="field-label">Résolution :</span>
+                            <span class="field-value">Mise en place de VMs Linux et Windows sous VirtualBox. Configuration des rôles DHCP et DNS. Routage Inter-VLAN et NAT configurés pour l'accès WAN contrôlé.</span>
+                        </div>
+                        <!-- Section Vérité / Galère (Ce qui te démarque !) -->
+                        <div class="ticket-field field-panic">
+                            <span class="field-label">La Panique de Prod :</span>
+                            <span class="field-value">Lors des tests, les clients du VLAN 20 ne recevaient aucune IP. <strong>Raison :</strong> J'avais oublié de configurer l'agent de relais DHCP (<em>DHCP Relay / IP Helper-Address</em>) sur le routeur. Résolu après analyse des trames sur Wireshark.</span>
+                        </div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">IPv4/VLSM</span>
+                        <span class="tag">VLAN 802.1Q</span>
+                        <span class="tag">DHCP/DNS</span>
+                        <span class="tag">VirtualBox</span>
+                        <span class="tag">Wireshark</span>
+                    </div>
+                </div>
+
+                <!-- PROJET 2 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-id">TICKET <span>#02</span> • ANNEE-2025</div>
+                            <h3 class="ticket-title">Sécurisation Périmétrique & Filtrage</h3>
+                        </div>
+                        <span class="status-badge status-progress">IN_PRODUCTION</span>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-field">
+                            <span class="field-label">Symptôme / Mission :</span>
+                            <span class="field-value">Protéger la passerelle de sortie du réseau pédagogique contre les accès non autorisés et journaliser les flux suspects.</span>
+                        </div>
+                        <div class="ticket-field">
+                            <span class="field-label">Résolution :</span>
+                            <span class="field-value">Déploiement d'un Pare-feu de commodité. Écriture de règles strictes (Drop par défaut), ouverture ciblée des ports HTTP/HTTPS et SSH pour l'administration.</span>
+                        </div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Firewall</span>
+                        <span class="tag">Netfilter / IPTables</span>
+                        <span class="tag">Sécurité</span>
+                        <span class="tag">Linux Shell</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 3. JAVASCRIPT POUR LE TERMINAL INTERACTIF -->
+    <script>
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalOutput = document.getElementById('terminalOutput');
+
+        // Écouter la touche Entrée dans la console
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = terminalInput.value.trim();
+                if (command !== '') {
+                    runCommand(command);
+                    terminalInput.value = '';
+                }
+            }
+        });
+
+        // Logique du traitement des commandes CLI
+        function runCommand(cmd) {
+            // Ajouter la commande tapée à l'écran
+            const line = document.createElement('p');
+            line.className = 'terminal-input-line';
+            line.innerHTML = `<span class="t-green">guest@portfolio:~$</span> <span class="t-purple">${cmd}</span>`;
+            terminalOutput.appendChild(line);
+
+            const response = document.createElement('p');
+            
+            // Switch de commandes
+            switch(cmd.toLowerCase()) {
+                case 'help':
+                    response.innerHTML = `Commandes disponibles :<br>
+                    - <span class="t-purple">cat competences.txt</span> : Affiche mes savoir-faire<br>
+                    - <span class="t-purple">ping -c 3 stage</span> : Teste la connectivité vers mon avenir<br>
+                    - <span class="t-purple">neofetch</span> : Réaffiche mon profil résumé<br>
+                    - <span class="t-purple">clear</span> : Nettoie l'écran`;
+                    break;
+                case 'cat competences.txt':
+                    response.innerHTML = `<span class="t-orange">[COMPÉTENCES ACQUISES]</span><br>
+                    - Réseaux : Routage, Commutation, Wireshark, Topologies LAN/WAN<br>
+                    - Systèmes : Administration Linux (Debian) & Active Directory Windows Server<br>
+                    - Infra : Gestion d'hyperviseurs (VirtualBox), Maquetting d'architectures.`;
+                    break;
+                case 'ping -c 3 stage':
+                    response.innerHTML = `PING stage.recruteur.fr (192.168.1.1) 56(84) bytes of data.<br>
+                    64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 <span class="t-green">time=0.42 ms (Motivation: 100%)</span><br>
+                    64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 <span class="t-green">time=0.38 ms (Curiosité: OK)</span><br>
+                    64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 <span class="t-green">time=0.45 ms (Rigueur: Opérationnelle)</span><br>
+                    --- stage.recruteur.fr ping statistics ---<br>
+                    3 packets transmitted, 3 received, <span class="t-green">0% packet loss</span>, time 2003ms`;
+                    break;
+                case 'neofetch':
+                    response.innerHTML = `----------------------------------<br>
+                    <span class="t-purple">OS:</span> BTS SIO option SISR (2025-2027)<br>
+                    <span class="t-purple">HOST:</span> Lycée Geoffroy-Saint-Hilaire (91)<br>
+                    <span class="t-purple">CORE:</span> Linux, Windows Server, Cisco CLI, VirtualBox<br>
+                    <span class="t-purple">STATUS:</span> À la recherche d'un stage / d'une alternance<br>
+                    ----------------------------------`;
+                    break;
+                case 'clear':
+                    terminalOutput.innerHTML = '';
+                    return; // On quitte pour ne pas afficher de ligne vide
+                default:
+                    response.innerHTML = `<span class="t-orange">bash: ${cmd}: commande introuvable.</span> Tapez <span class="t-purple">help</span> pour obtenir de l'aide.`;
+            }
+
+            terminalOutput.appendChild(response);
+            
+            // Auto-scroll vers le bas du terminal
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+    </script>
 </body>
 </html>
