@@ -47,8 +47,11 @@
             scroll-margin-top: 90px; 
         }
 
+        .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .section-title::before { content: "//"; color: var(--accent-purple); }
+
         /* -------------------------------------------------------------
-           NAVIGATION DESKTOP (HAUT)
+           NAVIGATION DESKTOP & TABLET
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
@@ -61,12 +64,10 @@
         }
         .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
         .logo span { color: var(--accent-purple); }
-        
         nav ul { display: flex; list-style: none; gap: 1.5rem; }
         nav a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
         nav a:hover { color: var(--accent-purple); }
 
-        /* NAVIGATION TABLETTE (BAS) */
         .mobile-nav {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(11, 13, 20, 0.95); backdrop-filter: blur(20px);
@@ -77,7 +78,7 @@
             display: flex; flex-direction: column; align-items: center;
             color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-family: var(--font-mono);
         }
-        .mobile-nav a:hover, .mobile-nav a:focus { color: var(--accent-purple); }
+        .mobile-nav a:hover { color: var(--accent-purple); }
         .mobile-icon { font-size: 1.2rem; margin-bottom: 0.2rem; }
 
         /* -------------------------------------------------------------
@@ -102,7 +103,7 @@
         .t-min { background: #eab308; }
         .t-max { background: #22c55e; }
         .terminal-title { color: var(--text-muted); font-size: 0.8rem; }
-        .terminal-body { padding: 1.3rem; height: 260px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
+        .terminal-body { padding: 1.3rem; height: 240px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
         
         .t-purple { color: var(--accent-purple); font-weight: bold; }
         .t-green { color: var(--accent-green); }
@@ -122,11 +123,8 @@
         .shortcut-btn:hover { background: var(--accent-purple); color: white; transform: translateY(-1px); }
 
         /* -------------------------------------------------------------
-           STRUCTURE SECTIONS & BENTO
+           A PROPOS & BENTO
         ------------------------------------------------------------- */
-        .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .section-title::before { content: "//"; color: var(--accent-purple); }
-
         .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
         .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; }
         .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
@@ -143,18 +141,17 @@
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
         /* -------------------------------------------------------------
-           COMPETENCES GRID
+           COMPETENCES (LES 6 BLOCS)
         ------------------------------------------------------------- */
         .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
-        .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; transition: all 0.2s; }
-        .comp-card:hover { border-color: var(--border-tech); }
+        .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
         .comp-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 1rem; }
         .comp-icon { color: var(--accent-purple); }
         .tech-badges-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .tech-badge { font-family: var(--font-mono); font-size: 0.75rem; background: #131722; border: 1px solid var(--border-soft); padding: 0.25rem 0.5rem; border-radius: 6px; color: #cbd5e1; }
 
         /* -------------------------------------------------------------
-           PROJETS (TICKETS)
+           PROJETS (FORMAT TICKETS)
         ------------------------------------------------------------- */
         .projects-grid { display: flex; flex-direction: column; gap: 1.5rem; }
         .ticket-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.75rem; }
@@ -170,7 +167,7 @@
         .tag { font-family: var(--font-mono); font-size: 0.7rem; background: #181b26; border: 1px solid var(--border-soft); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
 
         /* -------------------------------------------------------------
-           TIMELINE PARCOURS
+           PARCOURS TIMELINE
         ------------------------------------------------------------- */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 1.5rem; border-left: 2px solid var(--border-soft); }
         .timeline-item { position: relative; margin-bottom: 2.5rem; }
@@ -181,33 +178,39 @@
         .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
 
         /* -------------------------------------------------------------
-           VEILLE TECHNOLOGIQUE
+           VEILLE TECHNOLOGIQUE (REINTEGREE CONFORME VIDEO)
         ------------------------------------------------------------- */
-        .veille-intro { background: rgba(168, 85, 247, 0.02); border: 1px dashed var(--border-tech); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
-        .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.3rem; border-radius: 12px; }
-        .veille-card h4 { font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .veille-card p { font-size: 0.85rem; color: var(--text-muted); }
-        .sources-container { background: #0c0e15; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-soft); }
-        .sources-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-        .sources-list { display: flex; gap: 0.75rem; flex-wrap: wrap; list-style: none; }
-        .sources-list li a { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple); text-decoration: none; background: rgba(168, 85, 247, 0.05); padding: 0.25rem 0.5rem; border-radius: 4px; }
+        .veille-header-block { background: rgba(168, 85, 247, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
+        .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-purple); }
+        .veille-header-block p { font-size: 0.95rem; color: var(--text-main); }
+        .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.5rem; border-radius: 12px; }
+        .veille-card h4 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+        .veille-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+        .veille-badges { display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap; }
+        
+        .sources-block { background: #0c0e15; border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
+        .sources-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
+        .sources-layout { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .source-tag-link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-main); text-decoration: none; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 6px; transition: all 0.2s; }
+        .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(168, 85, 247, 0.05); }
 
         /* -------------------------------------------------------------
-           COMPTES RENDUS (PDF)
+           COMPTES RENDUS (LIENS VERS LES TP)
         ------------------------------------------------------------- */
         .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .doc-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
         .doc-info h4 { font-size: 1.05rem; margin-bottom: 0.25rem; }
         .doc-info p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; }
-        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--text-main); background: #171c28; border: 1px solid var(--border-soft); padding: 0.5rem; border-radius: 6px; }
+        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--text-main); background: #171c28; border: 1px solid var(--border-soft); padding: 0.5rem; border-radius: 6px; transition: background 0.2s; }
         .doc-btn:hover { background: var(--accent-purple); color: white; }
 
         /* -------------------------------------------------------------
            CONTACT
         ------------------------------------------------------------- */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
-        .contact-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.25rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-main); }
+        .contact-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.25rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-main); transition: border-color 0.2s; }
+        .contact-card:hover { border-color: var(--border-tech); }
         .contact-icon { font-size: 1.3rem; color: var(--accent-purple); }
         .contact-label { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); display: block; }
         .contact-val { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
@@ -305,13 +308,4 @@
                     </p>
                     <div class="meta-info-grid">
                         <div class="meta-item"><span class="meta-label">FORMATION</span><span class="meta-val">BTS SIO - SISR</span></div>
-                        <div class="meta-item"><span class="meta-label">ETABLISSEMENT</span><span class="meta-val">Lycée Geoffroy-Saint-Hilaire</span></div>
-                        <div class="meta-item"><span class="meta-label">LOCALISATION</span><span class="meta-val">Étréchy, Essonne (91)</span></div>
-                        <div class="meta-item"><span class="meta-label">DISPONIBILITE</span><span class="meta-val">Stage / Alternance</span></div>
-                    </div>
-                </div>
-                <div class="bento-card">
-                    <h3>Mes Atouts</h3>
-                    <ul class="skills-list-text">
-                        <li>Rigueur et sens du détail</li>
-                        <li>Esprit d'analyse et résolutio
+                        <div class="meta-item"><span class="meta-label">ETABLISSEMENT</span><span class="meta-val">Lycée Geoffroy-Sa
