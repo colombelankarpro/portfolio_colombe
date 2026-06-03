@@ -21,7 +21,6 @@
             --font-mono: 'JetBrains Mono', monospace;
         }
 
-        /* Le scroll fluide fonctionne parfaitement sur PC de manière native */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
@@ -43,7 +42,6 @@
             z-index: -1; pointer-events: none;
         }
 
-        /* LIGNE FIXE POUR PC : Empêche le menu de cacher le titre de la section */
         section { 
             padding: 5rem 0 2rem 0; 
             border-top: 1px solid var(--border-soft); 
@@ -68,7 +66,7 @@
         .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
         .logo span { color: var(--accent-purple); }
         
-        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
         nav a { 
             text-decoration: none; 
             color: var(--text-muted); font-size: 0.9rem; font-weight: 500; 
@@ -76,7 +74,7 @@
         }
         nav a:hover { color: var(--accent-purple); }
 
-        /* NAVIGATION TACTILE MOBILE / TABLETTE (BAS) - Rétablie en liens natifs */
+        /* NAVIGATION TACTILE MOBILE / TABLETTE (BAS) */
         .mobile-nav {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(11, 13, 20, 0.95); backdrop-filter: blur(20px);
@@ -146,6 +144,7 @@
         
         .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
         .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
+        .meta-info-grid .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
         .meta-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block; }
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
@@ -240,11 +239,7 @@
 
     <div class="glow-bg"></div>
 
-    <!-- NAVBAR ORDINATEUR : LIENS NATIFS ULTRA FIABLES -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">colombe<span>.lankar</span></a>
-            <!-- NAVBAR ORDINATEUR -->
+    <!-- NAVBAR ORDINATEUR (AVEC LE BOUTON MON CV EN VERT EN FIN DE MENU) -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -257,23 +252,21 @@
                     <li><a href="#veille">Veille</a></li>
                     <li><a href="#documents">Comptes Rendus</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- AJOUT DU BOUTON CV DIRECT DANS LE MENU -->
-                    <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.3rem 0.7rem; border-radius: 6px; background: rgba(16, 185, 129, 0.02);">Mon CV</a></li>
+                    <!-- BOUTON DU CV DANS LE MENU DU HAUT -->
+                    <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.3rem 0.7rem; border-radius: 6px; background: rgba(16, 185, 129, 0.02); font-weight: bold;">Mon CV</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-        </div>
-    </header>
 
-    <!-- NAVBAR MOBILE / TABLETTE : LIENS NATIFS -->
+    <!-- NAVBAR TABLETTE & MOBILE (AVEC LE LIEN CV AJOUTÉ ÉGALEMENT) -->
     <div class="mobile-nav">
         <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
         <a href="#projets"><span class="mobile-icon">📁</span>Specs</a>
         <a href="#veille"><span class="mobile-icon">🌐</span>Veille</a>
         <a href="#documents"><span class="mobile-icon">📄</span>Docs</a>
-        <a href="#contact"><span class="mobile-icon">📞</span>Call</a>
+        <a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-green); font-weight: bold;"><span class="mobile-icon">📄</span>CV</a>
     </div>
 
     <div class="container">
