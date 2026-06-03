@@ -21,14 +21,16 @@
             --font-mono: 'JetBrains Mono', monospace;
         }
 
+        /* Le scroll fluide fonctionne parfaitement sur PC de manière native */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 6rem;
+            padding-bottom: 2rem;
         }
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 1.5rem; }
@@ -41,17 +43,18 @@
             z-index: -1; pointer-events: none;
         }
 
+        /* LIGNE FIXE POUR PC : Empêche le menu de cacher le titre de la section */
         section { 
             padding: 5rem 0 2rem 0; 
             border-top: 1px solid var(--border-soft); 
-            scroll-margin-top: 90px; 
+            scroll-margin-top: 100px; 
         }
 
         .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
         .section-title::before { content: "//"; color: var(--accent-purple); }
 
         /* -------------------------------------------------------------
-           NAVIGATION DESKTOP & TABLET
+           NAVIGATION PC (HAUT)
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
@@ -64,10 +67,16 @@
         }
         .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
         .logo span { color: var(--accent-purple); }
+        
         nav ul { display: flex; list-style: none; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        nav a { 
+            text-decoration: none; 
+            color: var(--text-muted); font-size: 0.9rem; font-weight: 500; 
+            transition: color 0.2s; 
+        }
         nav a:hover { color: var(--accent-purple); }
 
+        /* NAVIGATION TACTILE MOBILE / TABLETTE (BAS) - Rétablie en liens natifs */
         .mobile-nav {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(11, 13, 20, 0.95); backdrop-filter: blur(20px);
@@ -141,7 +150,7 @@
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
         /* -------------------------------------------------------------
-           COMPETENCES (LES 6 BLOCS)
+           COMPETENCES
         ------------------------------------------------------------- */
         .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
         .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
@@ -151,7 +160,7 @@
         .tech-badge { font-family: var(--font-mono); font-size: 0.75rem; background: #131722; border: 1px solid var(--border-soft); padding: 0.25rem 0.5rem; border-radius: 6px; color: #cbd5e1; }
 
         /* -------------------------------------------------------------
-           PROJETS (FORMAT TICKETS)
+           PROJETS
         ------------------------------------------------------------- */
         .projects-grid { display: flex; flex-direction: column; gap: 1.5rem; }
         .ticket-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.75rem; }
@@ -167,11 +176,11 @@
         .tag { font-family: var(--font-mono); font-size: 0.7rem; background: #181b26; border: 1px solid var(--border-soft); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
 
         /* -------------------------------------------------------------
-           PARCOURS TIMELINE
+           PARCOURS
         ------------------------------------------------------------- */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 1.5rem; border-left: 2px solid var(--border-soft); }
         .timeline-item { position: relative; margin-bottom: 2.5rem; }
-        .timeline-item::before { content: ""; position: absolute; left: calc(--1.5rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); }
+        .timeline-item::before { content: ""; position: absolute; left: calc(-1.5rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); }
         .time-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-purple); font-weight: bold; }
         .time-title { font-size: 1.1rem; font-weight: 600; }
         .time-sub { font-size: 0.85rem; color: var(--text-muted); }
@@ -196,7 +205,7 @@
         .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(168, 85, 247, 0.05); }
 
         /* -------------------------------------------------------------
-           COMPTES RENDUS (LIENS VERS LES TP)
+           COMPTES RENDUS
         ------------------------------------------------------------- */
         .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .doc-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
@@ -223,6 +232,7 @@
             .hero h1 { font-size: 2.4rem; }
             .hero p { font-size: 1rem; }
             .ticket-header { flex-direction: column; gap: 0.5rem; }
+            body { padding-bottom: 6rem; }
         }
     </style>
 </head>
@@ -230,7 +240,7 @@
 
     <div class="glow-bg"></div>
 
-    <!-- NAVBAR ORDINATEUR - SYNCHRONISÉE SANS ERREUR DE LETTRE -->
+    <!-- NAVBAR ORDINATEUR : LIENS NATIFS ULTRA FIABLES -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -248,7 +258,7 @@
         </div>
     </header>
 
-    <!-- NAVBAR TACTILE TABLETTE - PARFAITEMENT SYNCHRONISÉE -->
+    <!-- NAVBAR MOBILE / TABLETTE : LIENS NATIFS -->
     <div class="mobile-nav">
         <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
@@ -303,7 +313,7 @@
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
-        <!-- SECTION 1 : A PROPOS (BENTO GRID) -->
+        <!-- SECTION 1 : A PROPOS -->
         <section id="propos">
             <h2 class="section-title">Qui suis-je ?</h2>
             <div class="bento-grid">
@@ -328,7 +338,7 @@
                         <li>Curiosité et envie d'apprendre</li>
                     </ul>
                     <div style="margin-top: 1.5rem;">
-                        <h3 style="font-size:1rem; margin-bottom: 0.5rem;">Centres d'interest</h3>
+                        <h3 style="font-size:1rem; margin-bottom: 0.5rem;">Centres d'intérêt</h3>
                         <div class="interests-tags">
                             <span class="interest-tag">🎯 Tir sportif</span>
                             <span class="interest-tag">📸 Photographie</span>
@@ -382,7 +392,7 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : PROJETS (IDENTIFIANT ID="PROJETS" ALIGNE) -->
+        <!-- SECTION 3 : PROJETS -->
         <section id="projets">
             <h2 class="section-title">Dossiers Techniques & Projets</h2>
             <div class="projects-grid">
@@ -504,7 +514,7 @@
             <div class="veille-grid">
                 <div class="veille-card">
                     <h4>⚡ Consommation énergétique</h4>
-                    <p>Les datacenters représentent environ 1 à 2 % de la consommation d'électricité mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE et des objectifs de neutralité carbone des grands acteurs.</p>
+                    <p>Les datacenters représentent aujourd'hui environ 1 à 2 % de la consommation d'électricité mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE et des objectifs de neutralité carbone des grands acteurs.</p>
                     <div class="veille-badges">
                         <span class="tech-badge">PUE</span><span class="tech-badge">Consommation IA</span><span class="tech-badge">Électricité</span>
                     </div>
@@ -574,7 +584,6 @@
         <!-- SECTION 7 : CONTACT -->
         <section id="contact">
             <h2 class="section-title">Me Rejoindre / Contact</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Disponible pour un stage en informatique — administration systèmes & réseaux. N'hésitez pas à me contacter !</p>
             <div class="contact-grid">
                 <a href="mailto:colombe.lankar.pro@gmail.com" class="contact-card">
                     <div class="contact-icon">✉</div>
@@ -609,28 +618,10 @@
 
     </div>
 
-    <!-- SCRIPT DU TERMINAL & CAPTURE DU SCROLL TACTILE -->
+    <!-- LE JS GÈRE UNIQUEMENT LE TERMINAL EN TOUTE SÉCURITÉ -->
     <script>
         const terminalInput = document.getElementById('terminalInput');
         const terminalOutput = document.getElementById('terminalOutput');
-
-        // Force l'ancrage matériel et recalcule la hauteur pour éviter les conflits tablette
-        document.querySelectorAll('.mobile-nav a, header nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId.startsWith('#')) {
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        e.preventDefault();
-                        const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 90;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
 
         terminalInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
