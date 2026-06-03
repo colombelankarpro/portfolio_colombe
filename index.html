@@ -52,7 +52,7 @@
         .section-title::before { content: "//"; color: var(--accent-purple); }
 
         /* -------------------------------------------------------------
-           NAVIGATION PC (HAUT)
+           NAVIGATION PC (HAUT) - AJUSTEMENTS DES ESPACES FLEX
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
@@ -60,17 +60,18 @@
             border-bottom: 1px solid var(--border-soft); z-index: 100;
         }
         .nav-container {
-            max-width: 1150px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem;
         }
-        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
+        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; flex-shrink: 0; }
         .logo span { color: var(--accent-purple); }
         
-        nav ul { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
+        nav { flex-grow: 1; display: flex; justify-content: flex-end; }
+        nav ul { display: flex; list-style: none; gap: 1.1rem; align-items: center; }
         nav a { 
             text-decoration: none; 
-            color: var(--text-muted); font-size: 0.9rem; font-weight: 500; 
-            transition: color 0.2s; 
+            color: var(--text-muted); font-size: 0.88rem; font-weight: 500; 
+            white-space: nowrap; transition: color 0.2s; 
         }
         nav a:hover { color: var(--accent-purple); }
 
@@ -144,7 +145,6 @@
         
         .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
         .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
-        .meta-info-grid .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
         .meta-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block; }
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
@@ -224,7 +224,7 @@
         .contact-val { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
 
         /* RESPONSIVE TABLET / MOBILE */
-        @media (max-width: 900px) {
+        @media (max-width: 980px) {
             header { display: none; }
             .mobile-nav { display: flex; }
             .bento-grid { grid-template-columns: 1fr; }
@@ -239,7 +239,7 @@
 
     <div class="glow-bg"></div>
 
-    <!-- NAVBAR ORDINATEUR (AVEC LE BOUTON MON CV EN VERT EN FIN DE MENU) -->
+    <!-- NAVBAR ORDINATEUR (ESPACES OPTIMISÉS) -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -252,14 +252,14 @@
                     <li><a href="#veille">Veille</a></li>
                     <li><a href="#documents">Comptes Rendus</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- BOUTON DU CV DANS LE MENU DU HAUT -->
-                    <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.3rem 0.7rem; border-radius: 6px; background: rgba(16, 185, 129, 0.02); font-weight: bold;">Mon CV</a></li>
+                    <!-- LE BOUTON VERRE VERT QUI RESTE SUR LA MÊME LIGNE -->
+                    <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.4); padding: 0.35rem 0.8rem; border-radius: 6px; background: rgba(16, 185, 129, 0.05); font-weight: bold;">Mon CV</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- NAVBAR TABLETTE & MOBILE (AVEC LE LIEN CV AJOUTÉ ÉGALEMENT) -->
+    <!-- NAVBAR TACTILE TABLETTE -->
     <div class="mobile-nav">
         <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
@@ -619,7 +619,7 @@
 
     </div>
 
-    <!-- LE JS GÈRE UNIQUEMENT LE TERMINAL EN TOUTE SÉCURITÉ -->
+    <!-- TERMINAL HANDLING SCRIPT -->
     <script>
         const terminalInput = document.getElementById('terminalInput');
         const terminalOutput = document.getElementById('terminalOutput');
