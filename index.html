@@ -28,7 +28,7 @@
             font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 6rem; /* Espace pour le menu mobile en bas */
+            padding-bottom: 6rem;
         }
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 1.5rem; }
@@ -41,8 +41,17 @@
             z-index: -1; pointer-events: none;
         }
 
+        section { 
+            padding: 5rem 0 2rem 0; 
+            border-top: 1px solid var(--border-soft); 
+            scroll-margin-top: 90px; 
+        }
+
+        .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .section-title::before { content: "//"; color: var(--accent-purple); }
+
         /* -------------------------------------------------------------
-           NAVIGATION DESKTOP (HAUT)
+           NAVIGATION DESKTOP & TABLET
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
@@ -55,12 +64,10 @@
         }
         .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
         .logo span { color: var(--accent-purple); }
-        
         nav ul { display: flex; list-style: none; gap: 1.5rem; }
         nav a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
         nav a:hover { color: var(--accent-purple); }
 
-        /* BARRE DE NAVIGATION COMMUTÉE POUR TABLETTE/MOBILE (BAS) */
         .mobile-nav {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(11, 13, 20, 0.95); backdrop-filter: blur(20px);
@@ -71,7 +78,7 @@
             display: flex; flex-direction: column; align-items: center;
             color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-family: var(--font-mono);
         }
-        .mobile-nav a:hover, .mobile-nav a:focus { color: var(--accent-purple); }
+        .mobile-nav a:hover { color: var(--accent-purple); }
         .mobile-icon { font-size: 1.2rem; margin-bottom: 0.2rem; }
 
         /* -------------------------------------------------------------
@@ -96,7 +103,7 @@
         .t-min { background: #eab308; }
         .t-max { background: #22c55e; }
         .terminal-title { color: var(--text-muted); font-size: 0.8rem; }
-        .terminal-body { padding: 1.3rem; height: 260px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
+        .terminal-body { padding: 1.3rem; height: 240px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
         
         .t-purple { color: var(--accent-purple); font-weight: bold; }
         .t-green { color: var(--accent-green); }
@@ -108,14 +115,16 @@
             font-family: var(--font-mono); font-size: 0.85rem; outline: none; flex: 1;
         }
         .terminal-shortcuts { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 5rem; flex-wrap: wrap; }
+        .shortcut-btn {
+            background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple); font-family: var(--font-mono); padding: 0.4rem 1rem;
+            border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+        }
+        .shortcut-btn:hover { background: var(--accent-purple); color: white; transform: translateY(-1px); }
 
         /* -------------------------------------------------------------
-           STRUCTURE SECTIONS & BENTO
+           A PROPOS & BENTO
         ------------------------------------------------------------- */
-        section { padding: 6rem 0 2rem 0; border-top: 1px solid var(--border-soft); }
-        .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .section-title::before { content: "//"; color: var(--accent-purple); }
-
         .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
         .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; }
         .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
@@ -132,18 +141,17 @@
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
         /* -------------------------------------------------------------
-           COMPETENCES GRID
+           COMPETENCES (LES 6 BLOCS)
         ------------------------------------------------------------- */
         .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
-        .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; transition: all 0.2s; }
-        .comp-card:hover { border-color: var(--border-tech); }
+        .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
         .comp-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 1rem; }
         .comp-icon { color: var(--accent-purple); }
         .tech-badges-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .tech-badge { font-family: var(--font-mono); font-size: 0.75rem; background: #131722; border: 1px solid var(--border-soft); padding: 0.25rem 0.5rem; border-radius: 6px; color: #cbd5e1; }
 
         /* -------------------------------------------------------------
-           PROJETS (TICKETS)
+           PROJETS (FORMAT TICKETS)
         ------------------------------------------------------------- */
         .projects-grid { display: flex; flex-direction: column; gap: 1.5rem; }
         .ticket-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.75rem; }
@@ -159,11 +167,11 @@
         .tag { font-family: var(--font-mono); font-size: 0.7rem; background: #181b26; border: 1px solid var(--border-soft); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
 
         /* -------------------------------------------------------------
-           TIMELINE PARCOURS
+           PARCOURS TIMELINE
         ------------------------------------------------------------- */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 1.5rem; border-left: 2px solid var(--border-soft); }
         .timeline-item { position: relative; margin-bottom: 2.5rem; }
-        .timeline-item::before { content: ""; position: absolute; left: calc(-1.5rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); }
+        .timeline-item::before { content: ""; position: absolute; left: calc(--1.5rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); }
         .time-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-purple); font-weight: bold; }
         .time-title { font-size: 1.1rem; font-weight: 600; }
         .time-sub { font-size: 0.85rem; color: var(--text-muted); }
@@ -172,42 +180,46 @@
         /* -------------------------------------------------------------
            VEILLE TECHNOLOGIQUE
         ------------------------------------------------------------- */
-        .veille-intro { background: rgba(168, 85, 247, 0.02); border: 1px dashed var(--border-tech); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
-        .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.3rem; border-radius: 12px; }
-        .veille-card h4 { font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .veille-card p { font-size: 0.85rem; color: var(--text-muted); }
-        .sources-container { background: #0c0e15; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-soft); }
-        .sources-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-        .sources-list { display: flex; gap: 0.75rem; flex-wrap: wrap; list-style: none; }
-        .sources-list li a { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple); text-decoration: none; background: rgba(168, 85, 247, 0.05); padding: 0.2rem 0.5rem; border-radius: 4px; }
+        .veille-header-block { background: rgba(168, 85, 247, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
+        .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-purple); }
+        .veille-header-block p { font-size: 0.95rem; color: var(--text-main); }
+        .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.5rem; border-radius: 12px; }
+        .veille-card h4 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+        .veille-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+        .veille-badges { display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap; }
+        
+        .sources-block { background: #0c0e15; border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
+        .sources-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
+        .sources-layout { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .source-tag-link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-main); text-decoration: none; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 6px; transition: all 0.2s; }
+        .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(168, 85, 247, 0.05); }
 
         /* -------------------------------------------------------------
-           COMPTES RENDUS (PDF)
+           COMPTES RENDUS (LIENS VERS LES TP)
         ------------------------------------------------------------- */
         .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .doc-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
         .doc-info h4 { font-size: 1.05rem; margin-bottom: 0.25rem; }
         .doc-info p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; }
-        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--text-main); background: #171c28; border: 1px solid var(--border-soft); padding: 0.5rem; border-radius: 6px; }
+        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--text-main); background: #171c28; border: 1px solid var(--border-soft); padding: 0.5rem; border-radius: 6px; transition: background 0.2s; }
         .doc-btn:hover { background: var(--accent-purple); color: white; }
 
         /* -------------------------------------------------------------
            CONTACT
         ------------------------------------------------------------- */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
-        .contact-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.25rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-main); }
+        .contact-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.25rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-main); transition: border-color 0.2s; }
+        .contact-card:hover { border-color: var(--border-tech); }
         .contact-icon { font-size: 1.3rem; color: var(--accent-purple); }
         .contact-label { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); display: block; }
         .contact-val { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
 
-        /* -------------------------------------------------------------
-           RESPONSIVE & TABLET MEDIA QUERY
-        ------------------------------------------------------------- */
+        /* RESPONSIVE TABLET / MOBILE */
         @media (max-width: 900px) {
-            header { display: none; } /* Masque la navbar du haut sur tablette */
-            .mobile-nav { display: flex; } /* Affiche la barre d'onglets tactiles en bas */
-            .bento-grid { grid-template-columns: 1fr; } /* Aligne le bento verticalement */
+            header { display: none; }
+            .mobile-nav { display: flex; }
+            .bento-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.4rem; }
             .hero p { font-size: 1rem; }
             .ticket-header { flex-direction: column; gap: 0.5rem; }
@@ -218,6 +230,7 @@
 
     <div class="glow-bg"></div>
 
+    <!-- NAVBAR ORDINATEUR - SYNCHRONISÉE SANS ERREUR DE LETTRE -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -235,6 +248,7 @@
         </div>
     </header>
 
+    <!-- NAVBAR TACTILE TABLETTE - PARFAITEMENT SYNCHRONISÉE -->
     <div class="mobile-nav">
         <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
@@ -246,11 +260,13 @@
 
     <div class="container">
 
+        <!-- HERO -->
         <section class="hero">
             <h1>Colombe Lankar</h1>
             <p>Étudiante en BTS SIO option SISR. Spécialisée dans l'administration des architectures systèmes, de la virtualisation et de l'ingénierie des réseaux.</p>
         </section>
 
+        <!-- TERMINAL INTERACTIF -->
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-buttons">
@@ -280,12 +296,14 @@
             </div>
         </div>
 
+        <!-- RACCOURCIS SYSTEME -->
         <div class="terminal-shortcuts">
             <button class="shortcut-btn" onclick="runCommand('cat atouts.txt')">cat atouts.txt</button>
             <button class="shortcut-btn" onclick="runCommand('ping -c 3 infrastructure')">ping infrastructure</button>
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
+        <!-- SECTION 1 : A PROPOS (BENTO GRID) -->
         <section id="propos">
             <h2 class="section-title">Qui suis-je ?</h2>
             <div class="bento-grid">
@@ -308,4 +326,370 @@
                         <li>Esprit d'analyse et résolution de problèmes</li>
                         <li>Travail collaboratif en équipe</li>
                         <li>Curiosité et envie d'apprendre</li>
- 
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <h3 style="font-size:1rem; margin-bottom: 0.5rem;">Centres d'interest</h3>
+                        <div class="interests-tags">
+                            <span class="interest-tag">🎯 Tir sportif</span>
+                            <span class="interest-tag">📸 Photographie</span>
+                            <span class="interest-tag">🌐 Nouvelles technologies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 : COMPETENCES -->
+        <section id="competences">
+            <h2 class="section-title">Savoir-faire Technique</h2>
+            <div class="competences-grid">
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🌐</span> Réseaux</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">IPv4 / VLSM</span><span class="tech-badge">VLAN 802.1Q</span><span class="tech-badge">DHCP / DNS</span><span class="tech-badge">NAT / PAT</span><span class="tech-badge">ping / traceroute</span><span class="tech-badge">Wireshark</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">💻</span> Systèmes</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">Windows Server</span><span class="tech-badge">Linux (Debian)</span><span class="tech-badge">Comptes & Groupes</span><span class="tech-badge">Partages Réseau</span><span class="tech-badge">Pare-feu</span><span class="tech-badge">Shell Bash</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">⚙️</span> Virtualisation</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">VirtualBox</span><span class="tech-badge">Machines Virtuelles</span><span class="tech-badge">Réseau NAT</span><span class="tech-badge">Réseau Bridge</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🗄️</span> BDD & Scripts</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">SQL (CRUD)</span><span class="tech-badge">MySQL</span><span class="tech-badge">Python</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🕸️</span> Développements Web</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span><span class="tech-badge">PHP</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🛡️</span> Sécurité & Infrastructure</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">Pare-feu / ACL</span><span class="tech-badge">RGPD</span><span class="tech-badge">Diagnostic réseau</span><span class="tech-badge">Config. matériels</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : PROJETS (IDENTIFIANT ID="PROJETS" ALIGNE) -->
+        <section id="projets">
+            <h2 class="section-title">Dossiers Techniques & Projets</h2>
+            <div class="projects-grid">
+                
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-id">PROJET <span>#01</span></div>
+                            <h3 class="ticket-title">Site Web Spécialisé – LLCER Anglais</h3>
+                        </div>
+                        <span class="status-badge status-resolved">RESOLVED</span>
+                    </div>
+                    <div class="ticket-field">
+                        <span class="field-label">Mission :</span>
+                        <span class="field-value">Conception, codage et mise en production responsive d'un site vitrine pour présenter la spécialité LLCER sur le serveur officiel de l'établissement.</span>
+                    </div>
+                    <div class="tech-tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">TeamWork</span></div>
+                </div>
+
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-id">PROJET <span>#02</span></div>
+                            <h3 class="ticket-title">Maintenance Informatique Bénévole</h3>
+                        </div>
+                        <span class="status-badge status-resolved">RESOLVED</span>
+                    </div>
+                    <div class="ticket-field">
+                        <span class="field-label">Intervention :</span>
+                        <span class="field-value">Support technique de niveau 1 hardware et software sur terminaux PC et mobiles (backup, correctifs OS, optimisation Wi-Fi).</span>
+                    </div>
+                    <div class="tech-tags"><span class="tag">Windows</span><span class="tag">Diagnostics</span><span class="tag">Wi-Fi</span></div>
+                </div>
+
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-id">PROJET <span>#03</span></div>
+                            <h3 class="ticket-title">Installation de Postes Informatiques</h3>
+                        </div>
+                        <span class="status-badge status-resolved">RESOLVED</span>
+                    </div>
+                    <div class="ticket-field">
+                        <span class="field-label">Cahier des charges :</span>
+                        <span class="field-value">Mise en service complète de postes clients, intégration réseau, migration sécurisée de données utilisateurs et raccordement des périphériques.</span>
+                    </div>
+                    <div class="tech-tags"><span class="tag">Windows OS</span><span class="tag">Périphériques</span></div>
+                </div>
+
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-id">PROJET <span>#04</span></div>
+                            <h3 class="ticket-title">Infrastructure Réseau Maquettée de A à Z</h3>
+                        </div>
+                        <span class="status-badge status-progress">IN_PRODUCTION</span>
+                    </div>
+                    <div class="ticket-field">
+                        <span class="field-label">Topologie :</span>
+                        <span class="field-value">Plan d'adressage IPv4 / VLSM complet, isolation de segments LAN via VLANs 802.1Q, routage inter-VLAN et NAT. Configuration des serveurs DNS et baux DHCP managés.</span>
+                    </div>
+                    <div class="ticket-field field-panic">
+                        <span class="field-label">[ALERT LOG] Incident Résolu :</span>
+                        <span class="field-value">Échec de transmission des trames DHCP entre différents VLANs. Diagnostic Wireshark validé. Résolution opérée en activant l'agent de relais DHCP (<em>IP Helper-Address</em>) sur l'interface du routeur.</span>
+                    </div>
+                    <div class="tech-tags"><span class="tag">VirtualBox</span><span class="tag">VLAN</span><span class="tag">DHCP / DNS</span><span class="tag">Wireshark</span></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4 : PARCOURS -->
+        <section id="parcours">
+            <h2 class="section-title">Parcours Académique & Expériences</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-date">SEPT. 2025 — AUJOURD'HUI</div>
+                    <div class="time-title">BTS SIO — Option SISR</div>
+                    <div class="time-sub">Lycée Geoffroy-Saint-Hilaire, Étampes (91)</div>
+                    <ul class="time-desc">
+                        <li>Administration système (Linux Debian, Windows Server, AD)</li>
+                        <li>Réseaux d'infrastructure (Routage, Switching, Protocoles, Topologies complexes)</li>
+                        <li>Virtualisation d'architectures réseau sous VirtualBox</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-date">2024 — 2025</div>
+                    <div class="time-title">Maintenance Informatique & Support (Bénévolat)</div>
+                    <div class="time-sub">Activité Personnelle</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-date">JUIN 2025</div>
+                    <div class="time-title">Baccalauréat Général</div>
+                    <div class="time-sub">Spécialités : Mathématiques & Numérique et Sciences Informatiques (NSI)</div>
+                </div>
+            </div>
+            
+            <h3 class="section-title" style="font-size: 1.1rem; margin-top: 3rem; margin-bottom: 1.5rem;">Langues de communication</h3>
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="bento-card">
+                    <h4>Français <span style="font-size: 0.75rem; color: var(--accent-purple); font-family: var(--font-mono);">[Langue Maternelle]</span></h4>
+                </div>
+                <div class="bento-card">
+                    <h4>Anglais <span style="font-size: 0.75rem; color: var(--accent-green); font-family: var(--font-mono);">[Bon Niveau]</span></h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">Spécialité LLCER Anglais au Lycée, lecture de documentations techniques informatiques.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE -->
+        <section id="veille">
+            <h2 class="section-title">Veille Technologique</h2>
+            
+            <div class="veille-header-block">
+                <h3>Sujet d'étude : L'impact environnemental des datacenters et les solutions pour le réduire</h3>
+                <p><strong>Problématique :</strong> « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment réduire la consommation énergétique des datacenters ? »</p>
+            </div>
+
+            <div class="veille-grid">
+                <div class="veille-card">
+                    <h4>⚡ Consommation énergétique</h4>
+                    <p>Les datacenters représentent environ 1 à 2 % de la consommation d'électricité mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE et des objectifs de neutralité carbone des grands acteurs.</p>
+                    <div class="veille-badges">
+                        <span class="tech-badge">PUE</span><span class="tech-badge">Consommation IA</span><span class="tech-badge">Électricité</span>
+                    </div>
+                </div>
+                <div class="veille-card">
+                    <h4>🌱 Solutions & innovations</h4>
+                    <p>Refroidissement par immersion (Liquid Cooling), free cooling, récupération de chaleur fatale pour chauffer des quartiers, énergies renouvelables et optimisation logicielle des infrastructures de calcul.</p>
+                    <div class="veille-badges">
+                        <span class="tech-badge">Refroidissement</span><span class="tech-badge">Free Cooling</span><span class="tech-badge">Green IT</span>
+                    </div>
+                </div>
+                <div class="veille-card">
+                    <h4>⚖️ Réglementation française & UE</h4>
+                    <p>La loi REEN en France impose aux datacenters de réduire leur empreinte environnementale. Directives européennes sur l'efficacité énergétique, labels Tier et norme EN 50600 encadrant la conformité éco-responsable.</p>
+                    <div class="veille-badges">
+                        <span class="tech-badge">Loi REEN</span><span class="tech-badge">Directive UE</span><span class="tech-badge">Norme EN 50600</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sources-block">
+                <div class="sources-title">Sources utilisées & Flux d'informations :</div>
+                <div class="sources-layout">
+                    <a href="https://www.ademe.fr" target="_blank" class="source-tag-link">ADEME</a>
+                    <a href="https://www.lemondeinformatique.fr" target="_blank" class="source-tag-link">Le Monde Informatique</a>
+                    <a href="https://www.datacenterknowledge.com" target="_blank" class="source-tag-link">Data Center Knowledge</a>
+                    <a href="https://www.zdnet.fr" target="_blank" class="source-tag-link">ZDNet</a>
+                    <a href="https://www.legifrance.gouv.fr" target="_blank" class="source-tag-link">Legifrance (loi REEN)</a>
+                    <a href="https://www.iea.org" target="_blank" class="source-tag-link">IEA.org</a>
+                    <a href="https://www.gimelec.fr" target="_blank" class="source-tag-link">Gimelec</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6 : COMPTES RENDUS -->
+        <section id="documents">
+            <h2 class="section-title">Comptes Rendus de Travaux Pratiques</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Comptes rendus rédigés tout au long de l'année : TP, projets et rapports de veille. Cliquez sur un document pour le consulter au format PDF.</p>
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <div class="doc-info">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple);">RÉSEAUX • SIO1 • 2025</span>
+                        <h4>TP7 — DHCP, DNS & Serveur HTTP</h4>
+                        <p>Mise en place d'une infrastructure complète : attribution IP automatique via DHCP, résolution de noms par DNS et hébergement d'un site web accessible via http://web.tp.local.</p>
+                    </div>
+                    <a href="TP7.pdf" target="_blank" class="doc-btn">Ouvrir le livrable (PDF)</a>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-info">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple);">RÉSEAUX • SIO1 • 2025</span>
+                        <h4>TP8 — VLAN & Routage Inter-VLAN avec DHCP</h4>
+                        <p>Segmentation du réseau en VLAN10 et VLAN20, configuration des switches et du routeur, mise en place d'un serveur DHCP avec agent relais (IP helper-address).</p>
+                    </div>
+                    <a href="TP8.pdf" target="_blank" class="doc-btn">Ouvrir le livrable (PDF)</a>
+                </div>
+                <div class="doc-card" style="border-style: dashed; opacity: 0.6;">
+                    <div class="doc-info">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">EN COURS • 2025-2026</span>
+                        <h4>D'autres comptes rendus à venir</h4>
+                        <p>Les prochains comptes rendus de TP et le rapport de stage seront ajoutés au fil de l'année.</p>
+                    </div>
+                    <span class="doc-btn" style="background: transparent; border-color: var(--border-soft); cursor: not-allowed;">Dossier sécurisé</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7 : CONTACT -->
+        <section id="contact">
+            <h2 class="section-title">Me Rejoindre / Contact</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Disponible pour un stage en informatique — administration systèmes & réseaux. N'hésitez pas à me contacter !</p>
+            <div class="contact-grid">
+                <a href="mailto:colombe.lankar.pro@gmail.com" class="contact-card">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-val">colombe.lankar.pro@gmail.com</span>
+                    </div>
+                </a>
+                <a href="tel:0767477581" class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Téléphone</span>
+                        <span class="contact-val">07 67 47 75 81</span>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/colombe-lankar" target="_blank" class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-val">colombe-lankar</span>
+                    </div>
+                </a>
+                <a href="CV_Colombe_Lankar.pdf" download class="contact-card" style="border-color: var(--accent-green); background: rgba(16, 185, 129, 0.02);">
+                    <div class="contact-icon" style="color: var(--accent-green);">⬇</div>
+                    <div class="contact-details">
+                        <span class="contact-label" style="color: var(--accent-green);">Curriculum Vitae</span>
+                        <span class="contact-val">Télécharger mon CV (.pdf)</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SCRIPT DU TERMINAL & CAPTURE DU SCROLL TACTILE -->
+    <script>
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalOutput = document.getElementById('terminalOutput');
+
+        // Force l'ancrage matériel et recalcule la hauteur pour éviter les conflits tablette
+        document.querySelectorAll('.mobile-nav a, header nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        e.preventDefault();
+                        const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 90;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = terminalInput.value.trim();
+                if (command !== '') {
+                    runCommand(command);
+                    terminalInput.value = '';
+                }
+            }
+        });
+
+        function runCommand(cmd) {
+            const line = document.createElement('p');
+            line.className = 'terminal-input-line';
+            line.innerHTML = `<span class="t-green">guest@portfolio:~$</span> <span class="t-purple">${cmd}</span>`;
+            terminalOutput.appendChild(line);
+
+            const response = document.createElement('p');
+            
+            switch(cmd.toLowerCase()) {
+                case 'help':
+                    response.innerHTML = `Commandes valides :<br>
+                    - <span class="t-purple">cat atouts.txt</span> : Affiche mes points forts<br>
+                    - <span class="t-purple">ping -c 3 infrastructure</span> : Test de connectivité réseau<br>
+                    - <span class="t-purple">neofetch</span> : Structure de mon profil SISR<br>
+                    - <span class="t-purple">clear</span> : Nettoie la console`;
+                    break;
+                case 'cat atouts.txt':
+                    response.innerHTML = `<span class="t-orange">[VALEURS DU COMPOSANT COLOMBE]</span><br>
+                    • Rigueur de diagnostic (Analyse de trames)<br>
+                    • Esprit de résolution logique face aux pannes d'infra<br>
+                    • Aptitude pour le travail de support technique.`;
+                    break;
+                case 'ping -c 3 infrastructure':
+                    response.innerHTML = `PING infra.colombe.net (10.0.10.254) 56(84) bytes of data.<br>
+                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: MAX)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=0.15 ms (Motivation: 100%)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=0.11 ms (Packets loss: 0%)</span><br>
+                    --- infra.colombe.net ping statistics ---<br>
+                    3 packets transmitted, 3 received, 0% packet loss, link UP.`;
+                    break;
+                case 'neofetch':
+                    response.innerHTML = `--------------------------------------------------<br>
+                    <span class="t-purple">PROFIL:</span> Colombe Lankar<br>
+                    <span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)<br>
+                    <span class="t-purple">PROD_ENV:</span> Linux Debian, Windows Server, VirtualBox, Cisco<br>
+                    <span class="t-purple">TARGET:</span> Recherche active de Stage & Alternance<br>
+                    --------------------------------------------------`;
+                    break;
+                case 'clear':
+                    terminalOutput.innerHTML = '';
+                    return;
+                default:
+                    response.innerHTML = `<span class="t-orange">bash: ${cmd}: commande introuvable.</span> Tapez <span class="t-purple">help</span> pour voir la liste.`;
+            }
+
+            terminalOutput.appendChild(response);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+    </script>
+</body>
+</html>
