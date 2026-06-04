@@ -52,7 +52,7 @@
         .section-title::before { content: "//"; color: var(--accent-purple); }
 
         /* -------------------------------------------------------------
-           NAVIGATION PC (HAUT) - AJUSTEMENTS DES ESPACES FLEX
+           NAVIGATION PC (HAUT)
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
@@ -186,11 +186,15 @@
         .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
 
         /* -------------------------------------------------------------
-           VEILLE TECHNOLOGIQUE
+           NOUVELLE STRUCTURE VEILLE TECHNOLOGIQUE
         ------------------------------------------------------------- */
-        .veille-header-block { background: rgba(168, 85, 247, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
+        .veille-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .veille-header-block { background: rgba(168, 85, 247, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
         .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-purple); }
-        .veille-header-block p { font-size: 0.95rem; color: var(--text-main); }
+        .veille-header-block p { font-size: 0.9rem; color: var(--text-main); }
+        .veille-header-block ul { list-style-type: square; padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; }
+        .veille-header-block ul li { margin-bottom: 0.3rem; }
+
         .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
         .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.5rem; border-radius: 12px; }
         .veille-card h4 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
@@ -228,6 +232,7 @@
             header { display: none; }
             .mobile-nav { display: flex; }
             .bento-grid { grid-template-columns: 1fr; }
+            .veille-intro-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.4rem; }
             .hero p { font-size: 1rem; }
             .ticket-header { flex-direction: column; gap: 0.5rem; }
@@ -239,7 +244,7 @@
 
     <div class="glow-bg"></div>
 
-    <!-- NAVBAR ORDINATEUR (ESPACES OPTIMISÉS) -->
+    <!-- NAVBAR ORDINATEUR -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -252,7 +257,6 @@
                     <li><a href="#veille">Veille</a></li>
                     <li><a href="#documents">Comptes Rendus</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- LE BOUTON VERRE VERT QUI RESTE SUR LA MÊME LIGNE -->
                     <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.4); padding: 0.35rem 0.8rem; border-radius: 6px; background: rgba(16, 185, 129, 0.05); font-weight: bold;">Mon CV</a></li>
                 </ul>
             </nav>
@@ -503,26 +507,50 @@
             </div>
         </section>
 
-        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE -->
+        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE REVISITÉE AVEC PRINCIPE ET MÉTHODOLOGIE -->
         <section id="veille">
             <h2 class="section-title">Veille Technologique</h2>
             
-            <div class="veille-header-block">
-                <h3>Sujet d'étude : L'impact environnemental des datacenters et les solutions pour le réduire</h3>
-                <p><strong>Problématique :</strong> « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment réduire la consommation énergétique des datacenters ? »</p>
+            <!-- BLOC PRINCIPE ET MISE EN PLACE -->
+            <div class="veille-intro-grid">
+                <div class="veille-header-block">
+                    <h3>Le Principe de la Veille</h3>
+                    <p>La veille technologique consiste à s'informer de manière continue sur les dernières innovations et évolutions du secteur informatique. Pour un administrateur systèmes et réseaux, elle sert à :</p>
+                    <ul>
+                        <li>Anticiper les mutations technologiques (Cloud, IA, Virtualisation).</li>
+                        <li>Assurer la sécurité des infrastructures face aux nouvelles menaces.</li>
+                        <li>Proposer des solutions plus performantes, économiques et éco-responsables à l'entreprise.</li>
+                    </ul>
+                </div>
+                <div class="veille-header-block" style="border-color: var(--accent-green);">
+                    <h3>Ma Méthodologie de Mise en Place</h3>
+                    <p>Pour structurer mes recherches, j'ai mis en place un écosystème de <strong>veille active (méthode PULL)</strong> et de <strong>veille automatisée (méthode PUSH)</strong> :</p>
+                    <ul>
+                        <li><strong>Outils de centralisation :</strong> Utilisation d'agrégateurs de flux RSS (Feedly) pour consolider les articles.</li>
+                        <li><strong>Curation de contenu :</strong> Alertes automatisées par mots-clés sur Google Alerts.</li>
+                        <li><strong>Sélection des sources :</strong> Suivi quotidien de médias techniques de référence (ADEME, Le Monde Informatique, ZDNet).</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- BLOC SUJET D'ÉTUDE -->
+            <div class="veille-header-block" style="margin-bottom: 2rem; background: rgba(168, 85, 247, 0.05);">
+                <h3 style="color: var(--text-main); font-weight: bold;">Sujet d'étude : L'impact environnemental des datacenters et les solutions pour le réduire</h3>
+                <p style="margin-top: 0.25rem;"><strong>Problématique :</strong> « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment optimiser, réguler et réduire la consommation énergétique des datacenters ? »</p>
+            </div>
+
+            <!-- AXES DE VEILLE -->
             <div class="veille-grid">
                 <div class="veille-card">
                     <h4>⚡ Consommation énergétique</h4>
-                    <p>Les datacenters représentent aujourd'hui environ 1 à 2 % de la consommation d'électricité mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE et des objectifs de neutralité carbone des grands acteurs.</p>
+                    <p>Les datacenters représentent aujourd'hui environ 1 à 2 % de la consommation d'électricité mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE (Power Usage Effectiveness) et des objectifs de neutralité carbone.</p>
                     <div class="veille-badges">
                         <span class="tech-badge">PUE</span><span class="tech-badge">Consommation IA</span><span class="tech-badge">Électricité</span>
                     </div>
                 </div>
                 <div class="veille-card">
                     <h4>🌱 Solutions & innovations</h4>
-                    <p>Refroidissement par immersion (Liquid Cooling), free cooling, récupération de chaleur fatale pour chauffer des quartiers, énergies renouvelables et optimisation logicielle des infrastructures de calcul.</p>
+                    <p>Refroidissement par immersion (Liquid Cooling), free cooling, récupération de chaleur fatale pour chauffer des quartiers, intégration d'énergies renouvelables et optimisation logicielle des infrastructures de calcul.</p>
                     <div class="veille-badges">
                         <span class="tech-badge">Refroidissement</span><span class="tech-badge">Free Cooling</span><span class="tech-badge">Green IT</span>
                     </div>
@@ -536,6 +564,7 @@
                 </div>
             </div>
 
+            <!-- FLUX DE SOURCES -->
             <div class="sources-block">
                 <div class="sources-title">Sources utilisées & Flux d'informations :</div>
                 <div class="sources-layout">
