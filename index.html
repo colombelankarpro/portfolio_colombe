@@ -8,15 +8,15 @@
     
     <style>
         :root {
-            --bg-main: #0d0c12;          /* Fond très sombre avec une micro-teinte violette */
-            --bg-card: rgba(22, 20, 28, 0.6); /* Cartes feutrées */
-            --border-tech: rgba(167, 139, 250, 0.25); /* Bordures Lavande doux */
+            --bg-main: #0d0c12;          
+            --bg-card: rgba(22, 20, 28, 0.6); 
+            --border-tech: rgba(167, 139, 250, 0.25); 
             --border-soft: rgba(255, 255, 255, 0.04);
             --text-main: #f3f4f6;        
             --text-muted: #9ca3af;       
-            --accent-purple: #a78bfa;    /* Violet Lavande pastel : féminin, discret et pro */
-            --accent-green: #34d399;     /* Vert d'eau très doux pour valider (OK) */
-            --accent-orange: #fb923c;    /* Pêche doux pour les alertes */
+            --accent-purple: #a78bfa;    
+            --accent-green: #34d399;     
+            --accent-orange: #fb923c;    
             --font-sans: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -219,7 +219,7 @@
         .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.08); }
 
         /* -------------------------------------------------------------
-           COMPTES RENDUS
+           COMPTES RENDUS & STAGES
         ------------------------------------------------------------- */
         .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .doc-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
@@ -265,7 +265,7 @@
                     <li><a href="#projets">Projets</a></li>
                     <li><a href="#parcours">Parcours</a></li>
                     <li><a href="#veille">Veille</a></li>
-                    <li><a href="#documents">Comptes Rendus</a></li>
+                    <li><a href="#documents">Livrables</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); border: 1px solid rgba(167, 139, 250, 0.4); padding: 0.35rem 0.8rem; border-radius: 6px; background: rgba(167, 139, 250, 0.05); font-weight: bold;">Mon CV</a></li>
                 </ul>
@@ -279,7 +279,7 @@
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
         <a href="#projets"><span class="mobile-icon">📁</span>Specs</a>
         <a href="#veille"><span class="mobile-icon">🌐</span>Veille</a>
-        <a href="#documents"><span class="mobile-icon">📄</span>Docs</a>
+        <a href="#documents"><span class="mobile-icon">📄</span>Livrables</a>
         <a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); font-weight: bold;"><span class="mobile-icon">📄</span>CV</a>
     </div>
 
@@ -561,10 +561,39 @@
             </div>
         </section>
 
-        <!-- SECTION 6 : COMPTES RENDUS -->
+        <!-- SECTION 6 : LIVRABLES ET BILANS DE STAGE -->
         <section id="documents">
-            <h2 class="section-title">Comptes Rendus de Travaux Pratiques</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Comptes rendus rédigés tout au long de l'année : TP, projets et rapports de veille. Cliquez sur un document pour le consulter au format PDF.</p>
+            <h2 class="section-title">Livrables & Bilans de Stage</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Retrouvez ici mes comptes rendus d'infrastructures ainsi que les évaluations officielles de mes tuteurs lors de mes immersions en entreprise.</p>
+            
+            <!-- SOUS-SECTION : ÉVALUATIONS DE STAGE -->
+            <h3 style="font-family: var(--font-mono); font-size: 1rem; margin-bottom: 1rem; color: var(--accent-purple);">// Évaluations Professionnelles</h3>
+            <div class="docs-grid" style="margin-bottom: 2.5rem;">
+                
+                <!-- Bilan Stage 1ère année -->
+                <div class="doc-card" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.03);">
+                    <div class="doc-info">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple);">STAGE • 1ÈRE ANNÉE • 2025</span>
+                        <h4>Bilan & Évaluation de Stage</h4>
+                        <p>Évaluation des compétences acquises en milieu professionnel, rapport d'activités et appréciation du tuteur de stage.</p>
+                    </div>
+                    <a href="Bilan_Stage_1A.pdf" target="_blank" class="doc-btn" style="background: var(--accent-purple); color: #0d0c12; font-weight: bold;">Consulter la note (PDF)</a>
+                </div>
+
+                <!-- Bilan Stage 2ème année (Grisé en attente) -->
+                <div class="doc-card" style="border-style: dashed; opacity: 0.5;">
+                    <div class="doc-info">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">STAGE • 2ÈME ANNÉE • 2026</span>
+                        <h4>Bilan & Évaluation de Stage</h4>
+                        <p>Ce document sera disponible à l'issue de mon stage de deuxième année de BTS SIO.</p>
+                    </div>
+                    <span class="doc-btn" style="background: transparent; border-color: var(--border-soft); cursor: not-allowed; color: var(--text-muted);">À venir</span>
+                </div>
+
+            </div>
+
+            <!-- SOUS-SECTION : COMPTES RENDUS DE TP -->
+            <h3 style="font-family: var(--font-mono); font-size: 1rem; margin-bottom: 1rem; color: var(--accent-purple);">// Comptes Rendus de TP (SISR)</h3>
             <div class="docs-grid">
                 <div class="doc-card">
                     <div class="doc-info">
@@ -581,14 +610,6 @@
                         <p>Segmentation du réseau en VLAN10 et VLAN20, configuration des switches et du routeur, mise en place d'un serveur DHCP avec agent relais (IP helper-address).</p>
                     </div>
                     <a href="TP8.pdf" target="_blank" class="doc-btn">Ouvrir le livrable (PDF)</a>
-                </div>
-                <div class="doc-card" style="border-style: dashed; opacity: 0.6;">
-                    <div class="doc-info">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">EN COURS • 2025-2026</span>
-                        <h4>D'autres comptes rendus à venir</h4>
-                        <p>Les prochains comptes rendus de TP et le rapport de stage seront ajoutés au fil de l'année.</p>
-                    </div>
-                    <span class="doc-btn" style="background: transparent; border-color: var(--border-soft); cursor: not-allowed;">Dossier sécurisé</span>
                 </div>
             </div>
         </section>
