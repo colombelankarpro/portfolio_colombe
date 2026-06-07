@@ -8,10 +8,18 @@
     
     <style>
         :root {
-        --bg-main: #06070a;          /* Noir pur */
-        --accent-purple: #ee0000;    /* Le Rouge officiel RedHat */
-        --border-tech: rgba(238, 0, 0, 0.25);
-    }
+            --bg-main: #0d0f14;          
+            --bg-card: rgba(22, 27, 38, 0.6); 
+            --border-tech: rgba(233, 84, 32, 0.25); 
+            --border-soft: rgba(255, 255, 255, 0.05);
+            --text-main: #f3f4f6;
+            --text-muted: #8e99ae;
+            --accent-purple: #e95420;    
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
@@ -30,7 +38,7 @@
             position: absolute;
             top: 0; left: 50%; transform: translateX(-50%);
             width: 1000px; height: 600px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.04) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(233, 84, 32, 0.03) 0%, rgba(0,0,0,0) 70%);
             z-index: -1; pointer-events: none;
         }
 
@@ -48,7 +56,7 @@
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
-            backdrop-filter: blur(12px); background: rgba(6, 7, 10, 0.8);
+            backdrop-filter: blur(12px); background: rgba(13, 15, 20, 0.8);
             border-bottom: 1px solid var(--border-soft); z-index: 100;
         }
         .nav-container {
@@ -82,7 +90,7 @@
         .mobile-icon { font-size: 1.2rem; margin-bottom: 0.2rem; }
 
         /* -------------------------------------------------------------
-           HERO & TERMINAL
+           HERO & TERMINAL (NOUVEAU STYLE LOGO `>_`)
         ------------------------------------------------------------- */
         .hero { padding: 7rem 0 2rem 0; text-align: center; }
         .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
@@ -93,16 +101,30 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); text-align: left;
             font-family: var(--font-mono); overflow: hidden; margin-bottom: 3.5rem;
         }
+        
         .terminal-header {
-            background: #121620; padding: 0.75rem 1rem;
-            display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-soft);
+            background: #121620; padding: 0.8rem 1.2rem;
+            display: flex; align-items: center; justify-content: flex-start; 
+            border-bottom: 1px solid var(--border-soft); gap: 0.75rem;
         }
-        .terminal-buttons { display: flex; gap: 0.5rem; }
-        .t-btn { width: 12px; height: 12px; border-radius: 50%; }
-        .t-close { background: #ef4444; }
-        .t-min { background: #eab308; }
-        .t-max { background: #22c55e; }
-        .terminal-title { color: var(--text-muted); font-size: 0.8rem; }
+        
+        /* STYLE DU LOGO DE TERMINAL >_ */
+        .terminal-logo {
+            color: var(--accent-green);
+            font-family: var(--font-mono);
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: -1px;
+            animation: pulse-logo 2s infinite;
+        }
+        
+        @keyframes pulse-logo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .terminal-title { color: var(--text-muted); font-size: 0.85rem; white-space: nowrap; }
+        
         .terminal-body { padding: 1.3rem; height: 240px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
         
         .t-purple { color: var(--accent-purple); font-weight: bold; }
@@ -116,7 +138,7 @@
         }
         .terminal-shortcuts { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 5rem; flex-wrap: wrap; }
         .shortcut-btn {
-            background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
+            background: rgba(233, 84, 32, 0.08); border: 1px solid rgba(233, 84, 32, 0.2);
             color: var(--accent-purple); font-family: var(--font-mono); padding: 0.4rem 1rem;
             border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
         }
@@ -137,7 +159,7 @@
         
         .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
         .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
-        .meta-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: block; }
+        .meta-label { font-family: var(--font-mono); font-size: 0.77rem; color: var(--text-muted); display: block; }
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
         /* -------------------------------------------------------------
@@ -162,7 +184,6 @@
         .ticket-field { margin-bottom: 0.6rem; display: flex; flex-direction: column; }
         .field-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.15rem; }
         .field-value { color: var(--text-main); font-size: 0.9rem; }
-        .field-panic { background: rgba(239, 68, 68, 0.03); border-left: 3px solid #ef4444; padding: 0.6rem 1rem; margin-top: 0.75rem; border-radius: 0 4px 4px 0; }
         .tech-tags { display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap; }
         .tag { font-family: var(--font-mono); font-size: 0.7rem; background: #181b26; border: 1px solid var(--border-soft); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
 
@@ -181,7 +202,7 @@
            VEILLE TECHNOLOGIQUE
         ------------------------------------------------------------- */
         .veille-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-        .veille-header-block { background: rgba(168, 85, 247, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
+        .veille-header-block { background: rgba(233, 84, 32, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
         .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-purple); }
         .veille-header-block p { font-size: 0.9rem; color: var(--text-main); }
         .veille-header-block ul { list-style-type: square; padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; }
@@ -197,7 +218,7 @@
         .sources-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
         .sources-layout { display: flex; gap: 1rem; flex-wrap: wrap; }
         .source-tag-link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-main); text-decoration: none; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 6px; transition: all 0.2s; }
-        .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(168, 85, 247, 0.05); }
+        .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(233, 84, 32, 0.05); }
 
         /* -------------------------------------------------------------
            COMPTES RENDUS
@@ -273,16 +294,11 @@
             <p>Étudiante en BTS SIO option SISR. Spécialisée dans l'administration des architectures systèmes, de la virtualisation et de l'ingénierie des réseaux.</p>
         </section>
 
-        <!-- TERMINAL INTERACTIF (RETRAIT ALTERNANCE) -->
+        <!-- TERMINAL AVEC LE LOGO >_ INTÉGRÉ EN HAUT À GAUCHE -->
         <div class="terminal-container">
             <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <div class="t-btn t-close"></div>
-                    <div class="t-btn t-min"></div>
-                    <div class="t-btn t-max"></div>
-                </div>
-                <div class="terminal-title">guest@colombe-lankar:~</div>
-                <div></div>
+                <div class="terminal-logo">&gt;_</div>
+                <div class="terminal-title">terminal – portfolio</div>
             </div>
             <div class="terminal-body" id="terminalOutput">
                 <p>Initialisation de la session de supervision... <span class="t-green">[OK]</span></p>
@@ -310,7 +326,7 @@
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
-        <!-- SECTION 1 : A PROPOS (RETRAIT PRODUCTION & ALTERNANCE) -->
+        <!-- SECTION 1 : A PROPOS -->
         <section id="propos">
             <h2 class="section-title">Qui suis-je ?</h2>
             <div class="bento-grid">
@@ -389,7 +405,7 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : PROJETS (SUPPRESSION DU PROJET EN PRODUCTION) -->
+        <!-- SECTION 3 : PROJETS -->
         <section id="projets">
             <h2 class="section-title">Dossiers Techniques & Projets</h2>
             <div class="projects-grid">
@@ -505,7 +521,7 @@
                 </div>
             </div>
 
-            <div class="veille-header-block" style="margin-bottom: 2rem; background: rgba(168, 85, 247, 0.05);">
+            <div class="veille-header-block" style="margin-bottom: 2rem; background: rgba(233, 84, 32, 0.03);">
                 <h3 style="color: var(--text-main); font-weight: bold;">Sujet d'étude : L'impact environnemental des datacenters et les solutions pour le réduire</h3>
                 <p style="margin-top: 0.25rem;"><strong>Problématique :</strong> « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment optimiser, réguler et réduire la consommation énergétique des datacenters ? »</p>
             </div>
@@ -580,7 +596,7 @@
             </div>
         </section>
 
-        <!-- SECTION 7 : CONTACT (RECHERCHE STAGE) -->
+        <!-- SECTION 7 : CONTACT -->
         <section id="contact">
             <h2 class="section-title">Me Rejoindre / Contact</h2>
             <div class="contact-grid">
@@ -617,7 +633,7 @@
 
     </div>
 
-    <!-- TERMINAL HANDLING SCRIPT (CORRECTION SIMULATION PING STAGE) -->
+    <!-- TERMINAL SCRIPT -->
     <script>
         const terminalInput = document.getElementById('terminalInput');
         const terminalOutput = document.getElementById('terminalOutput');
