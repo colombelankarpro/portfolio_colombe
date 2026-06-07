@@ -186,7 +186,7 @@
         .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
 
         /* -------------------------------------------------------------
-           NOUVELLE STRUCTURE VEILLE TECHNOLOGIQUE
+           VEILLE TECHNOLOGIQUE
         ------------------------------------------------------------- */
         .veille-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
         .veille-header-block { background: rgba(168, 85, 247, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
@@ -281,7 +281,7 @@
             <p>Étudiante en BTS SIO option SISR. Spécialisée dans l'administration des architectures systèmes, de la virtualisation et de l'ingénierie des réseaux.</p>
         </section>
 
-        <!-- TERMINAL INTERACTIF -->
+        <!-- TERMINAL INTERACTIF (RETRAIT ALTERNANCE) -->
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-buttons">
@@ -300,7 +300,7 @@
                 <p><span class="t-purple">PROFIL:</span> Colombe Lankar</p>
                 <p><span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)</p>
                 <p><span class="t-purple">PROD_ENV:</span> Linux Debian, Windows Server, VirtualBox, Cisco</p>
-                <p><span class="t-purple">TARGET:</span> Recherche active de Stage & Alternance</p>
+                <p><span class="t-purple">TARGET:</span> Recherche active de Stage</p>
                 <p>--------------------------------------------------</p>
             </div>
             <div class="terminal-header" style="border-top: 1px solid var(--border-soft); border-bottom: none;">
@@ -314,24 +314,24 @@
         <!-- RACCOURCIS SYSTEME -->
         <div class="terminal-shortcuts">
             <button class="shortcut-btn" onclick="runCommand('cat atouts.txt')">cat atouts.txt</button>
-            <button class="shortcut-btn" onclick="runCommand('ping -c 3 infrastructure')">ping infrastructure</button>
+            <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
-        <!-- SECTION 1 : A PROPOS -->
+        <!-- SECTION 1 : A PROPOS (RETRAIT PRODUCTION & ALTERNANCE) -->
         <section id="propos">
             <h2 class="section-title">Qui suis-je ?</h2>
             <div class="bento-grid">
                 <div class="bento-card">
                     <h3>Description Globale</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-                        Je suis Colombe Lankar, étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire à Étampes. Passionnée par l'administration systèmes, la virtualisation et la gestion des infrastructures réseaux, je cherche à mettre mes compétences en pratique lors de stages et d'expériences professionnelles en production.
+                        Je suis Colombe Lankar, étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire à Étampes. Passionnée par l'administration systèmes, la virtualisation et la gestion des infrastructures réseaux, je cherche à mettre mes compétences en pratique lors de stages et d'expériences professionnelles.
                     </p>
                     <div class="meta-info-grid">
                         <div class="meta-item"><span class="meta-label">FORMATION</span><span class="meta-val">BTS SIO - SISR</span></div>
                         <div class="meta-item"><span class="meta-label">ETABLISSEMENT</span><span class="meta-val">Lycée Geoffroy-Saint-Hilaire</span></div>
                         <div class="meta-item"><span class="meta-label">LOCALISATION</span><span class="meta-val">Étréchy, Essonne (91)</span></div>
-                        <div class="meta-item"><span class="meta-label">DISPONIBILITE</span><span class="meta-val">Stage / Alternance</span></div>
+                        <div class="meta-item"><span class="meta-label">DISPONIBILITE</span><span class="meta-val">Stage</span></div>
                     </div>
                 </div>
                 <div class="bento-card">
@@ -397,7 +397,7 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : PROJETS -->
+        <!-- SECTION 3 : PROJETS (SUPPRESSION DU PROJET EN PRODUCTION) -->
         <section id="projets">
             <h2 class="section-title">Dossiers Techniques & Projets</h2>
             <div class="projects-grid">
@@ -447,25 +447,6 @@
                     <div class="tech-tags"><span class="tag">Windows OS</span><span class="tag">Périphériques</span></div>
                 </div>
 
-                <div class="ticket-card">
-                    <div class="ticket-header">
-                        <div>
-                            <div class="ticket-id">PROJET <span>#04</span></div>
-                            <h3 class="ticket-title">Infrastructure Réseau Maquettée de A à Z</h3>
-                        </div>
-                        <span class="status-badge status-progress">IN_PRODUCTION</span>
-                    </div>
-                    <div class="ticket-field">
-                        <span class="field-label">Topologie :</span>
-                        <span class="field-value">Plan d'adressage IPv4 / VLSM complet, isolation de segments LAN via VLANs 802.1Q, routage inter-VLAN et NAT. Configuration des serveurs DNS et baux DHCP managés.</span>
-                    </div>
-                    <div class="ticket-field field-panic">
-                        <span class="field-label">[ALERT LOG] Incident Résolu :</span>
-                        <span class="field-value">Échec de transmission des trames DHCP entre différents VLANs. Diagnostic Wireshark validé. Résolution opérée en activant l'agent de relais DHCP (<em>IP Helper-Address</em>) sur l'interface du routeur.</span>
-                    </div>
-                    <div class="tech-tags"><span class="tag">VirtualBox</span><span class="tag">VLAN</span><span class="tag">DHCP / DNS</span><span class="tag">Wireshark</span></div>
-                </div>
-
             </div>
         </section>
 
@@ -507,11 +488,10 @@
             </div>
         </section>
 
-        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE REVISITÉE AVEC PRINCIPE ET MÉTHODOLOGIE -->
+        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE -->
         <section id="veille">
             <h2 class="section-title">Veille Technologique</h2>
             
-            <!-- BLOC PRINCIPE ET MISE EN PLACE -->
             <div class="veille-intro-grid">
                 <div class="veille-header-block">
                     <h3>Le Principe de la Veille</h3>
@@ -533,13 +513,11 @@
                 </div>
             </div>
 
-            <!-- BLOC SUJET D'ÉTUDE -->
             <div class="veille-header-block" style="margin-bottom: 2rem; background: rgba(168, 85, 247, 0.05);">
                 <h3 style="color: var(--text-main); font-weight: bold;">Sujet d'étude : L'impact environnemental des datacenters et les solutions pour le réduire</h3>
                 <p style="margin-top: 0.25rem;"><strong>Problématique :</strong> « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment optimiser, réguler et réduire la consommation énergétique des datacenters ? »</p>
             </div>
 
-            <!-- AXES DE VEILLE -->
             <div class="veille-grid">
                 <div class="veille-card">
                     <h4>⚡ Consommation énergétique</h4>
@@ -564,7 +542,6 @@
                 </div>
             </div>
 
-            <!-- FLUX DE SOURCES -->
             <div class="sources-block">
                 <div class="sources-title">Sources utilisées & Flux d'informations :</div>
                 <div class="sources-layout">
@@ -611,7 +588,7 @@
             </div>
         </section>
 
-        <!-- SECTION 7 : CONTACT -->
+        <!-- SECTION 7 : CONTACT (RECHERCHE STAGE) -->
         <section id="contact">
             <h2 class="section-title">Me Rejoindre / Contact</h2>
             <div class="contact-grid">
@@ -648,7 +625,7 @@
 
     </div>
 
-    <!-- TERMINAL HANDLING SCRIPT -->
+    <!-- TERMINAL HANDLING SCRIPT (CORRECTION SIMULATION PING STAGE) -->
     <script>
         const terminalInput = document.getElementById('terminalInput');
         const terminalOutput = document.getElementById('terminalOutput');
@@ -675,7 +652,7 @@
                 case 'help':
                     response.innerHTML = `Commandes valides :<br>
                     - <span class="t-purple">cat atouts.txt</span> : Affiche mes points forts<br>
-                    - <span class="t-purple">ping -c 3 infrastructure</span> : Test de connectivité réseau<br>
+                    - <span class="t-purple">ping -c 3 stage</span> : Test de connectivité réseau stage<br>
                     - <span class="t-purple">neofetch</span> : Structure de mon profil SISR<br>
                     - <span class="t-purple">clear</span> : Nettoie la console`;
                     break;
@@ -685,12 +662,12 @@
                     • Esprit de résolution logique face aux pannes d'infra<br>
                     • Aptitude pour le travail de support technique.`;
                     break;
-                case 'ping -c 3 infrastructure':
-                    response.innerHTML = `PING infra.colombe.net (10.0.10.254) 56(84) bytes of data.<br>
-                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: MAX)</span><br>
+                case 'ping -c 3 stage':
+                    response.innerHTML = `PING stage.recruteur.fr (10.0.10.254) 56(84) bytes of data.<br>
+                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: STAGE PRO)</span><br>
                     64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=0.15 ms (Motivation: 100%)</span><br>
                     64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=0.11 ms (Packets loss: 0%)</span><br>
-                    --- infra.colombe.net ping statistics ---<br>
+                    --- stage.recruteur.fr ping statistics ---<br>
                     3 packets transmitted, 3 received, 0% packet loss, link UP.`;
                     break;
                 case 'neofetch':
@@ -698,7 +675,7 @@
                     <span class="t-purple">PROFIL:</span> Colombe Lankar<br>
                     <span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)<br>
                     <span class="t-purple">PROD_ENV:</span> Linux Debian, Windows Server, VirtualBox, Cisco<br>
-                    <span class="t-purple">TARGET:</span> Recherche active de Stage & Alternance<br>
+                    <span class="t-purple">TARGET:</span> Recherche active de Stage<br>
                     --------------------------------------------------`;
                     break;
                 case 'clear':
