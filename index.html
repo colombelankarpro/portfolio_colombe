@@ -404,56 +404,46 @@
 
         <!-- SECTION 3 : PROJETS -->
         <section id="projets">
-            <h2 class="section-title">Dossiers Techniques & Projets</h2>
-            <div class="projects-grid">
-                
-                <div class="ticket-card">
-                    <div class="ticket-header">
-                        <div>
-                            <div class="ticket-id">PROJET <span>#01</span></div>
-                            <h3 class="ticket-title">Site Web Spécialisé – LLCER Anglais</h3>
-                        </div>
-                        <span class="status-badge status-resolved" style="color: var(--accent-green);">RESOLVED</span>
-                    </div>
-                    <div class="ticket-field">
-                        <span class="field-label">Mission :</span>
-                        <span class="field-value">Conception, codage et mise en production responsive d'un site vitrine pour présenter la spécialité LLCER sur le serveur officiel de l'établissement.</span>
-                    </div>
-                    <div class="tech-tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">TeamWork</span></div>
-                </div>
-
-                <div class="ticket-card">
-                    <div class="ticket-header">
-                        <div>
-                            <div class="ticket-id">PROJET <span>#02</span></div>
-                            <h3 class="ticket-title">Maintenance Informatique Bénévole</h3>
-                        </div>
-                        <span class="status-badge status-resolved" style="color: var(--accent-green);">RESOLVED</span>
-                    </div>
-                    <div class="ticket-field">
-                        <span class="field-label">Intervention :</span>
-                        <span class="field-value">Support technique de niveau 1 hardware et software sur terminaux PC et mobiles (backup, correctifs OS, optimisation Wi-Fi).</span>
-                    </div>
-                    <div class="tech-tags"><span class="tag">Windows</span><span class="tag">Diagnostics</span><span class="tag">Wi-Fi</span></div>
-                </div>
-
-                <div class="ticket-card">
-                    <div class="ticket-header">
-                        <div>
-                            <div class="ticket-id">PROJET <span>#03</span></div>
-                            <h3 class="ticket-title">Installation de Postes Informatiques</h3>
-                        </div>
-                        <span class="status-badge status-resolved" style="color: var(--accent-green);">RESOLVED</span>
-                    </div>
-                    <div class="ticket-field">
-                        <span class="field-label">Cahier des charges :</span>
-                        <span class="field-value">Mise en service complète de postes clients, intégration réseau, migration sécurisée de données utilisateurs et raccordement des périphériques.</span>
-                    </div>
-                    <div class="tech-tags"><span class="tag">Windows OS</span><span class="tag">Périphériques</span></div>
-                </div>
-
+    <h2 class="section-title">Mes Projets & TP</h2>
+    
+    <div class="bento-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+        
+        <!-- BLOC 1 : Réseaux & Routage -->
+        <div class="bento-card">
+            <h3 style="color: var(--accent-purple);">// Bloc 1 : Réseaux & Routage</h3>
+            
+            <div class="ticket-card" style="margin-bottom: 1rem;">
+                <h4 class="ticket-title">Segmentation (VLANs)</h4>
+                <p class="field-value" style="font-size: 0.85rem;">Mise en place de VLANs pour isoler le trafic, couplée à un serveur Linux pour le routage Inter-VLAN[cite: 4].</p>
+                <a href="TP3_sisr.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP3</a>
             </div>
-        </section>
+
+            <div class="ticket-card">
+                <h4 class="ticket-title">Routage Logiciel Linux</h4>
+                <p class="field-value" style="font-size: 0.85rem;">Interconnexion de réseaux distants en configurant le routage IP et le transfert de paquets (IP Forwarding)[cite: 5].</p>
+                <a href="tp4.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP4</a>
+            </div>
+        </div>
+
+        <!-- BLOC 2 : Administration & Sécurité -->
+        <div class="bento-card">
+            <h3 style="color: var(--accent-purple);">// Bloc 2 : Administration & Sécurité</h3>
+            
+            <div class="ticket-card" style="margin-bottom: 1rem;">
+                <h4 class="ticket-title">Sécurisation Switch Cisco</h4>
+                <p class="field-value" style="font-size: 0.85rem;">Administration via IOS : sécurisation des accès (console/VTY) et diagnostic des interfaces.</p>
+                <a href="TP2_SISR.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP2</a>
+            </div>
+
+            <div class="ticket-card">
+                <h4 class="ticket-title">Pare-feu (IPFire)</h4>
+                <p class="field-value" style="font-size: 0.85rem;">Déploiement d'une passerelle de sécurité avec filtrage d'URL (Proxy) et détection d'intrusions (IDS)[cite: 6].</p>
+                <a href="Tp5.0.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP5</a>
+            </div>
+        </div>
+
+    </div>
+</section>
 
         <!-- SECTION 4 : PARCOURS -->
         <section id="parcours">
