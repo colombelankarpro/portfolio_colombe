@@ -8,13 +8,13 @@
     
     <style>
         :root {
-            --bg-main: #0d0c12;          
-            --bg-card: rgba(22, 20, 28, 0.6); 
-            --border-tech: rgba(167, 139, 250, 0.25); 
+            --bg-main: #0d0c12;          /* Fond très sombre avec une micro-teinte violette */
+            --bg-card: rgba(22, 20, 28, 0.6); /* Cartes feutrées */
+            --border-tech: rgba(167, 139, 250, 0.25); /* Bordures Lavande doux */
             --border-soft: rgba(255, 255, 255, 0.04);
             --text-main: #f3f4f6;        
             --text-muted: #9ca3af;       
-            --accent-purple: #a78bfa;    
+            --accent-purple: #a78bfa;    /* Violet Lavande pastel : féminin, discret et pro */
             --accent-green: #34d399;     
             --accent-orange: #fb923c;    
             --font-sans: 'Plus Jakarta Sans', sans-serif;
@@ -50,6 +50,10 @@
 
         .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
         .section-title::before { content: "//"; color: var(--accent-purple); }
+
+        /* Retirer la flèche native des dossiers HTML */
+        details > summary { list-style: none; }
+        summary::-webkit-details-marker { display: none; }
 
         /* -------------------------------------------------------------
            NAVIGATION PC (HAUT)
@@ -146,7 +150,7 @@
            A PROPOS & BENTO
         ------------------------------------------------------------- */
         .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
-        .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; }
+        .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; transition: background 0.2s; }
         .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
         
         .skills-list-text li { margin-bottom: 0.7rem; position: relative; padding-left: 1.2rem; font-size: 0.95rem; color: var(--text-muted); list-style: none; }
@@ -169,21 +173,6 @@
         .comp-icon { color: var(--accent-purple); }
         .tech-badges-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .tech-badge { font-family: var(--font-mono); font-size: 0.75rem; background: #09080c; border: 1px solid var(--border-soft); padding: 0.25rem 0.5rem; border-radius: 6px; color: #cbd5e1; }
-
-        /* -------------------------------------------------------------
-           PROJETS
-        ------------------------------------------------------------- */
-        .projects-grid { display: flex; flex-direction: column; gap: 1.5rem; }
-        .ticket-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.75rem; }
-        .ticket-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.75rem; margin-bottom: 1rem; }
-        .ticket-id { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
-        .ticket-id span { color: var(--accent-purple); }
-        .ticket-title { font-size: 1.2rem; font-weight: 600; }
-        .ticket-field { margin-bottom: 0.6rem; display: flex; flex-direction: column; }
-        .field-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.15rem; }
-        .field-value { color: var(--text-main); font-size: 0.9rem; }
-        .tech-tags { display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap; }
-        .tag { font-family: var(--font-mono); font-size: 0.7rem; background: #09080c; border: 1px solid var(--border-soft); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
 
         /* -------------------------------------------------------------
            PARCOURS
@@ -219,14 +208,15 @@
         .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.08); }
 
         /* -------------------------------------------------------------
-           COMPTES RENDUS & STAGES
+           LIVRABLES / DOSSIERS
         ------------------------------------------------------------- */
-        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .doc-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
-        .doc-info h4 { font-size: 1.05rem; margin-bottom: 0.25rem; }
-        .doc-info p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; }
-        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--text-main); background: #121118; border: 1px solid var(--border-soft); padding: 0.5rem; border-radius: 6px; transition: background 0.2s; }
-        .doc-btn:hover { background: var(--accent-purple); color: #0d0c12; font-weight: 500; }
+        .doc-btn { 
+            text-align: center; font-family: var(--font-mono); font-size: 0.8rem; 
+            text-decoration: none; color: var(--text-main); background: #121118; 
+            border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; 
+            border-radius: 6px; transition: all 0.2s; 
+        }
+        .doc-btn:hover { background: var(--accent-purple); color: #0d0c12; font-weight: 600; border-color: var(--accent-purple); }
 
         /* -------------------------------------------------------------
            CONTACT
@@ -254,7 +244,6 @@
 
     <div class="glow-bg"></div>
 
-    <!-- NAVBAR ORDINATEUR -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -262,7 +251,6 @@
                 <ul>
                     <li><a href="#propos">À propos</a></li>
                     <li><a href="#competences">Compétences</a></li>
-                    <li><a href="#projets">Projets</a></li>
                     <li><a href="#parcours">Parcours</a></li>
                     <li><a href="#veille">Veille</a></li>
                     <li><a href="#documents">Livrables</a></li>
@@ -273,11 +261,9 @@
         </div>
     </header>
 
-    <!-- NAVBAR TACTILE TABLETTE -->
     <div class="mobile-nav">
         <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
-        <a href="#projets"><span class="mobile-icon">📁</span>Specs</a>
         <a href="#veille"><span class="mobile-icon">🌐</span>Veille</a>
         <a href="#documents"><span class="mobile-icon">📄</span>Livrables</a>
         <a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); font-weight: bold;"><span class="mobile-icon">📄</span>CV</a>
@@ -285,13 +271,11 @@
 
     <div class="container">
 
-        <!-- HERO -->
         <section class="hero">
             <h1>Colombe Lankar</h1>
             <p>Étudiante en BTS SIO option SISR. Spécialisée dans l'administration des architectures systèmes, de la virtualisation et de l'ingénierie des réseaux.</p>
         </section>
 
-        <!-- TERMINAL -->
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-logo">&gt;_</div>
@@ -316,14 +300,12 @@
             </div>
         </div>
 
-        <!-- RACCOURCIS SYSTEME -->
         <div class="terminal-shortcuts">
             <button class="shortcut-btn" onclick="runCommand('cat atouts.txt')">cat atouts.txt</button>
             <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
-        <!-- SECTION 1 : A PROPOS -->
         <section id="propos">
             <h2 class="section-title">Qui suis-je ?</h2>
             <div class="bento-grid">
@@ -359,7 +341,6 @@
             </div>
         </section>
 
-        <!-- SECTION 2 : COMPETENCES -->
         <section id="competences">
             <h2 class="section-title">Savoir-faire Technique</h2>
             <div class="competences-grid">
@@ -402,50 +383,6 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : PROJETS -->
-        <section id="projets">
-    <h2 class="section-title">Mes Projets & TP</h2>
-    
-    <div class="bento-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
-        
-        <!-- BLOC 1 : Réseaux & Routage -->
-        <div class="bento-card">
-            <h3 style="color: var(--accent-purple);">// Bloc 1 : Réseaux & Routage</h3>
-            
-            <div class="ticket-card" style="margin-bottom: 1rem;">
-                <h4 class="ticket-title">Segmentation (VLANs)</h4>
-                <p class="field-value" style="font-size: 0.85rem;">Mise en place de VLANs pour isoler le trafic, couplée à un serveur Linux pour le routage Inter-VLAN[cite: 4].</p>
-                <a href="TP3_sisr.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP3</a>
-            </div>
-
-            <div class="ticket-card">
-                <h4 class="ticket-title">Routage Logiciel Linux</h4>
-                <p class="field-value" style="font-size: 0.85rem;">Interconnexion de réseaux distants en configurant le routage IP et le transfert de paquets (IP Forwarding)[cite: 5].</p>
-                <a href="tp4.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP4</a>
-            </div>
-        </div>
-
-        <!-- BLOC 2 : Administration & Sécurité -->
-        <div class="bento-card">
-            <h3 style="color: var(--accent-purple);">// Bloc 2 : Administration & Sécurité</h3>
-            
-            <div class="ticket-card" style="margin-bottom: 1rem;">
-                <h4 class="ticket-title">Sécurisation Switch Cisco</h4>
-                <p class="field-value" style="font-size: 0.85rem;">Administration via IOS : sécurisation des accès (console/VTY) et diagnostic des interfaces.</p>
-                <a href="TP2_SISR.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP2</a>
-            </div>
-
-            <div class="ticket-card">
-                <h4 class="ticket-title">Pare-feu (IPFire)</h4>
-                <p class="field-value" style="font-size: 0.85rem;">Déploiement d'une passerelle de sécurité avec filtrage d'URL (Proxy) et détection d'intrusions (IDS)[cite: 6].</p>
-                <a href="Tp5.0.docx" target="_blank" class="doc-btn" style="display:block; margin-top:10px;">Voir TP5</a>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-        <!-- SECTION 4 : PARCOURS -->
         <section id="parcours">
             <h2 class="section-title">Parcours Académique & Expériences</h2>
             <div class="timeline">
@@ -483,7 +420,6 @@
             </div>
         </section>
 
-        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE -->
         <section id="veille">
             <h2 class="section-title">Veille Technologique</h2>
             
@@ -551,60 +487,89 @@
             </div>
         </section>
 
-        <!-- SECTION 6 : LIVRABLES ET BILANS DE STAGE -->
         <section id="documents">
-            <h2 class="section-title">Livrables & Bilans de Stage</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Retrouvez ici mes comptes rendus d'infrastructures ainsi que les évaluations officielles de mes tuteurs lors de mes immersions en entreprise.</p>
-            
-            <!-- SOUS-SECTION : ÉVALUATIONS DE STAGE -->
-            <h3 style="font-family: var(--font-mono); font-size: 1rem; margin-bottom: 1rem; color: var(--accent-purple);">// Évaluations Professionnelles</h3>
-            <div class="docs-grid" style="margin-bottom: 2.5rem;">
-                
-                <!-- Bilan Stage 1ère année -->
-                <div class="doc-card" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.03);">
-                    <div class="doc-info">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple);">STAGE • 1ÈRE ANNÉE • 2025</span>
-                        <h4>Bilan & Évaluation de Stage</h4>
-                        <p>Évaluation des compétences acquises en milieu professionnel, rapport d'activités et appréciation du tuteur de stage.</p>
-                    </div>
-                    <a href="Bilan_Stage_1A.pdf" target="_blank" class="doc-btn" style="background: var(--accent-purple); color: #0d0c12; font-weight: bold;">Consulter la note (PDF)</a>
-                </div>
+            <h2 class="section-title">Livrables & Parcours SISR</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Retrouvez ici mes comptes rendus classés par blocs de compétences officiels du BTS SIO.</p>
 
-                <!-- Bilan Stage 2ème année (Grisé en attente) -->
-                <div class="doc-card" style="border-style: dashed; opacity: 0.5;">
-                    <div class="doc-info">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">STAGE • 2ÈME ANNÉE • 2026</span>
-                        <h4>Bilan & Évaluation de Stage</h4>
-                        <p>Ce document sera disponible à l'issue de mon stage de deuxième année de BTS SIO.</p>
+            <details class="bento-card" open style="margin-bottom: 1.5rem; padding: 1.5rem;">
+                <summary style="font-family: var(--font-sans); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 1rem; outline: none;">
+                    <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
+                    <div>
+                        <div style="font-size: 1.1rem; color: var(--text-main);">Bloc 1 : Support et mise à disposition de services</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Administration des services et assistance utilisateur</div>
                     </div>
-                    <span class="doc-btn" style="background: transparent; border-color: var(--border-soft); cursor: not-allowed; color: var(--text-muted);">À venir</span>
-                </div>
+                </summary>
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem;">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 5 — Déploiement et Sécurité IPFire</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="Tp5.0.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
 
-            </div>
+                </div>
+            </details>
 
-            <!-- SOUS-SECTION : COMPTES RENDUS DE TP -->
-            <h3 style="font-family: var(--font-mono); font-size: 1rem; margin-bottom: 1rem; color: var(--accent-purple);">// Comptes Rendus de TP (SISR)</h3>
-            <div class="docs-grid">
-                <div class="doc-card">
-                    <div class="doc-info">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple);">RÉSEAUX • SIO1 • 2025</span>
-                        <h4>TP7 — DHCP, DNS & Serveur HTTP</h4>
-                        <p>Mise en place d'une infrastructure complète : attribution IP automatique via DHCP, résolution de noms par DNS et hébergement d'un site web accessible via http://web.tp.local.</p>
+            <details class="bento-card" open style="padding: 1.5rem;">
+                <summary style="font-family: var(--font-sans); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 1rem; outline: none;">
+                    <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
+                    <div>
+                        <div style="font-size: 1.1rem; color: var(--text-main);">Bloc 2 : Option SISR — Administration des systèmes et réseaux</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Réseautage, routage et infrastructures</div>
                     </div>
-                    <a href="TP7.pdf" target="_blank" class="doc-btn">Ouvrir le livrable (PDF)</a>
-                </div>
-                <div class="doc-card">
-                    <div class="doc-info">
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-purple);">RÉSEAUX • SIO1 • 2025</span>
-                        <h4>TP8 — VLAN & Routage Inter-VLAN avec DHCP</h4>
-                        <p>Segmentation du réseau en VLAN10 et VLAN20, configuration des switches et du routeur, mise en place d'un serveur DHCP avec agent relais (IP helper-address).</p>
+                </summary>
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem;">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 2 — Configuration switch Cisco</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="TP2_SISR.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
                     </div>
-                    <a href="TP8.pdf" target="_blank" class="doc-btn">Ouvrir le livrable (PDF)</a>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 3 — Segmentation (VLANs)</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="TP3_sisr.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 4 — Routage Linux</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="tp4.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+            </details>
         </section>
 
-        <!-- SECTION 7 : CONTACT -->
         <section id="contact">
             <h2 class="section-title">Me Rejoindre / Contact</h2>
             <div class="contact-grid">
@@ -641,7 +606,6 @@
 
     </div>
 
-    <!-- TERMINAL SCRIPT -->
     <script>
         const terminalInput = document.getElementById('terminalInput');
         const terminalOutput = document.getElementById('terminalOutput');
