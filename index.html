@@ -171,35 +171,62 @@
         .time-sub { font-size: 0.85rem; color: var(--text-muted); }
         .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
 
-        /* -------------------------------------------------------------
-           VEILLE (NOUVEAU LAYOUT 1/3 - 2/3 & BADGES)
+       /* -------------------------------------------------------------
+           NOUVEAU DESIGN VEILLE (Exclusif)
         ------------------------------------------------------------- */
-        .veille-split { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 900px) { .veille-split { grid-template-columns: 1.2fr 2fr; } }
-        .veille-col-left { display: flex; flex-direction: column; gap: 1.5rem; }
-        .veille-col-right { display: flex; flex-direction: column; gap: 1.5rem; }
-
-        .veille-header-block { background: rgba(167, 139, 250, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
-        .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main); }
-        .veille-header-block p, .veille-header-block li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-
-        .article-card { background: #111827; border: 1px solid #1f2937; border-radius: 16px; padding: 1.5rem; display: flex; gap: 1.5rem; transition: border-color 0.2s; }
-        .article-card:hover { border-color: var(--border-tech); }
-        .article-icon { font-size: 2rem; display: none; flex-shrink: 0; background: rgba(255,255,255,0.02); height: 60px; width: 60px; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid var(--border-soft); }
-        @media (min-width: 600px) { .article-icon { display: flex; } }
-        .article-content { flex: 1; }
-        .article-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
-        .article-title { font-size: 1.1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
+        .veille-articles-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
         
-        .badge-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-        .b-choisi { background: rgba(52, 211, 153, 0.1); color: #34d399; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.2); font-family: var(--font-mono); }
-        .b-eleve { background: rgba(192, 132, 252, 0.1); color: #c084fc; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(192, 132, 252, 0.2); font-family: var(--font-mono); }
-        .b-cat { background: #1f2937; color: #e2e8f0; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; font-family: var(--font-mono); }
-
-        .article-desc { font-size: 0.85rem; color: #9ca3af; line-height: 1.6; margin-bottom: 1.2rem; }
-        .article-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); border-top: 1px solid var(--border-soft); padding-top: 0.75rem; }
-        .article-link { color: var(--accent-purple); text-decoration: none; font-weight: bold; }
-        .article-link:hover { text-decoration: underline; }
+        .veille-card-v2 {
+            display: flex; flex-direction: column;
+            background: rgba(13, 12, 18, 0.6);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .veille-card-v2:hover {
+            border-color: var(--border-tech);
+            transform: translateY(-4px);
+            background: rgba(22, 20, 28, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        /* Barre lumineuse au survol */
+        .veille-card-v2::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--accent-purple); opacity: 0; transition: opacity 0.3s ease;
+        }
+        .veille-card-v2:hover::before { opacity: 1; }
+        
+        .v-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        
+        .v-tag { 
+            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+            background: rgba(167, 139, 250, 0.1); color: var(--accent-purple);
+            padding: 0.3rem 0.6rem; border-radius: 20px; border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+        
+        .v-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+        
+        .v-title { font-size: 1.1rem; color: var(--text-main); line-height: 1.4; margin-bottom: 0.75rem; transition: color 0.2s; }
+        .veille-card-v2:hover .v-title { color: var(--accent-purple); }
+        
+        .v-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+        
+        .v-footer { 
+            display: flex; justify-content: space-between; align-items: center;
+            border-top: 1px solid var(--border-soft); padding-top: 1rem; margin-top: auto;
+        }
+        .v-source { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main); font-weight: bold; }
+        .v-read { font-size: 0.8rem; color: var(--accent-purple); font-weight: 600; }
 
         /* -------------------------------------------------------------
            LIVRABLES / DOSSIERS
