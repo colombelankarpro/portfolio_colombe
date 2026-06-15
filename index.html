@@ -56,7 +56,7 @@
         summary::-webkit-details-marker { display: none; }
 
         /* -------------------------------------------------------------
-           NAVIGATION PC (HAUT)
+           NAVIGATION
         ------------------------------------------------------------- */
         header {
             position: fixed; top: 0; width: 100%;
@@ -79,7 +79,6 @@
         }
         nav a:hover { color: var(--accent-purple); }
 
-        /* NAVIGATION TACTILE MOBILE / TABLETTE (BAS) */
         .mobile-nav {
             display: none; position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(13, 12, 18, 0.95); backdrop-filter: blur(20px);
@@ -105,28 +104,18 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); text-align: left;
             font-family: var(--font-mono); overflow: hidden; margin-bottom: 3.5rem;
         }
-        
         .terminal-header {
             background: #121118; padding: 0.8rem 1.2rem;
             display: flex; align-items: center; justify-content: flex-start; 
             border-bottom: 1px solid var(--border-soft); gap: 0.75rem;
         }
-        
         .terminal-logo {
-            color: var(--accent-purple);
-            font-family: var(--font-mono);
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: -1px;
+            color: var(--accent-purple); font-weight: bold; font-size: 1.1rem;
             animation: pulse-logo 2s infinite;
         }
+        @keyframes pulse-logo { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         
-        @keyframes pulse-logo {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .terminal-title { color: var(--text-muted); font-size: 0.85rem; white-space: nowrap; }
+        .terminal-title { color: var(--text-muted); font-size: 0.85rem; }
         .terminal-body { padding: 1.3rem; height: 240px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
         
         .t-purple { color: var(--accent-purple); font-weight: bold; }
@@ -147,7 +136,7 @@
         .shortcut-btn:hover { background: var(--accent-purple); color: #0d0c12; transform: translateY(-1px); font-weight: 500; }
 
         /* -------------------------------------------------------------
-           A PROPOS & BENTO
+           BENTO & COMPETENCES
         ------------------------------------------------------------- */
         .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
         .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; transition: background 0.2s; }
@@ -164,9 +153,6 @@
         .meta-label { font-family: var(--font-mono); font-size: 0.77rem; color: var(--text-muted); display: block; }
         .meta-val { font-size: 0.85rem; font-weight: 600; }
 
-        /* -------------------------------------------------------------
-           COMPETENCES
-        ------------------------------------------------------------- */
         .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
         .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
         .comp-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 1rem; }
@@ -186,26 +172,34 @@
         .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
 
         /* -------------------------------------------------------------
-           VEILLE TECHNOLOGIQUE
+           VEILLE (NOUVEAU LAYOUT 1/3 - 2/3 & BADGES)
         ------------------------------------------------------------- */
-        .veille-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-        .veille-header-block { background: rgba(167, 139, 250, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
-        .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-purple); }
-        .veille-header-block p { font-size: 0.9rem; color: var(--text-main); }
-        .veille-header-block ul { list-style-type: square; padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; }
-        .veille-header-block ul li { margin-bottom: 0.3rem; }
+        .veille-split { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 900px) { .veille-split { grid-template-columns: 1.2fr 2fr; } }
+        .veille-col-left { display: flex; flex-direction: column; gap: 1.5rem; }
+        .veille-col-right { display: flex; flex-direction: column; gap: 1.5rem; }
 
-        .veille-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .veille-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.5rem; border-radius: 12px; }
-        .veille-card h4 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
-        .veille-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-        .veille-badges { display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap; }
+        .veille-header-block { background: rgba(167, 139, 250, 0.03); border: 1px dashed var(--border-tech); padding: 1.5rem; border-radius: 12px; height: 100%; }
+        .veille-header-block h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main); }
+        .veille-header-block p, .veille-header-block li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+        .article-card { background: #111827; border: 1px solid #1f2937; border-radius: 16px; padding: 1.5rem; display: flex; gap: 1.5rem; transition: border-color 0.2s; }
+        .article-card:hover { border-color: var(--border-tech); }
+        .article-icon { font-size: 2rem; display: none; flex-shrink: 0; background: rgba(255,255,255,0.02); height: 60px; width: 60px; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid var(--border-soft); }
+        @media (min-width: 600px) { .article-icon { display: flex; } }
+        .article-content { flex: 1; }
+        .article-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+        .article-title { font-size: 1.1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
         
-        .sources-block { background: #09080c; border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
-        .sources-title { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
-        .sources-layout { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .source-tag-link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-main); text-decoration: none; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 6px; transition: all 0.2s; }
-        .source-tag-link:hover { border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.08); }
+        .badge-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .b-choisi { background: rgba(52, 211, 153, 0.1); color: #34d399; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.2); font-family: var(--font-mono); }
+        .b-eleve { background: rgba(192, 132, 252, 0.1); color: #c084fc; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(192, 132, 252, 0.2); font-family: var(--font-mono); }
+        .b-cat { background: #1f2937; color: #e2e8f0; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; font-family: var(--font-mono); }
+
+        .article-desc { font-size: 0.85rem; color: #9ca3af; line-height: 1.6; margin-bottom: 1.2rem; }
+        .article-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); border-top: 1px solid var(--border-soft); padding-top: 0.75rem; }
+        .article-link { color: var(--accent-purple); text-decoration: none; font-weight: bold; }
+        .article-link:hover { text-decoration: underline; }
 
         /* -------------------------------------------------------------
            LIVRABLES / DOSSIERS
@@ -233,7 +227,6 @@
             header { display: none; }
             .mobile-nav { display: flex; }
             .bento-grid { grid-template-columns: 1fr; }
-            .veille-intro-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.4rem; }
             .hero p { font-size: 1rem; }
             body { padding-bottom: 6rem; }
@@ -244,6 +237,7 @@
 
     <div class="glow-bg"></div>
 
+    <!-- NAVBAR ORDINATEUR -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">colombe<span>.lankar</span></a>
@@ -261,6 +255,7 @@
         </div>
     </header>
 
+    <!-- NAVBAR TACTILE TABLETTE -->
     <div class="mobile-nav">
         <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
@@ -271,11 +266,13 @@
 
     <div class="container">
 
+        <!-- HERO -->
         <section class="hero">
             <h1>Colombe Lankar</h1>
             <p>Étudiante en BTS SIO option SISR. Spécialisée dans l'administration des architectures systèmes, de la virtualisation et de l'ingénierie des réseaux.</p>
         </section>
 
+        <!-- TERMINAL -->
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-logo">&gt;_</div>
@@ -300,12 +297,14 @@
             </div>
         </div>
 
+        <!-- RACCOURCIS SYSTEME -->
         <div class="terminal-shortcuts">
             <button class="shortcut-btn" onclick="runCommand('cat atouts.txt')">cat atouts.txt</button>
             <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
 
+        <!-- SECTION 1 : A PROPOS -->
         <section id="propos">
             <h2 class="section-title">Qui suis-je ?</h2>
             <div class="bento-grid">
@@ -341,6 +340,7 @@
             </div>
         </section>
 
+        <!-- SECTION 2 : COMPETENCES -->
         <section id="competences">
             <h2 class="section-title">Savoir-faire Technique</h2>
             <div class="competences-grid">
@@ -383,6 +383,7 @@
             </div>
         </section>
 
+        <!-- SECTION 3 : PARCOURS -->
         <section id="parcours">
             <h2 class="section-title">Parcours Académique & Expériences</h2>
             <div class="timeline">
@@ -407,90 +408,121 @@
                     <div class="time-sub">Spécialités : Mathématiques & Numérique et Sciences Informatiques (NSI)</div>
                 </div>
             </div>
-            
-            <h3 class="section-title" style="font-size: 1.1rem; margin-top: 3rem; margin-bottom: 1.5rem;">Langues de communication</h3>
-            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="bento-card">
-                    <h4>Français <span style="font-size: 0.75rem; color: var(--accent-purple); font-family: var(--font-mono);">[Langue Maternelle]</span></h4>
-                </div>
-                <div class="bento-card">
-                    <h4>Anglais <span style="font-size: 0.75rem; color: var(--accent-green); font-family: var(--font-mono);">[Bon Niveau]</span></h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">Spécialité LLCER Anglais au Lycée, lecture de documentations techniques informatiques.</p>
-                </div>
-            </div>
         </section>
 
+        <!-- SECTION 4 : VEILLE TECHNOLOGIQUE -->
         <section id="veille">
             <h2 class="section-title">Veille Technologique</h2>
             
-            <div class="veille-intro-grid">
-                <div class="veille-header-block">
-                    <h3>Le Principe de la Veille</h3>
-                    <p>La veille technologique consiste à s'informer de manière continue sur les dernières innovations et évolutions du secteur informatique. Pour un administrateur systèmes et réseaux, elle sert à :</p>
-                    <ul>
-                        <li>Anticiper les mutations technologiques (Cloud, IA, Virtualisation).</li>
-                        <li>Assurer la sécurité des infrastructures face aux nouvelles menaces.</li>
-                        <li>Proposer des solutions plus performantes, économiques et éco-responsables à l'entreprise.</li>
-                    </ul>
-                </div>
-                <div class="veille-header-block" style="border-color: var(--accent-purple);">
-                    <h3>Ma Méthodologie de Mise en Place</h3>
-                    <p>Pour structurer mes recherches, j'ai mis en place un écosystème de <strong>veille active (méthode PULL)</strong> et de <strong>veille automatisée (méthode PUSH)</strong> :</p>
-                    <ul>
-                        <li><strong>Outils de centralisation :</strong> Utilisation d'agrégateurs de flux RSS (Feedly) pour consolider les articles.</li>
-                        <li><strong>Curation de contenu :</strong> Alertes automatisées par mots-clés sur Google Alerts.</li>
-                        <li><strong>Sélection des sources :</strong> Suivi quotidien de médias techniques de référence (ADEME, Le Monde Informatique, ZDNet).</li>
-                    </ul>
-                </div>
-            </div>
+            <div class="veille-split">
+                
+                <!-- COLONNE GAUCHE (1/3) : Méthodologie & Sujet -->
+                <div class="veille-col-left">
+                    <!-- Carte 1 -->
+                    <div class="veille-header-block">
+                        <h3>📡 Méthodologie</h3>
+                        <p>Cette veille cible les évolutions architecturales autour du modèle Zero Trust appliqué à la sécurité des infrastructures, en croisant des sources spécialisées et des alertes automatisées.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                            <li style="margin-bottom: 0.8rem;"><span style="color: var(--accent-purple);">■</span> <strong>NewsBlur & Flux RSS</strong> - Base de données de publications spécialisées en infrastructure IT (LeMagIT, Silicon, Global Security Mag).</li>
+                            <li><span style="color: var(--accent-purple);">■</span> <strong>Google Alerts</strong> - Alertes automatiques sur les mots-clés "Zero Trust", "ZTNA", "micro-segmentation".</li>
+                        </ul>
+                    </div>
 
-            <div class="veille-header-block" style="margin-bottom: 2rem; background: rgba(167, 139, 250, 0.02);">
-                <h3 style="color: var(--text-main); font-weight: bold;">Sujet d'étude : L'impact environnemental des datacenters et les solutions pour le réduire</h3>
-                <p style="margin-top: 0.25rem;"><strong>Problématique :</strong> « Face à l'explosion des usages numériques et de l'intelligence artificielle, comment optimiser, réguler et réduire la consommation énergétique des datacenters ? »</p>
-            </div>
-
-            <div class="veille-grid">
-                <div class="veille-card">
-                    <h4>⚡ Consommation énergétique</h4>
-                    <p>Les datacenters représentent aujourd'hui environ 1 à 2 % de la consommation d'électricité mondiale. Avec l'essor de l'IA générative, cette part augmente fortement. Suivi des indicateurs PUE (Power Usage Effectiveness) et des objectifs de neutralité carbone.</p>
-                    <div class="veille-badges">
-                        <span class="tech-badge">PUE</span><span class="tech-badge">Consommation IA</span><span class="tech-badge">Électricité</span>
+                    <!-- Carte 2 -->
+                    <div class="veille-header-block" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.02);">
+                        <h3>📖 Sujet de veille</h3>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                            <li style="margin-bottom: 0.8rem; display: flex; gap: 10px;">
+                                <span style="font-size: 1.2rem;">🔒</span> 
+                                <span><strong>Modèle Zero Trust / ZTNA</strong> - Remplacement des architectures VPN périmétriques traditionnelles par un contrôle et une vérification continue des accès.</span>
+                            </li>
+                            <li style="display: flex; gap: 10px;">
+                                <span style="font-size: 1.2rem;">⚙️</span> 
+                                <span><strong>Concepts étudiés</strong> - Micro-segmentation réseau, architectures SASE, sécurité axée sur les données (DSPM), gestion des accès distants (BYOD).</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="veille-card">
-                    <h4>🌱 Solutions & innovations</h4>
-                    <p>Refroidissement par immersion (Liquid Cooling), free cooling, récupération de chaleur fatale pour chauffer des quartiers, intégration d'énergies renouvelables et optimisation logicielle des infrastructures de calcul.</p>
-                    <div class="veille-badges">
-                        <span class="tech-badge">Refroidissement</span><span class="tech-badge">Free Cooling</span><span class="tech-badge">Green IT</span>
-                    </div>
-                </div>
-                <div class="veille-card">
-                    <h4>⚖️ Réglementation française & UE</h4>
-                    <p>La loi REEN en France impose aux datacenters de réduire leur empreinte environnementale. Directives européennes sur l'efficacité énergétique, labels Tier et norme EN 50600 encadrant la conformité éco-responsable.</p>
-                    <div class="veille-badges">
-                        <span class="tech-badge">Loi REEN</span><span class="tech-badge">Directive UE</span><span class="tech-badge">Norme EN 50600</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="sources-block">
-                <div class="sources-title">Sources utilisées & Flux d'informations :</div>
-                <div class="sources-layout">
-                    <a href="https://www.ademe.fr" target="_blank" class="source-tag-link">ADEME</a>
-                    <a href="https://www.lemondeinformatique.fr" target="_blank" class="source-tag-link">Le Monde Informatique</a>
-                    <a href="https://www.datacenterknowledge.com" target="_blank" class="source-tag-link">Data Center Knowledge</a>
-                    <a href="https://www.zdnet.fr" target="_blank" class="source-tag-link">ZDNet</a>
-                    <a href="https://www.legifrance.gouv.fr" target="_blank" class="source-tag-link">Legifrance (loi REEN)</a>
-                    <a href="https://www.iea.org" target="_blank" class="source-tag-link">IEA.org</a>
-                    <a href="https://www.gimelec.fr" target="_blank" class="source-tag-link">Gimelec</a>
+                <!-- COLONNE DROITE (2/3) : Articles -->
+                <div class="veille-col-right">
+                    
+                    <!-- Article 1 -->
+                    <div class="article-card">
+                        <div class="article-icon">🛡️</div>
+                        <div class="article-content">
+                            <div class="article-header">
+                                <div class="article-title">VPN : comment Tixeo a remplacé OpenVPN pour ses accès distants</div>
+                                <div class="badge-group">
+                                    <span class="b-choisi">✓ Choisi</span>
+                                    <span class="b-eleve">Élevé</span>
+                                    <span class="b-cat">Transition VPN</span>
+                                </div>
+                            </div>
+                            <div class="article-desc">
+                                Analyse de la décision d'abandonner OpenVPN au profit d'un protocole plus agile (WireGuard) associé à un coordinateur open source (Headscale). Cette transition illustre la modernisation des accès distants en entreprise vers des structures plus modulaires.
+                            </div>
+                            <div class="article-footer">
+                                <span>Novembre 2025 • LeMagIT</span>
+                                <a href="#" class="article-link">Lire ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Article 2 -->
+                    <div class="article-card">
+                        <div class="article-icon">🌐</div>
+                        <div class="article-content">
+                            <div class="article-header">
+                                <div class="article-title">SASE : Cato Networks facilite l’accès à sa plateforme réseau sans confiance</div>
+                                <div class="badge-group">
+                                    <span class="b-choisi">✓ Choisi</span>
+                                    <span class="b-eleve">Élevé</span>
+                                    <span class="b-cat">Accès ZTNA / BYOD</span>
+                                </div>
+                            </div>
+                            <div class="article-desc">
+                                Évolution d'une plateforme SASE via le lancement d'une extension Chrome, éliminant le besoin d'installer un client lourd. Cette approche permet aux administrateurs d'appliquer des politiques Zero Trust strictes, même sur les terminaux non maîtrisés (BYOD).
+                            </div>
+                            <div class="article-footer">
+                                <span>Octobre 2025 • LeMagIT</span>
+                                <a href="#" class="article-link">Lire ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div class="article-card">
+                        <div class="article-icon">📊</div>
+                        <div class="article-content">
+                            <div class="article-header">
+                                <div class="article-title">Architecture Zero Trust : l'intégration du SASE avec la sécurité des données (DSPM)</div>
+                                <div class="badge-group">
+                                    <span class="b-choisi">✓ Choisi</span>
+                                    <span class="b-eleve">Élevé</span>
+                                    <span class="b-cat">Sécurité des données</span>
+                                </div>
+                            </div>
+                            <div class="article-desc">
+                                Analyse de l'intégration des fonctionnalités réseau de Cato Networks avec la gestion de la posture de sécurité des données (DSPM) de Cyera. L'attribution des droits d'accès et la segmentation réseau s'adaptent désormais dynamiquement selon la criticité des données manipulées.
+                            </div>
+                            <div class="article-footer">
+                                <span>Début 2026 • Global Security Mag</span>
+                                <a href="#" class="article-link">Lire ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- SECTION 5 : LIVRABLES INTEGRES (DOSSIERS PLIABLES) -->
         <section id="documents">
             <h2 class="section-title">Livrables & Parcours SISR</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Retrouvez ici mes comptes rendus classés par blocs de compétences officiels du BTS SIO.</p>
 
+            <!-- BLOC 1 -->
             <details class="bento-card" open style="margin-bottom: 1.5rem; padding: 1.5rem;">
                 <summary style="font-family: var(--font-sans); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 1rem; outline: none;">
                     <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
@@ -501,22 +533,23 @@
                 </summary>
                 <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem;">
                     
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="font-size: 1.2rem;">📄</span>
                             <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 5 — Déploiement et Sécurité IPFire</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 7 — Déploiement de Services Réseaux</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
                             </div>
                         </div>
                         <div style="display: flex; gap: 10px;">
-                            <a href="Tp5.0.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                            <a href="TP7.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
                         </div>
                     </div>
 
                 </div>
             </details>
 
+            <!-- BLOC 2 -->
             <details class="bento-card" open style="padding: 1.5rem;">
                 <summary style="font-family: var(--font-sans); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 1rem; outline: none;">
                     <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
@@ -527,42 +560,16 @@
                 </summary>
                 <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem;">
                     
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.2rem;">📄</span>
-                            <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 2 — Configuration switch Cisco</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="TP2_SISR.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.2rem;">📄</span>
-                            <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 3 — Segmentation (VLANs)</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="TP3_sisr.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
-                        </div>
-                    </div>
-
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="font-size: 1.2rem;">📄</span>
                             <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 4 — Routage Linux</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.docx</span>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 8 — Administration Avancée et Routage</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
                             </div>
                         </div>
                         <div style="display: flex; gap: 10px;">
-                            <a href="tp4.docx" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                            <a href="TP8.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
                         </div>
                     </div>
 
@@ -570,6 +577,7 @@
             </details>
         </section>
 
+        <!-- SECTION 6 : CONTACT -->
         <section id="contact">
             <h2 class="section-title">Me Rejoindre / Contact</h2>
             <div class="contact-grid">
@@ -606,6 +614,7 @@
 
     </div>
 
+    <!-- TERMINAL SCRIPT -->
     <script>
         const terminalInput = document.getElementById('terminalInput');
         const terminalOutput = document.getElementById('terminalOutput');
