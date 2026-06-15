@@ -436,111 +436,87 @@
                 </div>
             </div>
         </section>
-
-        <!-- SECTION 4 : VEILLE TECHNOLOGIQUE -->
+<!-- SECTION 4 : VEILLE TECHNOLOGIQUE -->
         <section id="veille">
             <h2 class="section-title">Veille Technologique</h2>
-            
-            <div class="veille-split">
+
+            <!-- INTRODUCTION : Qu'est-ce que la veille + Méthodologie -->
+            <div class="bento-grid" style="margin-bottom: 3rem;">
+                <div class="bento-card" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.03);">
+                    <h3>💡 À quoi sert la veille informatique ?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        La veille technologique est une démarche proactive qui consiste à s'informer en continu sur les innovations du secteur IT. Pour une administratrice systèmes et réseaux, c'est une compétence vitale : elle permet d'<strong>anticiper les nouvelles failles de sécurité</strong>, d'étudier l'évolution des architectures réseaux et de maintenir ses infrastructures à la pointe des normes actuelles.
+                    </p>
+                    <div style="border-top: 1px dashed var(--border-soft); padding-top: 1rem; margin-top: 1rem;">
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main);">Outils & Méthodologie :</h4>
+                        <ul class="skills-list-text" style="font-size: 0.85rem;">
+                            <li>Agrégation de flux RSS (NewsBlur / Feedly) ciblés sur l'infrastructure IT.</li>
+                            <li>Alertes automatisées (Google Alerts) sur des mots-clés spécifiques.</li>
+                            <li>Consultation régulière de médias spécialisés (LeMagIT, Global Security Mag).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <h3>🎯 Mon sujet d'étude : Le Zero Trust</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        J'ai choisi de concentrer ma veille sur la transition des entreprises vers le modèle <strong>Zero Trust (ZTNA)</strong>. Ce concept remplace progressivement les VPN traditionnels en appliquant un principe de sécurité strict : <em>"ne faire confiance à aucun utilisateur ou appareil par défaut"</em>, même s'il est déjà connecté au réseau local.
+                    </p>
+                    <div class="interests-tags" style="margin-top: 1rem;">
+                        <span class="interest-tag">Micro-segmentation</span>
+                        <span class="interest-tag">Architectures SASE</span>
+                        <span class="interest-tag">Sécurité des données (DSPM)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRILLE D'ARTICLES -->
+            <h3 style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--text-main); margin-bottom: 1.5rem;">// Dernières publications analysées</h3>
+
+            <div class="veille-articles-grid">
                 
-                <!-- COLONNE GAUCHE (1/3) : Méthodologie & Sujet -->
-                <div class="veille-col-left">
-                    <!-- Carte 1 -->
-                    <div class="veille-header-block">
-                        <h3>📡 Méthodologie</h3>
-                        <p>Cette veille cible les évolutions architecturales autour du modèle Zero Trust appliqué à la sécurité des infrastructures, en croisant des sources spécialisées et des alertes automatisées.</p>
-                        <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
-                            <li style="margin-bottom: 0.8rem;"><span style="color: var(--accent-purple);">■</span> <strong>NewsBlur & Flux RSS</strong> - Base de données de publications spécialisées en infrastructure IT (LeMagIT, Silicon, Global Security Mag).</li>
-                            <li><span style="color: var(--accent-purple);">■</span> <strong>Google Alerts</strong> - Alertes automatiques sur les mots-clés "Zero Trust", "ZTNA", "micro-segmentation".</li>
-                        </ul>
+                <!-- Article 1 -->
+                <a href="#" target="_blank" class="veille-card-v2">
+                    <div class="v-card-header">
+                        <span class="v-tag">Transition VPN</span>
+                        <span class="v-date">Novembre 2025</span>
                     </div>
-
-                    <!-- Carte 2 -->
-                    <div class="veille-header-block" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.02);">
-                        <h3>📖 Sujet de veille</h3>
-                        <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
-                            <li style="margin-bottom: 0.8rem; display: flex; gap: 10px;">
-                                <span style="font-size: 1.2rem;">🔒</span> 
-                                <span><strong>Modèle Zero Trust / ZTNA</strong> - Remplacement des architectures VPN périmétriques traditionnelles par un contrôle et une vérification continue des accès.</span>
-                            </li>
-                            <li style="display: flex; gap: 10px;">
-                                <span style="font-size: 1.2rem;">⚙️</span> 
-                                <span><strong>Concepts étudiés</strong> - Micro-segmentation réseau, architectures SASE, sécurité axée sur les données (DSPM), gestion des accès distants (BYOD).</span>
-                            </li>
-                        </ul>
+                    <h4 class="v-title">VPN : comment Tixeo a remplacé OpenVPN pour ses accès distants</h4>
+                    <p class="v-desc">Analyse de la décision d'abandonner OpenVPN au profit d'un protocole plus agile (WireGuard) associé à un coordinateur open source (Headscale). Une illustration parfaite de la modernisation des infra réseaux.</p>
+                    <div class="v-footer">
+                        <span class="v-source">LeMagIT</span>
+                        <span class="v-read">Lire l'article ↗</span>
                     </div>
-                </div>
+                </a>
 
-                <!-- COLONNE DROITE (2/3) : Articles -->
-                <div class="veille-col-right">
-                    
-                    <!-- Article 1 -->
-                    <div class="article-card">
-                        <div class="article-icon">🛡️</div>
-                        <div class="article-content">
-                            <div class="article-header">
-                                <div class="article-title">VPN : comment Tixeo a remplacé OpenVPN pour ses accès distants</div>
-                                <div class="badge-group">
-                                    <span class="b-choisi">✓ Choisi</span>
-                                    <span class="b-eleve">Élevé</span>
-                                    <span class="b-cat">Transition VPN</span>
-                                </div>
-                            </div>
-                            <div class="article-desc">
-                                Analyse de la décision d'abandonner OpenVPN au profit d'un protocole plus agile (WireGuard) associé à un coordinateur open source (Headscale). Cette transition illustre la modernisation des accès distants en entreprise vers des structures plus modulaires.
-                            </div>
-                            <div class="article-footer">
-                                <span>Novembre 2025 • LeMagIT</span>
-                                <a href="#" class="article-link">Lire ↗</a>
-                            </div>
-                        </div>
+                <!-- Article 2 -->
+                <a href="#" target="_blank" class="veille-card-v2">
+                    <div class="v-card-header">
+                        <span class="v-tag" style="background: rgba(52, 211, 153, 0.1); color: var(--accent-green); border-color: rgba(52, 211, 153, 0.2);">Accès ZTNA</span>
+                        <span class="v-date">Octobre 2025</span>
                     </div>
-
-                    <!-- Article 2 -->
-                    <div class="article-card">
-                        <div class="article-icon">🌐</div>
-                        <div class="article-content">
-                            <div class="article-header">
-                                <div class="article-title">SASE : Cato Networks facilite l’accès à sa plateforme réseau sans confiance</div>
-                                <div class="badge-group">
-                                    <span class="b-choisi">✓ Choisi</span>
-                                    <span class="b-eleve">Élevé</span>
-                                    <span class="b-cat">Accès ZTNA / BYOD</span>
-                                </div>
-                            </div>
-                            <div class="article-desc">
-                                Évolution d'une plateforme SASE via le lancement d'une extension Chrome, éliminant le besoin d'installer un client lourd. Cette approche permet aux administrateurs d'appliquer des politiques Zero Trust strictes, même sur les terminaux non maîtrisés (BYOD).
-                            </div>
-                            <div class="article-footer">
-                                <span>Octobre 2025 • LeMagIT</span>
-                                <a href="#" class="article-link">Lire ↗</a>
-                            </div>
-                        </div>
+                    <h4 class="v-title">SASE : Cato Networks facilite l’accès à sa plateforme réseau sans confiance</h4>
+                    <p class="v-desc">Évolution d'une plateforme SASE via le lancement d'une extension Chrome, éliminant le besoin d'installer un client lourd. Idéal pour appliquer des politiques Zero Trust sur les terminaux non maîtrisés (BYOD).</p>
+                    <div class="v-footer">
+                        <span class="v-source">LeMagIT</span>
+                        <span class="v-read">Lire l'article ↗</span>
                     </div>
+                </a>
 
-                    <!-- Article 3 -->
-                    <div class="article-card">
-                        <div class="article-icon">📊</div>
-                        <div class="article-content">
-                            <div class="article-header">
-                                <div class="article-title">Architecture Zero Trust : l'intégration du SASE avec la sécurité des données (DSPM)</div>
-                                <div class="badge-group">
-                                    <span class="b-choisi">✓ Choisi</span>
-                                    <span class="b-eleve">Élevé</span>
-                                    <span class="b-cat">Sécurité des données</span>
-                                </div>
-                            </div>
-                            <div class="article-desc">
-                                Analyse de l'intégration des fonctionnalités réseau de Cato Networks avec la gestion de la posture de sécurité des données (DSPM) de Cyera. L'attribution des droits d'accès et la segmentation réseau s'adaptent désormais dynamiquement selon la criticité des données manipulées.
-                            </div>
-                            <div class="article-footer">
-                                <span>Début 2026 • Global Security Mag</span>
-                                <a href="#" class="article-link">Lire ↗</a>
-                            </div>
-                        </div>
+                <!-- Article 3 -->
+                <a href="#" target="_blank" class="veille-card-v2">
+                    <div class="v-card-header">
+                        <span class="v-tag" style="background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.2);">Sécurité DSPM</span>
+                        <span class="v-date">Début 2026</span>
                     </div>
+                    <h4 class="v-title">Architecture Zero Trust : l'intégration du SASE avec la sécurité des données</h4>
+                    <p class="v-desc">Analyse de l'intégration des fonctionnalités réseau avec la gestion de la posture de sécurité (DSPM). L'attribution des droits d'accès s'adapte désormais dynamiquement selon la criticité de la donnée manipulée.</p>
+                    <div class="v-footer">
+                        <span class="v-source">Global Security Mag</span>
+                        <span class="v-read">Lire l'article ↗</span>
+                    </div>
+                </a>
 
-                </div>
             </div>
         </section>
 
