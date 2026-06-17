@@ -1,6 +1,453 @@
-<div class="veille-articles-grid">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombe Lankar | SysAdmin & Réseaux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #0d0c12;          
+            --bg-card: rgba(22, 20, 28, 0.6); 
+            --border-tech: rgba(167, 139, 250, 0.25); 
+            --border-soft: rgba(255, 255, 255, 0.04);
+            --text-main: #f3f4f6;        
+            --text-muted: #9ca3af;       
+            --accent-purple: #a78bfa;    
+            --accent-green: #34d399;     
+            --accent-orange: #fb923c;    
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 2rem;
+        }
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 1.5rem; }
+
+        .glow-bg {
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 1000px; height: 600px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.04) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        section { 
+            padding: 5rem 0 2rem 0; 
+            border-top: 1px solid var(--border-soft); 
+            scroll-margin-top: 100px; 
+        }
+
+        .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .section-title::before { content: "//"; color: var(--accent-purple); }
+
+        details > summary { list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%;
+            backdrop-filter: blur(12px); background: rgba(13, 12, 18, 0.8);
+            border-bottom: 1px solid var(--border-soft); z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem;
+        }
+        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; flex-shrink: 0; }
+        .logo span { color: var(--accent-purple); }
+        
+        nav { flex-grow: 1; display: flex; justify-content: flex-end; }
+        nav ul { display: flex; list-style: none; gap: 1.1rem; align-items: center; }
+        nav a { 
+            text-decoration: none; 
+            color: var(--text-muted); font-size: 0.88rem; font-weight: 500; 
+            white-space: nowrap; transition: color 0.2s; 
+        }
+        nav a:hover { color: var(--accent-purple); }
+
+        .mobile-nav {
+            display: none; position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(13, 12, 18, 0.95); backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-soft); z-index: 100;
+            padding: 0.75rem 1rem; justify-content: space-around;
+        }
+        .mobile-nav a {
+            display: flex; flex-direction: column; align-items: center;
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-family: var(--font-mono);
+        }
+        .mobile-nav a:hover { color: var(--accent-purple); }
+        .mobile-icon { font-size: 1.2rem; margin-bottom: 0.2rem; }
+
+        /* --- HERO & TERMINAL --- */
+        .hero { padding: 7rem 0 2rem 0; text-align: center; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto 2rem auto; }
+
+        .terminal-container {
+            background: #09080c; border: 1px solid var(--border-tech); border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); text-align: left;
+            font-family: var(--font-mono); overflow: hidden; margin-bottom: 3.5rem;
+        }
+        .terminal-header {
+            background: #121118; padding: 0.8rem 1.2rem;
+            display: flex; align-items: center; justify-content: flex-start; 
+            border-bottom: 1px solid var(--border-soft); gap: 0.75rem;
+        }
+        .terminal-logo {
+            color: var(--accent-purple); font-weight: bold; font-size: 1.1rem;
+            animation: pulse-logo 2s infinite;
+        }
+        @keyframes pulse-logo { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        .terminal-title { color: var(--text-muted); font-size: 0.85rem; }
+        .terminal-body { padding: 1.3rem; height: 240px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
+        
+        .t-purple { color: var(--accent-purple); font-weight: bold; }
+        .t-green { color: var(--accent-green); }
+        .t-orange { color: var(--accent-orange); }
+        
+        .terminal-input-line { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+        .terminal-input-line input {
+            background: transparent; border: none; color: var(--text-main);
+            font-family: var(--font-mono); font-size: 0.85rem; outline: none; flex: 1;
+        }
+        .terminal-shortcuts { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 5rem; flex-wrap: wrap; }
+        .shortcut-btn {
+            background: rgba(167, 139, 250, 0.05); border: 1px solid rgba(167, 139, 250, 0.2);
+            color: var(--accent-purple); font-family: var(--font-mono); padding: 0.4rem 1rem;
+            border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+        }
+        .shortcut-btn:hover { background: var(--accent-purple); color: #0d0c12; transform: translateY(-1px); font-weight: 500; }
+
+        /* --- BENTO & COMPETENCES --- */
+        .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
+        .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; transition: background 0.2s; }
+        .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
+        
+        .skills-list-text li { margin-bottom: 0.7rem; position: relative; padding-left: 1.2rem; font-size: 0.95rem; color: var(--text-muted); list-style: none; }
+        .skills-list-text li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-purple); }
+        
+        .interests-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+        .interest-tag { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; }
+        
+        .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
+        .meta-label { font-family: var(--font-mono); font-size: 0.77rem; color: var(--text-muted); display: block; }
+        .meta-val { font-size: 0.85rem; font-weight: 600; }
+
+        .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+        .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
+        .comp-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 1rem; }
+        .comp-icon { color: var(--accent-purple); }
+        .tech-badges-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tech-badge { font-family: var(--font-mono); font-size: 0.75rem; background: #09080c; border: 1px solid var(--border-soft); padding: 0.25rem 0.5rem; border-radius: 6px; color: #cbd5e1; }
+
+        /* --- PARCOURS --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 1.5rem; border-left: 2px solid var(--border-soft); }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        .timeline-item::before { content: ""; position: absolute; left: calc(-1.5rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); }
+        .time-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-purple); font-weight: bold; }
+        .time-title { font-size: 1.1rem; font-weight: 600; }
+        .time-sub { font-size: 0.85rem; color: var(--text-muted); }
+        .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
+
+        /* --- DESIGN VEILLE --- */
+        .veille-articles-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
+        
+        .veille-card-v2 {
+            display: flex; flex-direction: column;
+            background: rgba(13, 12, 18, 0.6);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .veille-card-v2:hover {
+            border-color: var(--border-tech);
+            transform: translateY(-4px);
+            background: rgba(22, 20, 28, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        .veille-card-v2::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--accent-purple); opacity: 0; transition: opacity 0.3s ease;
+        }
+        .veille-card-v2:hover::before { opacity: 1; }
+        
+        .v-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        
+        .v-tag { 
+            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+            background: rgba(167, 139, 250, 0.1); color: var(--accent-purple);
+            padding: 0.3rem 0.6rem; border-radius: 20px; border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+        
+        .v-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+        
+        .v-title { font-size: 1.1rem; color: var(--text-main); line-height: 1.4; margin-bottom: 0.75rem; transition: color 0.2s; }
+        .veille-card-v2:hover .v-title { color: var(--accent-purple); }
+        
+        .v-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+        
+        .v-footer { 
+            display: flex; justify-content: space-between; align-items: center;
+            border-top: 1px solid var(--border-soft); padding-top: 1rem; margin-top: auto;
+        }
+        .v-source { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main); font-weight: bold; }
+        .v-read { font-size: 0.8rem; color: var(--accent-purple); font-weight: 600; }
+
+        /* --- LIVRABLES / DOSSIERS --- */
+        .doc-btn { 
+            text-align: center; font-family: var(--font-mono); font-size: 0.8rem; 
+            text-decoration: none; color: var(--text-main); background: #121118; 
+            border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; 
+            border-radius: 6px; transition: all 0.2s; 
+        }
+        .doc-btn:hover { background: var(--accent-purple); color: #0d0c12; font-weight: 600; border-color: var(--accent-purple); }
+
+        /* --- CONTACT --- */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+        .contact-card { background: var(--bg-card); border: 1px solid var(--border-soft); padding: 1.25rem; border-radius: 12px; display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-main); transition: border-color 0.2s; }
+        .contact-card:hover { border-color: var(--border-tech); }
+        .contact-icon { font-size: 1.3rem; color: var(--accent-purple); }
+        .contact-label { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); display: block; }
+        .contact-val { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 980px) {
+            header { display: none; }
+            .mobile-nav { display: flex; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1rem; }
+            body { padding-bottom: 6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">colombe<span>.lankar</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#propos">À propos</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#parcours">Parcours</a></li>
+                    <li><a href="#veille">Veille</a></li>
+                    <li><a href="#documents">Livrables</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); border: 1px solid rgba(167, 139, 250, 0.4); padding: 0.35rem 0.8rem; border-radius: 6px; background: rgba(167, 139, 250, 0.05); font-weight: bold;">Mon CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
+        <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
+        <a href="#veille"><span class="mobile-icon">🌐</span>Veille</a>
+        <a href="#documents"><span class="mobile-icon">📄</span>Livrables</a>
+        <a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); font-weight: bold;"><span class="mobile-icon">📄</span>CV</a>
+    </div>
+
+    <div class="container">
+
+        <section class="hero">
+            <h1>Colombe Lankar</h1>
+            <p>Étudiante en BTS SIO option SISR. Spécialisée dans l'administration des architectures systèmes, de la virtualisation et de l'ingénierie des réseaux.</p>
+        </section>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-logo">&gt;_</div>
+                <div class="terminal-title">terminal – portfolio</div>
+            </div>
+            <div class="terminal-body" id="terminalOutput">
+                <p>Initialisation de la session de supervision... <span class="t-green">[OK]</span></p>
+                <p>Tapez <span class="t-purple">help</span> pour lister les commandes système disponibles.</p>
+                <div class="terminal-input-line"><span class="t-green">guest@portfolio:~$</span> <span class="t-purple">neofetch</span></div>
+                <p>--------------------------------------------------</p>
+                <p><span class="t-purple">PROFIL:</span> Colombe Lankar</p>
+                <p><span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)</p>
+                <p><span class="t-purple">PROD_ENV:</span> Linux Debian, Windows Server, VirtualBox, Cisco</p>
+                <p><span class="t-purple">TARGET:</span> Recherche active de Stage</p>
+                <p>--------------------------------------------------</p>
+            </div>
+            <div class="terminal-header" style="border-top: 1px solid var(--border-soft); border-bottom: none;">
+                <div class="terminal-input-line" style="width: 100%;">
+                    <span class="t-green">guest@portfolio:~$</span>
+                    <input type="text" id="terminalInput" placeholder="Saisissez une commande ou cliquez en-dessous..." autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-shortcuts">
+            <button class="shortcut-btn" onclick="runCommand('cat atouts.txt')">cat atouts.txt</button>
+            <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
+            <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
+        </div>
+
+        <section id="propos">
+            <h2 class="section-title">Qui suis-je ?</h2>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <h3>Description Globale</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Je suis Colombe Lankar, étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire à Étampes. Passionnée par l'administration systèmes, la virtualisation et la gestion des infrastructures réseaux, je cherche à mettre mes compétences en pratique lors de stages et d'expériences professionnelles.
+                    </p>
+                    <div class="meta-info-grid">
+                        <div class="meta-item"><span class="meta-label">FORMATION</span><span class="meta-val">BTS SIO - SISR</span></div>
+                        <div class="meta-item"><span class="meta-label">ETABLISSEMENT</span><span class="meta-val">Lycée Geoffroy-Saint-Hilaire</span></div>
+                        <div class="meta-item"><span class="meta-label">LOCALISATION</span><span class="meta-val">Étréchy, Essonne (91)</span></div>
+                        <div class="meta-item"><span class="meta-label">DISPONIBILITE</span><span class="meta-val">Stage</span></div>
+                    </div>
+                </div>
+                <div class="bento-card">
+                    <h3>Mes Atouts</h3>
+                    <ul class="skills-list-text">
+                        <li>Rigueur et sens du détail</li>
+                        <li>Esprit d'analyse et résolution de problèmes</li>
+                        <li>Travail collaboratif en équipe</li>
+                        <li>Curiosité et envie d'apprendre</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <h3 style="font-size:1rem; margin-bottom: 0.5rem;">Centres d'intérêt</h3>
+                        <div class="interests-tags">
+                            <span class="interest-tag">🎯 Tir sportif</span>
+                            <span class="interest-tag">📸 Photographie</span>
+                            <span class="interest-tag">🌐 Nouvelles technologies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <h2 class="section-title">Savoir-faire Technique</h2>
+            <div class="competences-grid">
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🌐</span> Réseaux</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">IPv4 / VLSM</span><span class="tech-badge">VLAN 802.1Q</span><span class="tech-badge">DHCP / DNS</span><span class="tech-badge">NAT / PAT</span><span class="tech-badge">ping / traceroute</span><span class="tech-badge">Wireshark</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">💻</span> Systèmes</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">Windows Server</span><span class="tech-badge">Linux (Debian)</span><span class="tech-badge">Comptes & Groupes</span><span class="tech-badge">Partages Réseau</span><span class="tech-badge">Pare-feu</span><span class="tech-badge">Shell Bash</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">⚙️</span> Virtualisation</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">VirtualBox</span><span class="tech-badge">Machines Virtuelles</span><span class="tech-badge">Réseau NAT</span><span class="tech-badge">Réseau Bridge</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🗄️</span> BDD & Scripts</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">SQL (CRUD)</span><span class="tech-badge">MySQL</span><span class="tech-badge">Python</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🕸️</span> Développements Web</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">HTML5</span><span class="tech-badge">CSS3</span><span class="tech-badge">JavaScript</span><span class="tech-badge">PHP</span>
+                    </div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-header"><span class="comp-icon">🛡️</span> Sécurité & Infrastructure</div>
+                    <div class="tech-badges-container">
+                        <span class="tech-badge">Pare-feu / ACL</span><span class="tech-badge">RGPD</span><span class="tech-badge">Diagnostic réseau</span><span class="tech-badge">Config. matériels</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="parcours">
+            <h2 class="section-title">Parcours Académique & Expériences</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-date">SEPT. 2025 — AUJOURD'HUI</div>
+                    <div class="time-title">BTS SIO — Option SISR</div>
+                    <div class="time-sub">Lycée Geoffroy-Saint-Hilaire, Étampes (91)</div>
+                    <ul class="time-desc">
+                        <li>Administration système (Linux Debian, Windows Server, AD)</li>
+                        <li>Réseaux d'infrastructure (Routage, Switching, Protocoles, Topologies complexes)</li>
+                        <li>Virtualisation d'architectures réseau sous VirtualBox</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-date">2024 — 2025</div>
+                    <div class="time-title">Maintenance Informatique & Support (Bénévolat)</div>
+                    <div class="time-sub">Activité Personnelle</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-date">JUIN 2025</div>
+                    <div class="time-title">Baccalauréat Général</div>
+                    <div class="time-sub">Spécialités : Mathématiques & Numérique et Sciences Informatiques (NSI)</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="veille">
+            <h2 class="section-title">Veille Technologique</h2>
+
+            <div class="bento-grid" style="margin-bottom: 3rem;">
+                <div class="bento-card" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.03);">
+                    <h3>💡 Pourquoi faire de la veille technologique ?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        La veille technologique est une practice essentielle pour tout professionnel de l'IT : elle consiste à surveiller et analyser en continu les évolutions d'un domaine, afin de rester compétent, de détecter les opportunités et d'anticiper les changements.
+                    </p>
+                    <div style="border-top: 1px dashed var(--border-soft); padding-top: 1rem; margin-top: 1rem;">
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main);">Outils & Méthodologie :</h4>
+                        <ul class="skills-list-text" style="font-size: 0.85rem;">
+                            <li><strong>Presse Spécialisée :</strong> LeMagIT, ZDNet, Ministère des Armées, Frandroid.</li>
+                            <li><strong>Alertes automatisées :</strong> Google Alerts ciblées ("SD-WAN satellitaire", "Direct-to-Cell").</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <h3>🛰️ Mon sujet d'étude : Réseaux Spatiaux LEO</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Cette veille cible les avancées technologiques sur les réseaux satellitaires en orbite basse (LEO) appliqués à l'infrastructure d'entreprise. Ces constellations offrent désormais des latences et débits comparables à la fibre terrestre.
+                    </p>
+                    <div class="interests-tags" style="margin-top: 1rem;">
+                        <span class="interest-tag">Routage Inter-satellites</span>
+                        <span class="interest-tag">SD-WAN Satellitaire</span>
+                        <span class="interest-tag">Direct-to-Cell</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--text-main); margin-bottom: 1.5rem;">// Dernières publications analysées</h3>
+
+            <div class="veille-articles-grid">
                 
-                <!-- Article 1 : Eutelsat / SD-WAN -->
                 <a href="https://www.lemagit.fr/essentialguide/Dossier-reseau-la-nouvelle-ere-de-la-connectivite-par-satellite" target="_blank" class="veille-card-v2">
                     <div class="v-card-header">
                         <span class="v-tag">SD-WAN</span>
@@ -14,7 +461,6 @@
                     </div>
                 </a>
 
-                <!-- Article 2 : Keraunos / DGA / Laser -->
                 <a href="https://www.defense.gouv.fr/dga/actualites/reussite-premiers-tests-du-satellite-communication-optique-keraunos" target="_blank" class="veille-card-v2">
                     <div class="v-card-header">
                         <span class="v-tag" style="background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.2);">Sécurité Défense</span>
@@ -28,7 +474,6 @@
                     </div>
                 </a>
 
-                <!-- Article 3 : Starlink / Direct-to-Cell / MDM -->
                 <a href="https://www.frandroid.com/marques/spacex/starlink/2998969_starlink-bientot-un-operateur-mobile-mondial-les-satellites-direct-to-cell-vont-faire-pleuvoir-la-5g-depuis-lespace" target="_blank" class="veille-card-v2">
                     <div class="v-card-header">
                         <span class="v-tag" style="background: rgba(52, 211, 153, 0.1); color: var(--accent-green); border-color: rgba(52, 211, 153, 0.2);">Direct-to-Cell</span>
@@ -43,3 +488,163 @@
                 </a>
 
             </div>
+        </section>
+
+        <section id="documents">
+            <h2 class="section-title">Livrables & Parcours SISR</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Retrouvez ici mes comptes rendus classés par blocs de compétences officiels du BTS SIO.</p>
+
+            <details class="bento-card" open style="margin-bottom: 1.5rem; padding: 1.5rem;">
+                <summary style="font-family: var(--font-sans); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 1rem; outline: none;">
+                    <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
+                    <div>
+                        <div style="font-size: 1.1rem; color: var(--text-main);">Bloc 1 : Support et mise à disposition de services</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Administration des services et assistance utilisateur</div>
+                    </div>
+                </summary>
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem;">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 7 — Déploiement de Services Réseaux</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="TP7.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
+                </div>
+            </details>
+
+            <details class="bento-card" open style="padding: 1.5rem;">
+                <summary style="font-family: var(--font-sans); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 1rem; outline: none;">
+                    <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
+                    <div>
+                        <div style="font-size: 1.1rem; color: var(--text-main);">Bloc 2 : Option SISR — Administration des systèmes et réseaux</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Réseautage, routage et infrastructures</div>
+                    </div>
+                </summary>
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem;">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 8 — Administration Avancée et Routage</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="TP8.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
+                </div>
+            </details>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Me Rejoindre / Contact</h2>
+            <div class="contact-grid">
+                <a href="mailto:colombe.lankar.pro@gmail.com" class="contact-card">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-val">colombe.lankar.pro@gmail.com</span>
+                    </div>
+                </a>
+                <a href="tel:0767477581" class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Téléphone</span>
+                        <span class="contact-val">07 67 47 75 81</span>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/colombe-lankar" target="_blank" class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-val">colombe-lankar</span>
+                    </div>
+                </a>
+                <a href="CV_Colombe_Lankar.pdf" download class="contact-card" style="border-color: var(--accent-purple); background: rgba(167, 139, 250, 0.02);">
+                    <div class="contact-icon">⬇</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Curriculum Vitae</span>
+                        <span class="contact-val">Télécharger mon CV (.pdf)</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalOutput = document.getElementById('terminalOutput');
+
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = terminalInput.value.trim();
+                if (command !== '') {
+                    runCommand(command);
+                    terminalInput.value = '';
+                }
+            }
+        });
+
+        function runCommand(cmd) {
+            const line = document.createElement('p');
+            line.className = 'terminal-input-line';
+            line.innerHTML = `<span class="t-green">guest@portfolio:~$</span> <span class="t-purple">${cmd}</span>`;
+            terminalOutput.appendChild(line);
+
+            const response = document.createElement('p');
+            
+            switch(cmd.toLowerCase()) {
+                case 'help':
+                    response.innerHTML = `Commandes valides :<br>
+                    - <span class="t-purple">cat atouts.txt</span> : Affiche mes points forts<br>
+                    - <span class="t-purple">ping -c 3 stage</span> : Test de connectivité réseau stage<br>
+                    - <span class="t-purple">neofetch</span> : Structure de mon profil SISR<br>
+                    - <span class="t-purple">clear</span> : Nettoie la console`;
+                    break;
+                case 'cat atouts.txt':
+                    response.innerHTML = `<span class="t-orange">[VALEURS DU COMPOSANT COLOMBE]</span><br>
+                    • Rigueur de diagnostic (Analyse de trames)<br>
+                    • Esprit de résolution logique face aux pannes d'infra<br>
+                    • Aptitude pour le travail de support technique.`;
+                    break;
+                case 'ping -c 3 stage':
+                    response.innerHTML = `PING stage.recruteur.fr (10.0.10.254) 56(84) bytes of data.<br>
+                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: STAGE PRO)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=0.15 ms (Motivation: 100%)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=0.11 ms (Packets loss: 0%)</span><br>
+                    --- stage.recruteur.fr ping statistics ---<br>
+                    3 packets transmitted, 3 received, 0% packet loss, link UP.`;
+                    break;
+                case 'neofetch':
+                    response.innerHTML = `--------------------------------------------------<br>
+                    <span class="t-purple">PROFIL:</span> Colombe Lankar<br>
+                    <span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)<br>
+                    <span class="t-purple">PROD_ENV:</span> Linux Debian, Windows Server, VirtualBox, Cisco<br>
+                    <span class="t-purple">TARGET:</span> Recherche active de Stage<br>
+                    --------------------------------------------------`;
+                    break;
+                case 'clear':
+                    terminalOutput.innerHTML = '';
+                    return;
+                default:
+                    response.innerHTML = `<span class="t-orange">bash: ${cmd}: commande introuvable.</span> Tapez <span class="t-purple">help</span> pour voir la liste.`;
+            }
+
+            terminalOutput.appendChild(response);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+    </script>
+</body>
+</html>
