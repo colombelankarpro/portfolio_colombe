@@ -236,7 +236,7 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 980px) {
             header { display: none; }
-            .mobile-nav { display: flex; }
+            .mobile-nav { display: flex; flex-wrap: wrap; }
             .bento-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.4rem; }
             .hero p { font-size: 1rem; }
@@ -258,6 +258,7 @@
                     <li><a href="#parcours">Parcours</a></li>
                     <li><a href="#veille">Veille</a></li>
                     <li><a href="#documents">Livrables</a></li>
+                    <li><a href="colombe_lankar_note_de_stage.pdf" target="_blank">Note de synthèse</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); border: 1px solid rgba(167, 139, 250, 0.4); padding: 0.35rem 0.8rem; border-radius: 6px; background: rgba(167, 139, 250, 0.05); font-weight: bold;">Mon CV</a></li>
                 </ul>
@@ -270,6 +271,7 @@
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
         <a href="#veille"><span class="mobile-icon">🌐</span>Veille</a>
         <a href="#documents"><span class="mobile-icon">📄</span>Livrables</a>
+        <a href="colombe_lankar_note_de_stage.pdf" target="_blank"><span class="mobile-icon">📝</span>Synthèse</a>
         <a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); font-weight: bold;"><span class="mobile-icon">📄</span>CV</a>
     </div>
 
@@ -566,10 +568,9 @@
                     
                     <!-- Description du stage -->
                     <div style="margin-bottom: 0.5rem;">
-                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">[Nom de l'Entreprise à compléter]</span></h4>
+                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">Safran</span></h4>
                         <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-                            <strong>Période :</strong> Mai - Juin 2026<br>
-                            <strong>Missions :</strong> [Mission 1, ex: Assistance utilisateur de niveau 1], [Mission 2, ex: Déploiement de postes sous Windows 11], et [Mission 3, ex: Cartographie du réseau local].
+                            <strong>Période :</strong> Mai - Juin 2026
                         </p>
                     </div>
 
@@ -578,7 +579,7 @@
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="font-size: 1.2rem;">📄</span>
                             <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">Note de Stage</div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">Note de Synthèse</div>
                                 <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
                             </div>
                         </div>
