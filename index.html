@@ -1,162 +1,45 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colombe Lankar | SysAdmin & Réseaux</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-main: #0d0c12;          
-            --bg-card: rgba(22, 20, 28, 0.6); 
-            --border-tech: rgba(167, 139, 250, 0.25); 
-            --border-soft: rgba(255, 255, 255, 0.04);
-            --text-main: #f3f4f6;        
-            --text-muted: #9ca3af;       
-            --accent-purple: #a78bfa;    
-            --accent-green: #34d399;     
-            --accent-orange: #fb923c;    
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
+<div class="veille-articles-grid">
+                
+                <!-- Article 1 : Eutelsat / SD-WAN -->
+                <a href="https://www.lemagit.fr/essentialguide/Dossier-reseau-la-nouvelle-ere-de-la-connectivite-par-satellite" target="_blank" class="veille-card-v2">
+                    <div class="v-card-header">
+                        <span class="v-tag">SD-WAN</span>
+                        <span class="v-tag" style="background: rgba(52, 211, 153, 0.1); color: var(--accent-green); border-color: rgba(52, 211, 153, 0.2);">Continuité de service</span>
+                    </div>
+                    <h4 class="v-title">MWC 2026 : Eutelsat se voit comme le Starlink des entreprises</h4>
+                    <p class="v-desc">L'intégration des liaisons LEO redéfinit les architectures de haute disponibilité (HA). En cas de coupure physique de la fibre, le basculement (failover) vers la liaison satellitaire s'effectue avec une latence minimale via SD-WAN. Une solution vitale pour le PRA/PCA des infrastructures.</p>
+                    <div class="v-footer">
+                        <span class="v-source">LeMagIT</span>
+                        <span class="v-read">Lire l'article ↗</span>
+                    </div>
+                </a>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-bottom: 2rem;
-        }
+                <!-- Article 2 : Keraunos / DGA / Laser -->
+                <a href="https://www.defense.gouv.fr/dga/actualites/reussite-premiers-tests-du-satellite-communication-optique-keraunos" target="_blank" class="veille-card-v2">
+                    <div class="v-card-header">
+                        <span class="v-tag" style="background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.2);">Sécurité Défense</span>
+                        <span class="v-tag">Routage Optique</span>
+                    </div>
+                    <h4 class="v-title">Keraunos : la DGA valide la communication optique par laser spatial</h4>
+                    <p class="v-desc">Succès historique des tests du satellite français Keraunos. Le transfert optique de données élimine les vulnérabilités de la radiofréquence. Pour un administrateur réseau, cela garantit une liaison haut débit insensible au brouillage (jamming) et à l'interception (sniffing), sécurisant ainsi les architectures critiques.</p>
+                    <div class="v-footer">
+                        <span class="v-source">Ministère des Armées</span>
+                        <span class="v-read">Lire l'article ↗</span>
+                    </div>
+                </a>
 
-        .container { max-width: 1150px; margin: 0 auto; padding: 0 1.5rem; }
+                <!-- Article 3 : Starlink / Direct-to-Cell / MDM -->
+                <a href="https://www.frandroid.com/marques/spacex/starlink/2998969_starlink-bientot-un-operateur-mobile-mondial-les-satellites-direct-to-cell-vont-faire-pleuvoir-la-5g-depuis-lespace" target="_blank" class="veille-card-v2">
+                    <div class="v-card-header">
+                        <span class="v-tag" style="background: rgba(52, 211, 153, 0.1); color: var(--accent-green); border-color: rgba(52, 211, 153, 0.2);">Direct-to-Cell</span>
+                        <span class="v-tag" style="background: rgba(167, 139, 250, 0.1); color: var(--accent-purple); border-color: rgba(167, 139, 250, 0.2);">Mobilité 5G</span>
+                    </div>
+                    <h4 class="v-title">Starlink et la 5G spatiale : le déploiement du Direct-to-Cell</h4>
+                    <p class="v-desc">SpaceX émet en 5G directement vers des smartphones standards. Cette avancée redéfinit la gestion de flotte mobile (MDM) : l'administrateur peut garantir l'accès aux réseaux privés (VPN) et aux processus d'authentification (MFA) partout sur la planète, sans infrastructure locale.</p>
+                    <div class="v-footer">
+                        <span class="v-source">Frandroid</span>
+                        <span class="v-read">Lire l'article ↗</span>
+                    </div>
+                </a>
 
-        .glow-bg {
-            position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 1000px; height: 600px;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.04) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1; pointer-events: none;
-        }
-
-        section { 
-            padding: 5rem 0 2rem 0; 
-            border-top: 1px solid var(--border-soft); 
-            scroll-margin-top: 100px; 
-        }
-
-        .section-title { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .section-title::before { content: "//"; color: var(--accent-purple); }
-
-        details > summary { list-style: none; }
-        summary::-webkit-details-marker { display: none; }
-
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed; top: 0; width: 100%;
-            backdrop-filter: blur(12px); background: rgba(13, 12, 18, 0.8);
-            border-bottom: 1px solid var(--border-soft); z-index: 100;
-        }
-        .nav-container {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem;
-        }
-        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; flex-shrink: 0; }
-        .logo span { color: var(--accent-purple); }
-        
-        nav { flex-grow: 1; display: flex; justify-content: flex-end; }
-        nav ul { display: flex; list-style: none; gap: 1.1rem; align-items: center; }
-        nav a { 
-            text-decoration: none; 
-            color: var(--text-muted); font-size: 0.88rem; font-weight: 500; 
-            white-space: nowrap; transition: color 0.2s; 
-        }
-        nav a:hover { color: var(--accent-purple); }
-
-        .mobile-nav {
-            display: none; position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(13, 12, 18, 0.95); backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border-soft); z-index: 100;
-            padding: 0.75rem 1rem; justify-content: space-around;
-        }
-        .mobile-nav a {
-            display: flex; flex-direction: column; align-items: center;
-            color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-family: var(--font-mono);
-        }
-        .mobile-nav a:hover { color: var(--accent-purple); }
-        .mobile-icon { font-size: 1.2rem; margin-bottom: 0.2rem; }
-
-        /* --- HERO & TERMINAL --- */
-        .hero { padding: 7rem 0 2rem 0; text-align: center; }
-        .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
-        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto 2rem auto; }
-
-        .terminal-container {
-            background: #09080c; border: 1px solid var(--border-tech); border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); text-align: left;
-            font-family: var(--font-mono); overflow: hidden; margin-bottom: 3.5rem;
-        }
-        .terminal-header {
-            background: #121118; padding: 0.8rem 1.2rem;
-            display: flex; align-items: center; justify-content: flex-start; 
-            border-bottom: 1px solid var(--border-soft); gap: 0.75rem;
-        }
-        .terminal-logo {
-            color: var(--accent-purple); font-weight: bold; font-size: 1.1rem;
-            animation: pulse-logo 2s infinite;
-        }
-        @keyframes pulse-logo { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        
-        .terminal-title { color: var(--text-muted); font-size: 0.85rem; }
-        .terminal-body { padding: 1.3rem; height: 240px; overflow-y: auto; font-size: 0.85rem; color: #e2e8f0; }
-        
-        .t-purple { color: var(--accent-purple); font-weight: bold; }
-        .t-green { color: var(--accent-green); }
-        .t-orange { color: var(--accent-orange); }
-        
-        .terminal-input-line { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
-        .terminal-input-line input {
-            background: transparent; border: none; color: var(--text-main);
-            font-family: var(--font-mono); font-size: 0.85rem; outline: none; flex: 1;
-        }
-        .terminal-shortcuts { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 5rem; flex-wrap: wrap; }
-        .shortcut-btn {
-            background: rgba(167, 139, 250, 0.05); border: 1px solid rgba(167, 139, 250, 0.2);
-            color: var(--accent-purple); font-family: var(--font-mono); padding: 0.4rem 1rem;
-            border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
-        }
-        .shortcut-btn:hover { background: var(--accent-purple); color: #0d0c12; transform: translateY(-1px); font-weight: 500; }
-
-        /* --- BENTO & COMPETENCES --- */
-        .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
-        .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; transition: background 0.2s; }
-        .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
-        
-        .skills-list-text li { margin-bottom: 0.7rem; position: relative; padding-left: 1.2rem; font-size: 0.95rem; color: var(--text-muted); list-style: none; }
-        .skills-list-text li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-purple); }
-        
-        .interests-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-        .interest-tag { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; }
-        
-        .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-        .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
-        .meta-label { font-family: var(--font-mono); font-size: 0.77rem; color: var(--text-muted); display: block; }
-        .meta-val { font-size: 0.85rem; font-weight: 600; }
-
-        .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
-        .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
-        .comp-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 1rem; }
-        .comp-icon { color: var(--accent-purple); }
-        .tech-badges-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .tech-badge { font-family: var(--font-mono); font-size: 0.75rem; background: #09080c; border: 1px solid var(--border-soft); padding: 0.25rem 0.5rem; border-radius: 6px; color: #cbd5e1; }
-
-        /* --- PARCOURS --- */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 1.5rem; border-left: 2px solid var(--border-soft); }
-        .timeline-item { position: relative; margin-bottom: 2.5rem; }
-        .timeline-item::before { content: ""; position: absolute; left: calc(-1.5rem - 6px); top: 0.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); }
-        .time-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-purple); font-weight: bold; }
-        .time-title { font-size: 1.1rem; font-weight: 600; }
-        .time-sub { font-size: 0.85rem; color: var(--text-muted); }
+            </div>
