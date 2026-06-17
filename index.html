@@ -568,7 +568,7 @@
                     
                     <!-- Description du stage (Date uniquement) -->
                     <div style="margin-bottom: 0.5rem;">
-                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">[Nom de l'Entreprise]</span></h4>
+                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">[Nom de l'Entreprise à compléter]</span></h4>
                         <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
                             <strong>Période :</strong> Mai - Juin 2026
                         </p>
@@ -655,8 +655,8 @@
                 case 'help':
                     response.innerHTML = `Commandes valides :<br>
                     - <span class="t-purple">cat atouts.txt</span> : Affiche mes points forts<br>
-                    - <span class="t-purple">ping -c 3 stage</span> : Test de connectivité réseau<br>
-                    - <span class="t-purple">neofetch</span> : Affiche les informations système<br>
+                    - <span class="t-purple">ping -c 3 stage</span> : Test de connectivité réseau stage<br>
+                    - <span class="t-purple">neofetch</span> : Structure de mon profil SISR<br>
                     - <span class="t-purple">clear</span> : Nettoie la console`;
                     break;
                 case 'cat atouts.txt':
@@ -668,9 +668,9 @@
                     break;
                 case 'ping -c 3 stage':
                     response.innerHTML = `PING stage.recruteur.fr (10.0.10.254) 56(84) bytes of data.<br>
-                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=12.4 ms</span><br>
-                    64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=11.2 ms</span><br>
-                    64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=13.1 ms</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: STAGE PRO)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=0.15 ms (Motivation: 100%)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=0.11 ms (Packets loss: 0%)</span><br>
                     --- stage.recruteur.fr ping statistics ---<br>
                     3 packets transmitted, 3 received, 0% packet loss, link UP.`;
                     break;
