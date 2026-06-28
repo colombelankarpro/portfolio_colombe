@@ -131,20 +131,8 @@
         .shortcut-btn:hover { background: var(--accent-purple); color: #0d0c12; transform: translateY(-1px); font-weight: 500; }
 
         /* --- BENTO & COMPETENCES --- */
-        .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
-        .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; transition: background 0.2s; }
-        .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
-        
         .skills-list-text li { margin-bottom: 0.7rem; position: relative; padding-left: 1.2rem; font-size: 0.95rem; color: var(--text-muted); list-style: none; }
         .skills-list-text li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-purple); }
-        
-        .interests-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-        .interest-tag { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; }
-        
-        .meta-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-        .meta-item { background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-soft); }
-        .meta-label { font-family: var(--font-mono); font-size: 0.77rem; color: var(--text-muted); display: block; }
-        .meta-val { font-size: 0.85rem; font-weight: 600; }
 
         .competences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
         .comp-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; }
@@ -163,66 +151,29 @@
         .time-desc { font-size: 0.85rem; color: var(--text-muted); padding-left: 1rem; margin-top: 0.4rem; }
 
         /* --- DESIGN VEILLE --- */
-        .veille-articles-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 1.5rem; 
-        }
-        
-        .veille-card-v2 {
-            display: flex; flex-direction: column;
-            background: rgba(13, 12, 18, 0.6);
-            border: 1px solid var(--border-soft);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .veille-card-v2:hover {
-            border-color: var(--border-tech);
-            transform: translateY(-4px);
-            background: rgba(22, 20, 28, 0.9);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        
-        .veille-card-v2::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-            background: var(--accent-purple); opacity: 0; transition: opacity 0.3s ease;
-        }
+        .bento-grid { display: grid; grid-template-columns: 1.7fr 1.3fr; gap: 1.5rem; }
+        .bento-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem; transition: background 0.2s; }
+        .bento-card h3 { font-size: 1.15rem; margin-bottom: 1rem; font-family: var(--font-mono); border-bottom: 1px dashed var(--border-soft); padding-bottom: 0.5rem;}
+        .interests-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+        .interest-tag { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; }
+
+        .veille-articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .veille-card-v2 { display: flex; flex-direction: column; background: rgba(13, 12, 18, 0.6); border: 1px solid var(--border-soft); border-radius: 12px; padding: 1.5rem; text-decoration: none; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .veille-card-v2:hover { border-color: var(--border-tech); transform: translateY(-4px); background: rgba(22, 20, 28, 0.9); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .veille-card-v2::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent-purple); opacity: 0; transition: opacity 0.3s ease; }
         .veille-card-v2:hover::before { opacity: 1; }
-        
         .v-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        
-        .v-tag { 
-            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
-            background: rgba(167, 139, 250, 0.1); color: var(--accent-purple);
-            padding: 0.3rem 0.6rem; border-radius: 20px; border: 1px solid rgba(167, 139, 250, 0.2);
-        }
-        
+        .v-tag { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; background: rgba(167, 139, 250, 0.1); color: var(--accent-purple); padding: 0.3rem 0.6rem; border-radius: 20px; border: 1px solid rgba(167, 139, 250, 0.2); }
         .v-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
-        
         .v-title { font-size: 1.1rem; color: var(--text-main); line-height: 1.4; margin-bottom: 0.75rem; transition: color 0.2s; }
         .veille-card-v2:hover .v-title { color: var(--accent-purple); }
-        
         .v-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
-        
-        .v-footer { 
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-soft); padding-top: 1rem; margin-top: auto;
-        }
+        .v-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1rem; margin-top: auto; }
         .v-source { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main); font-weight: bold; }
         .v-read { font-size: 0.8rem; color: var(--accent-purple); font-weight: 600; }
 
         /* --- LIVRABLES / DOSSIERS --- */
-        .doc-btn { 
-            text-align: center; font-family: var(--font-mono); font-size: 0.8rem; 
-            text-decoration: none; color: var(--text-main); background: #121118; 
-            border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; 
-            border-radius: 6px; transition: all 0.2s; 
-        }
+        .doc-btn { text-align: center; font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--text-main); background: #121118; border: 1px solid var(--border-soft); padding: 0.4rem 0.8rem; border-radius: 6px; transition: all 0.2s; }
         .doc-btn:hover { background: var(--accent-purple); color: #0d0c12; font-weight: 600; border-color: var(--accent-purple); }
 
         /* --- CONTACT --- */
@@ -253,7 +204,6 @@
             <a href="#" class="logo">colombe<span>.lankar</span></a>
             <nav>
                 <ul>
-                    <li><a href="#propos">À propos</a></li>
                     <li><a href="#competences">Compétences</a></li>
                     <li><a href="#parcours">Parcours</a></li>
                     <li><a href="#veille">Veille</a></li>
@@ -267,12 +217,11 @@
     </header>
 
     <div class="mobile-nav">
-        <a href="#propos"><span class="mobile-icon">👤</span>ID</a>
         <a href="#competences"><span class="mobile-icon">⚙️</span>Skills</a>
+        <a href="#parcours"><span class="mobile-icon">🚀</span>Parcours</a>
         <a href="#veille"><span class="mobile-icon">🌐</span>Veille</a>
         <a href="#documents"><span class="mobile-icon">📄</span>Livrables</a>
         <a href="colombe_lankar_note_de_stage.pdf" target="_blank"><span class="mobile-icon">📝</span>Synthèse</a>
-        <a href="CV_Colombe_Lankar.pdf" target="_blank" style="color: var(--accent-purple); font-weight: bold;"><span class="mobile-icon">📄</span>CV</a>
     </div>
 
     <div class="container">
@@ -293,9 +242,11 @@
                 <div class="terminal-input-line"><span class="t-green">guest@portfolio:~$</span> <span class="t-purple">neofetch</span></div>
                 <p>--------------------------------------------------</p>
                 <p><span class="t-purple">PROFIL:</span> Colombe Lankar</p>
-                <p><span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)</p>
-                <p><span class="t-purple">ENVIRONNEMENT:</span> Linux Debian, Windows Server, VirtualBox, Cisco</p>
-                <p><span class="t-purple">OBJECTIF:</span> Recherche active de stage</p>
+                <p><span class="t-purple">FORMATION:</span> BTS SIO option SISR (1ère année)</p>
+                <p><span class="t-purple">ÉTABLISSEMENT:</span> Lycée Geoffroy-Saint-Hilaire (Étampes)</p>
+                <p><span class="t-purple">LOCALISATION:</span> Étréchy, Essonne (91)</p>
+                <p><span class="t-purple">ENVIRONNEMENT:</span> Linux Debian, Windows Server, Cisco, VirtualBox</p>
+                <p><span class="t-purple">EXPÉRIENCE:</span> Stage d'un mois chez [Nom de l'Entreprise à compléter]</p>
                 <p>--------------------------------------------------</p>
             </div>
             <div class="terminal-header" style="border-top: 1px solid var(--border-soft); border-bottom: none;">
@@ -311,41 +262,6 @@
             <button class="shortcut-btn" onclick="runCommand('ping -c 3 stage')">ping stage</button>
             <button class="shortcut-btn" onclick="runCommand('clear')">clear</button>
         </div>
-
-        <section id="propos">
-            <h2 class="section-title">Qui suis-je ?</h2>
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <h3>Description Globale</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-                        Je suis Colombe Lankar, étudiante en première année de BTS SIO option SISR au Lycée Geoffroy-Saint-Hilaire à Étampes. Passionnée par l'administration systèmes, la virtualisation et la gestion des infrastructures réseaux, je cherche à mettre mes compétences en pratique lors de stages et d'expériences professionnelles.
-                    </p>
-                    <div class="meta-info-grid">
-                        <div class="meta-item"><span class="meta-label">FORMATION</span><span class="meta-val">BTS SIO - SISR</span></div>
-                        <div class="meta-item"><span class="meta-label">ETABLISSEMENT</span><span class="meta-val">Lycée Geoffroy-Saint-Hilaire</span></div>
-                        <div class="meta-item"><span class="meta-label">LOCALISATION</span><span class="meta-val">Étréchy, Essonne (91)</span></div>
-                        <div class="meta-item"><span class="meta-label">DISPONIBILITE</span><span class="meta-val">Stage</span></div>
-                    </div>
-                </div>
-                <div class="bento-card">
-                    <h3>Mes Atouts</h3>
-                    <ul class="skills-list-text">
-                        <li>Rigueur et sens du détail</li>
-                        <li>Esprit d'analyse et résolution de problèmes</li>
-                        <li>Travail collaboratif en équipe</li>
-                        <li>Curiosité et envie d'apprendre</li>
-                    </ul>
-                    <div style="margin-top: 1.5rem;">
-                        <h3 style="font-size:1rem; margin-bottom: 0.5rem;">Centres d'intérêt</h3>
-                        <div class="interests-tags">
-                            <span class="interest-tag">🎯 Tir sportif</span>
-                            <span class="interest-tag">📸 Photographie</span>
-                            <span class="interest-tag">🌐 Nouvelles technologies</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section id="competences">
             <h2 class="section-title">Savoir-faire Technique</h2>
@@ -392,6 +308,15 @@
         <section id="parcours">
             <h2 class="section-title">Parcours Académique & Expériences</h2>
             <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-date">MAI — JUIN 2026</div>
+                    <div class="time-title">Stage d'immersion professionnelle</div>
+                    <div class="time-sub">[Nom de l'Entreprise à compléter]</div>
+                    <ul class="time-desc">
+                        <li>Assistance utilisateur et support technique</li>
+                        <li>Gestion de l'infrastructure locale</li>
+                    </ul>
+                </div>
                 <div class="timeline-item">
                     <div class="time-date">SEPT. 2025 — AUJOURD'HUI</div>
                     <div class="time-title">BTS SIO — Option SISR</div>
@@ -450,7 +375,6 @@
 
             <div class="veille-articles-grid">
                 
-                <!-- Article 1 : Speedcast / SD-WAN -->
                 <a href="https://www.speedcast.com/blog-hub/2026/starlink-business-failover-solutions/" target="_blank" class="veille-card-v2">
                     <div class="v-card-header">
                         <span class="v-tag">SD-WAN</span>
@@ -464,7 +388,6 @@
                     </div>
                 </a>
 
-                <!-- Article 2 : Keraunos / DGA / Laser -->
                 <a href="https://www.defense.gouv.fr/dga/actualites/reussite-premiers-tests-du-satellite-communication-optique-keraunos" target="_blank" class="veille-card-v2">
                     <div class="v-card-header">
                         <span class="v-tag" style="background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.2);">Sécurité Défense</span>
@@ -478,7 +401,6 @@
                     </div>
                 </a>
 
-                <!-- Article 3 : Starlink / Direct-to-Cell / MDM -->
                 <a href="https://www.frandroid.com/marques/spacex/starlink/2998969_starlink-bientot-un-operateur-mobile-mondial-les-satellites-direct-to-cell-vont-faire-pleuvoir-la-5g-depuis-lespace" target="_blank" class="veille-card-v2">
                     <div class="v-card-header">
                         <span class="v-tag" style="background: rgba(52, 211, 153, 0.1); color: var(--accent-green); border-color: rgba(52, 211, 153, 0.2);">Direct-to-Cell</span>
@@ -505,11 +427,67 @@
                     <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
                     <div>
                         <div style="font-size: 1.1rem; color: var(--text-main);">Bloc 1 : Support et mise à disposition de services</div>
-                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Administration des services et assistance utilisateur</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Administration des services, assistance utilisateur et infrastructures réseaux de base</div>
                     </div>
                 </summary>
-                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; text-align: center; color: var(--text-muted); font-style: italic;">
-                    ⏳ Les livrables de ce bloc arriveront très prochainement.
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                    
+                    <!-- TP 2 Cisco -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP — Administration Switch Cisco (IOS)</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="tp_cisco.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
+                    <!-- TP 3 VLAN -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP — Segmentation Réseau (VLAN)</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="tp_vlan.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
+                    <!-- TP Crypto -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP — Empreintes Cryptographiques (MD5/SHA1)</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="tp_crypto.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
+                    <!-- TP Droits Linux -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP — Administration Debian : Droits & Utilisateurs</div>
+                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="tp_droits_linux.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
+                        </div>
+                    </div>
+
                 </div>
             </details>
 
@@ -519,39 +497,11 @@
                     <span style="font-size: 1.5rem; color: var(--accent-purple);">📁</span> 
                     <div>
                         <div style="font-size: 1.1rem; color: var(--text-main);">Bloc 2 : Option SISR — Administration des systèmes et réseaux</div>
-                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Réseautage, routage et infrastructures</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 2px;">Architectures complexes, services avancés et sécurité</div>
                     </div>
                 </summary>
-                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
-                    
-                    <!-- TP 7 -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.2rem;">📄</span>
-                            <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 7 — Déploiement de Services Réseaux</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="TP7.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
-                        </div>
-                    </div>
-
-                    <!-- TP 8 -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.2rem;">📄</span>
-                            <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP 8 — Administration Avancée et Routage</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="TP8.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
-                        </div>
-                    </div>
-
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; text-align: center; color: var(--text-muted); font-style: italic;">
+                    ⏳ Les livrables de ce bloc seront publiés très prochainement.
                 </div>
             </details>
 
@@ -566,15 +516,13 @@
                 </summary>
                 <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
                     
-                    <!-- Description du stage (Date uniquement) -->
                     <div style="margin-bottom: 0.5rem;">
-                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">Safran</span></h4>
+                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">[Nom de l'Entreprise à compléter]</span></h4>
                         <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
                             <strong>Période :</strong> Mai - Juin 2026
                         </p>
                     </div>
 
-                    <!-- Note de stage (PDF) -->
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-top: 1px dashed var(--border-soft);">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="font-size: 1.2rem;">📄</span>
@@ -668,7 +616,7 @@
                     break;
                 case 'ping -c 3 stage':
                     response.innerHTML = `PING stage.recruteur.fr (10.0.10.254) 56(84) bytes of data.<br>
-                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: 100 % )</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: STAGE PRO)</span><br>
                     64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=0.15 ms (Motivation: 100%)</span><br>
                     64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=0.11 ms (Packets loss: 0%)</span><br>
                     --- stage.recruteur.fr ping statistics ---<br>
@@ -677,9 +625,11 @@
                 case 'neofetch':
                     response.innerHTML = `--------------------------------------------------<br>
                     <span class="t-purple">PROFIL:</span> Colombe Lankar<br>
-                    <span class="t-purple">CURSUS:</span> BTS SIO option SISR (Systèmes & Réseaux)<br>
-                    <span class="t-purple">ENVIRONNEMENT:</span> Linux Debian, Windows Server, VirtualBox, Cisco<br>
-                    <span class="t-purple">OBJECTIF:</span> Recherche active de stage<br>
+                    <span class="t-purple">FORMATION:</span> BTS SIO option SISR (1ère année)<br>
+                    <span class="t-purple">ÉTABLISSEMENT:</span> Lycée Geoffroy-Saint-Hilaire (Étampes)<br>
+                    <span class="t-purple">LOCALISATION:</span> Étréchy, Essonne (91)<br>
+                    <span class="t-purple">ENVIRONNEMENT:</span> Linux Debian, Windows Server, Cisco, VirtualBox<br>
+                    <span class="t-purple">EXPÉRIENCE:</span> Stage d'un mois chez [Nom de l'Entreprise à compléter]<br>
                     --------------------------------------------------`;
                     break;
                 case 'clear':
