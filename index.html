@@ -246,7 +246,7 @@
                 <p><span class="t-purple">ÉTABLISSEMENT:</span> Lycée Geoffroy-Saint-Hilaire (Étampes)</p>
                 <p><span class="t-purple">LOCALISATION:</span> Étréchy, Essonne (91)</p>
                 <p><span class="t-purple">ENVIRONNEMENT:</span> Linux Debian, Windows Server, Cisco, VirtualBox</p>
-                <p><span class="t-purple">EXPÉRIENCE:</span> Stage d'un mois chez [Nom de l'Entreprise à compléter]</p>
+                <p><span class="t-purple">EXPÉRIENCE:</span> Stage d'un mois chez Safran</p>
                 <p>--------------------------------------------------</p>
             </div>
             <div class="terminal-header" style="border-top: 1px solid var(--border-soft); border-bottom: none;">
@@ -311,10 +311,10 @@
                 <div class="timeline-item">
                     <div class="time-date">MAI — JUIN 2026</div>
                     <div class="time-title">Stage d'immersion professionnelle</div>
-                    <div class="time-sub">[Nom de l'Entreprise à compléter]</div>
+                    <div class="time-sub">Safran</div>
                     <ul class="time-desc">
-                        <li>Assistance utilisateur et support technique</li>
-                        <li>Gestion de l'infrastructure locale</li>
+                        <li>Développement et modularisation d'un système de scripts Bash pour la configuration d'un système Linux embarqué.</li>
+                        <li>Analyse technique, validation de tickets, exploitation de logs et gestion de versions avec Git</li>
                     </ul>
                 </div>
                 <div class="timeline-item">
@@ -407,7 +407,7 @@
                         <span class="v-tag" style="background: rgba(167, 139, 250, 0.1); color: var(--accent-purple); border-color: rgba(167, 139, 250, 0.2);">Mobilité 5G</span>
                     </div>
                     <h4 class="v-title">Starlink et la 5G spatiale : le déploiement du Direct-to-Cell</h4>
-                    <p class="v-desc">SpaceX émet en 5G directement vers des smartphones standards. Cette avancée redéfinit la gestion de flotte mobile (MDM) : l'administrateur peut garantir l'accès aux réseaux privés (VPN) et aux processus d'authentification (MFA) partout sur la planète, sans infrastructure locale.</p>
+                    <p class="v-desc">SpaceX émet en 5G directement vers smartphones standards. Cette avancée redéfinit la gestion de flotte mobile (MDM) : l'administrateur peut garantir l'accès aux réseaux privés (VPN) et aux processus d'authentification (MFA) partout sur la planète, sans infrastructure locale.</p>
                     <div class="v-footer">
                         <span class="v-source">Frandroid</span>
                         <span class="v-read">Lire l'article ↗</span>
@@ -432,34 +432,6 @@
                 </summary>
                 <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
                     
-                    <!-- TP 2 Cisco -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.2rem;">📄</span>
-                            <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP — Administration Switch Cisco (IOS)</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="tp_cisco.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
-                        </div>
-                    </div>
-
-                    <!-- TP 3 VLAN -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.2rem;">📄</span>
-                            <div>
-                                <div style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);">CR TP — Segmentation Réseau (VLAN)</div>
-                                <span class="tech-badge" style="margin-top: 4px; display: inline-block;">.pdf</span>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="tp_vlan.pdf" target="_blank" class="doc-btn" style="padding: 0.4rem 0.8rem;">Consulter</a>
-                        </div>
-                    </div>
-
                     <!-- TP Crypto -->
                     <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-soft);">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -517,7 +489,7 @@
                 <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-soft); padding-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
                     
                     <div style="margin-bottom: 0.5rem;">
-                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">[Nom de l'Entreprise à compléter]</span></h4>
+                        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.3rem;">Stage de 1ère année : <span style="color: var(--accent-orange);">Safran</span></h4>
                         <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
                             <strong>Période :</strong> Mai - Juin 2026
                         </p>
@@ -616,7 +588,7 @@
                     break;
                 case 'ping -c 3 stage':
                     response.innerHTML = `PING stage.recruteur.fr (10.0.10.254) 56(84) bytes of data.<br>
-                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: STAGE PRO)</span><br>
+                    64 bytes from 10.0.10.254: icmp_seq=1 ttl=64 <span class="t-green">time=0.12 ms (Disponibilité: STAGE)</span><br>
                     64 bytes from 10.0.10.254: icmp_seq=2 ttl=64 <span class="t-green">time=0.15 ms (Motivation: 100%)</span><br>
                     64 bytes from 10.0.10.254: icmp_seq=3 ttl=64 <span class="t-green">time=0.11 ms (Packets loss: 0%)</span><br>
                     --- stage.recruteur.fr ping statistics ---<br>
@@ -629,7 +601,7 @@
                     <span class="t-purple">ÉTABLISSEMENT:</span> Lycée Geoffroy-Saint-Hilaire (Étampes)<br>
                     <span class="t-purple">LOCALISATION:</span> Étréchy, Essonne (91)<br>
                     <span class="t-purple">ENVIRONNEMENT:</span> Linux Debian, Windows Server, Cisco, VirtualBox<br>
-                    <span class="t-purple">EXPÉRIENCE:</span> Stage d'un mois chez [Nom de l'Entreprise à compléter]<br>
+                    <span class="t-purple">EXPÉRIENCE:</span> Stage d'un mois chez Safran<br>
                     --------------------------------------------------`;
                     break;
                 case 'clear':
